@@ -16,9 +16,10 @@ namespace BeFaster.App.Solutions.SUM
             {
                 return x + y;
             }
-
+            
             return -1;
         }
     }
 }
+
 
