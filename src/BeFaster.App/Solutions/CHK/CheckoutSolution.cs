@@ -48,7 +48,6 @@ namespace BeFaster.App.Solutions.CHK
             var priceToPay = 0;
             if (skus == "ABCD")
             {
-                priceToPay = 0;
                 CountProducts[skus]++;
                 priceToPay += Prices[skus];
                 if (IsProductDiscounted(skus)
@@ -57,7 +56,6 @@ namespace BeFaster.App.Solutions.CHK
                     priceToPay -= DiscountedProducts[skus].Discount;
                 }
             }
-
             return priceToPay;
         }
         public static int Checkout(string skus)
