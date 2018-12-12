@@ -49,14 +49,11 @@ namespace BeFaster.App.Solutions.CHK
             var arr = skus.ToCharArray(0, skus.Length);
             foreach (var c in arr)
             {
-                if (skus == "AAA")
+                CountProducts[c]++;
+                priceToPay += Prices[c];
+                if (IsProductDiscounted(c) && IsProductAmountEnoughToGetDiscount(c))
                 {
-                    CountProducts[c]++;
-                    priceToPay += Prices[c];
-                    if (IsProductDiscounted(c) && IsProductAmountEnoughToGetDiscount(c))
-                    {
-                        priceToPay -= DiscountedProducts[c].Discount;
-                    }
+                    priceToPay -= DiscountedProducts[c].Discount;
                 }
             }
 
