@@ -1,55 +1,53 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
 {
     public static class CheckoutSolution
     {
-        public static Dictionary<string, DiscountedProduct> DiscountedProducts => new Dictionary<string, DiscountedProduct>
+        public static Dictionary<char, DiscountedProduct> DiscountedProducts => new Dictionary<char, DiscountedProduct>
             {
                 {
-                    "A", new DiscountedProduct
+                    'A', new DiscountedProduct
                         {ProductQuantity = 3, Discount = 20}
                 },
                 {
-                    "B", new DiscountedProduct
+                    'B', new DiscountedProduct
                         {ProductQuantity = 2, Discount = 15}
                 }
             };
 
-        public static Dictionary<string, int> CountProducts => new Dictionary<string, int>
+        public static Dictionary<char, int> CountProducts => new Dictionary<char, int>
         {
-            {"A", 0 },
-            {"B", 0 },
-            {"C", 0 },
-            {"D", 0 }
+            {'A', 0 },
+            {'B', 0 },
+            {'C', 0 },
+            {'D', 0 }
         };
 
-        public static Dictionary<string, int> Prices => new Dictionary<string, int>
+        public static Dictionary<char, int> Prices => new Dictionary<char, int>
         {
-            {"A", 50 },
-            {"B", 30 },
-            {"C", 20 },
-            {"D", 15 }
+            {'A', 50 },
+            {'B', 30 },
+            {'C', 20 },
+            {'D', 15 }
         };
 
-        public static bool IsProductDiscounted(string skus)
+        public static bool IsProductDiscounted(char skus)
         {
             return DiscountedProducts.ContainsKey(skus);
         }
 
-        public static bool IsProductAmountEnoughToGetDiscount(string skus)
+        public static bool IsProductAmountEnoughToGetDiscount(char skus)
         {
             return CountProducts[skus] == DiscountedProducts[skus].ProductQuantity;
         }
 
-        public static int GetProduct(string skus)
+        public static int GetProduct(char skus)
         {
             var priceToPay = 0;
-            foreach (char c in skus)
-            {
-                CountProducts[skus]++;
-            }
+            CountProducts[skus]++;
             priceToPay += Prices[skus];
             if (IsProductDiscounted(skus)
                 && IsProductAmountEnoughToGetDiscount(skus))
@@ -65,7 +63,7 @@ namespace BeFaster.App.Solutions.CHK
             {
                 return -1;
             }
-            return GetProduct(skus);
+            return GetProduct(Convert.ToChar(skus));
         }
     }
 }
