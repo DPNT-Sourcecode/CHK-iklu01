@@ -56,14 +56,14 @@ namespace BeFaster.App.Solutions.CHK
                 priceToPay -= DiscountedProducts[skus].Discount;
             }
 
-            if (!Regex.IsMatch(skus, @"^[a-zA-Z]+$"))
-            {
-                priceToPay = -1;
-            }
             return priceToPay;
         }
         public static int Checkout(string skus)
         {
+            if (!Regex.IsMatch(skus, @"^[a-zA-Z]+$"))
+            {
+                return -1;
+            }
             return GetProduct(skus);
         }
     }
