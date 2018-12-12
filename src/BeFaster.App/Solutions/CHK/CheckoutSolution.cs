@@ -5,6 +5,7 @@ namespace BeFaster.App.Solutions.CHK
 {
     public static class CheckoutSolution
     {
+
         public static Dictionary<char, DiscountedProduct> DiscountedProducts => new Dictionary<char, DiscountedProduct>
         {
             {
@@ -12,9 +13,17 @@ namespace BeFaster.App.Solutions.CHK
                     {ProductQuantity = 3, Discount = 20}
             },
             {
+                'A', new DiscountedProduct
+                    {ProductQuantity = 6, Discount = 40}
+            },
+            {
                 'B', new DiscountedProduct
                     {ProductQuantity = 2, Discount = 15}
-            }
+            },
+            {
+                'B', new DiscountedProduct
+                    {ProductQuantity = 4, Discount = 30}
+            },
         };
 
         public static Dictionary<char, int> Prices => new Dictionary<char, int>
@@ -27,7 +36,7 @@ namespace BeFaster.App.Solutions.CHK
 
         public static int GetProduct(string skus)
         {
-            var CountProducts = new Dictionary<char, int>
+            var countProducts = new Dictionary<char, int>
             {
                 {'A', 0 },
                 {'B', 0 },
@@ -38,9 +47,9 @@ namespace BeFaster.App.Solutions.CHK
             var arr = skus.ToCharArray(0, skus.Length);
             foreach (var c in arr)
             {
-                CountProducts[c]++;
+                countProducts[c]++;
                 priceToPay += Prices[c];
-                if (DiscountedProducts.ContainsKey(c) && CountProducts[c] == DiscountedProducts[c].ProductQuantity)
+                if (DiscountedProducts.ContainsKey(c) && countProducts[c] == DiscountedProducts[c].ProductQuantity)
                 {
                     priceToPay -= DiscountedProducts[c].Discount;
                 }
