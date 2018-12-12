@@ -24,11 +24,21 @@ namespace BeFaster.App.Solutions.CHK
             {"C", 0 },
             {"D", 0 }
         };
+
+        public static Dictionary<string, int> Prices => new Dictionary<string, int>
+        {
+            {"A", 50 },
+            {"B", 30 },
+            {"C", 20 },
+            {"D", 15 }
+        };
+
         public static int Checkout(string skus)
         {
             throw new NotImplementedException();
         }
     }
 }
+
 
 
