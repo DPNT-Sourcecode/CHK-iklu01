@@ -62,7 +62,7 @@ namespace BeFaster.App.Solutions.CHK
             {
                 return -1;
             }
-            return GetProduct(skus.ToUpperInvariant());
+            return GetProduct(skus);
         }
     }
 }
