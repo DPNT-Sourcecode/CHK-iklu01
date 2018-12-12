@@ -12,18 +12,18 @@ namespace BeFaster.App.Solutions.CHK
                 'A', new DiscountedProduct
                     {ProductQuantity = 3, Discount = 20}
             },
-            {
-                'A', new DiscountedProduct
-                    {ProductQuantity = 6, Discount = 40}
-            },
+            //{
+            //    'A', new DiscountedProduct
+            //        {ProductQuantity = 6, Discount = 40}
+            //},
             {
                 'B', new DiscountedProduct
                     {ProductQuantity = 2, Discount = 15}
             },
-            {
-                'B', new DiscountedProduct
-                    {ProductQuantity = 4, Discount = 30}
-            },
+            //{
+            //    'B', new DiscountedProduct
+            //        {ProductQuantity = 4, Discount = 30}
+            //}
         };
 
         public static Dictionary<char, int> Prices => new Dictionary<char, int>
