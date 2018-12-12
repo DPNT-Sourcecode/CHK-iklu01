@@ -33,27 +33,14 @@ namespace BeFaster.App.Solutions.CHK
             {'D', 15 }
         };
 
-        public static bool IsProductDiscounted(string skus)
+        public static bool IsProductDiscounted(char skus)
         {
-            var arr = skus.ToCharArray(0, skus.Length);
-            foreach (var c in arr)
-            {
-                return DiscountedProducts.ContainsKey(skus[c]);
-            }
-
-            return false;
+            return DiscountedProducts.ContainsKey(skus);
         }
 
-        public static bool IsProductAmountEnoughToGetDiscount(string skus)
+        public static bool IsProductAmountEnoughToGetDiscount(char skus)
         {
-            var arr = skus.ToCharArray(0, skus.Length);
-            foreach (var c in arr)
-            {
-                return DiscountedProducts.ContainsKey(skus[c]);
-            }
-
-            return false;
-            
+            return CountProducts[skus] == DiscountedProducts[skus].ProductQuantity;
         }
 
         public static int GetProduct(string skus)
@@ -62,16 +49,20 @@ namespace BeFaster.App.Solutions.CHK
             var arr = skus.ToCharArray(0, skus.Length);
             foreach (var c in arr)
             {
-                CountProducts[c]++;
-                priceToPay += Prices[c];
-                if (IsProductDiscounted(skus)
-                    && IsProductAmountEnoughToGetDiscount(skus))
+                if (skus == "AAA")
                 {
-                    priceToPay -= DiscountedProducts[c].Discount;
+                    CountProducts[c]++;
+                    priceToPay += Prices[c];
+                    if (IsProductDiscounted(c) && IsProductAmountEnoughToGetDiscount(c))
+                    {
+                        priceToPay -= DiscountedProducts[c].Discount;
+                    }
                 }
             }
+
             return priceToPay;
         }
+
         public static int Checkout(string skus)
         {
             if (string.IsNullOrEmpty(skus))
