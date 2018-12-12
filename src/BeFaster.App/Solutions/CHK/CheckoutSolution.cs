@@ -44,19 +44,18 @@ namespace BeFaster.App.Solutions.CHK
             return CountProducts[skus] == DiscountedProducts[skus].ProductQuantity;
         }
 
-        public static int PriceToPay { get; set; }
-
         public static int GetProduct(char skus)
         {
+            var priceToPay = 0;
             CountProducts[skus]++;
-            PriceToPay += Prices[skus];
+            priceToPay += Prices[skus];
             if (IsProductDiscounted(skus)
                 && IsProductAmountEnoughToGetDiscount(skus))
             {
-                PriceToPay -= DiscountedProducts[skus].Discount;
+                priceToPay -= DiscountedProducts[skus].Discount;
             }
 
-            return PriceToPay;
+            return priceToPay;
         }
         public static int Checkout(string skus)
         {
@@ -70,7 +69,7 @@ namespace BeFaster.App.Solutions.CHK
                 return GetProduct(ch);
             }
 
-            return PriceToPay;
+            return -999;
         }
     }
 }
