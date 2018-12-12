@@ -5,7 +5,7 @@ namespace BeFaster.App.Solutions.CHK
 {
     public static class CheckoutSolution
     {
-        public static Dictionary<string, DiscountedProduct> DiscountedProducts() => new Dictionary<string, DiscountedProduct>
+        public static Dictionary<string, DiscountedProduct> DiscountedProducts => new Dictionary<string, DiscountedProduct>
             {
                 {
                     "A", new DiscountedProduct
@@ -13,14 +13,22 @@ namespace BeFaster.App.Solutions.CHK
                 },
                 {
                     "B", new DiscountedProduct
-                        {ProductQuantity = 3, Discount = 20}
-                },
-
+                        {ProductQuantity = 2, Discount = 15}
+                }
             };
+
+        public static Dictionary<string, int> CountProducts => new Dictionary<string, int>
+        {
+            {"A", 0 },
+            {"B", 0 },
+            {"C", 0 },
+            {"D", 0 }
+        };
         public static int Checkout(string skus)
         {
             throw new NotImplementedException();
         }
     }
 }
+
 
