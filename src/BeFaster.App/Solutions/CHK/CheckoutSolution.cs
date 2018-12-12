@@ -59,11 +59,17 @@ namespace BeFaster.App.Solutions.CHK
         }
         public static int Checkout(string skus)
         {
-            if (!Regex.IsMatch(skus, @"^[A-Z]+$"))
+            //if (!Regex.IsMatch(skus, @"^[A-Z]+$"))
+            //{
+            //    return -1;
+            //}
+            char[] arr = skus.ToCharArray();
+            foreach (char ch in arr)
             {
-                return -1;
+                return GetProduct(ch);
             }
-            return GetProduct(Convert.ToChar(skus));
+
+            return -1;
         }
     }
 }
