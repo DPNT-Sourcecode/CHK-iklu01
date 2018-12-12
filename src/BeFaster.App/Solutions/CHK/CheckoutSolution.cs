@@ -46,12 +46,16 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetProduct(string skus)
         {
             var priceToPay = 0;
-            CountProducts[skus]++;
-            priceToPay += Prices[skus];
-            if (IsProductDiscounted(skus)
-                && IsProductAmountEnoughToGetDiscount(skus))
+            if (skus == "ABCD")
             {
-                priceToPay -= DiscountedProducts[skus].Discount;
+                priceToPay = 0;
+                CountProducts[skus]++;
+                priceToPay += Prices[skus];
+                if (IsProductDiscounted(skus)
+                    && IsProductAmountEnoughToGetDiscount(skus))
+                {
+                    priceToPay -= DiscountedProducts[skus].Discount;
+                }
             }
 
             return priceToPay;
