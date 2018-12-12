@@ -45,15 +45,11 @@ namespace BeFaster.App.Solutions.CHK
 
         public static int GetProduct(string skus)
         {
-            var dict = new Dictionary<string, int>
-            {
-                {"A", 0 },
-                {"B", 0 },
-                {"C", 0 },
-                {"D", 0 }
-            };
             var priceToPay = 0;
-            dict[skus]++;
+            foreach (char c in skus)
+            {
+                CountProducts[skus]++;
+            }
             priceToPay += Prices[skus];
             if (IsProductDiscounted(skus)
                 && IsProductAmountEnoughToGetDiscount(skus))
