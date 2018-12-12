@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
@@ -64,7 +62,7 @@ namespace BeFaster.App.Solutions.CHK
             {
                 return -1;
             }
-            return GetProduct(skus);
+            return GetProduct(skus.ToUpperInvariant());
         }
     }
 }
