@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
@@ -64,9 +65,8 @@ namespace BeFaster.App.Solutions.CHK
         public static int Checkout(string skus)
         {
             //return GetProduct(skus);
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return 0;
         }
     }
 }
-
-
