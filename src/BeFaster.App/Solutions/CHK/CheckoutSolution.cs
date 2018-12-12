@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -52,6 +53,11 @@ namespace BeFaster.App.Solutions.CHK
             {
                 priceToPay -= DiscountedProducts[skus].Discount;
             }
+
+            if (!Regex.IsMatch(skus, @"^[a-zA-Z]+$"))
+            {
+                priceToPay = -1;
+            }
             return priceToPay;
         }
         public static int Checkout(string skus)
@@ -60,3 +66,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
