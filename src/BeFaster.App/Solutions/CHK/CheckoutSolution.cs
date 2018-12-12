@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
@@ -34,14 +33,27 @@ namespace BeFaster.App.Solutions.CHK
             {'D', 15 }
         };
 
-        public static bool IsProductDiscounted(char skus)
+        public static bool IsProductDiscounted(string skus)
         {
-            return DiscountedProducts.ContainsKey(skus);
+            var arr = skus.ToCharArray(0, skus.Length);
+            foreach (var c in arr)
+            {
+                return DiscountedProducts.ContainsKey(skus[c]);
+            }
+
+            return false;
         }
 
-        public static bool IsProductAmountEnoughToGetDiscount(char skus)
+        public static bool IsProductAmountEnoughToGetDiscount(string skus)
         {
-            return CountProducts[skus] == DiscountedProducts[skus].ProductQuantity;
+            var arr = skus.ToCharArray(0, skus.Length);
+            foreach (var c in arr)
+            {
+                return DiscountedProducts.ContainsKey(skus[c]);
+            }
+
+            return false;
+            
         }
 
         public static int GetProduct(string skus)
@@ -52,13 +64,12 @@ namespace BeFaster.App.Solutions.CHK
             {
                 CountProducts[c]++;
                 priceToPay += Prices[c];
-                if (IsProductDiscounted(c)
-                    && IsProductAmountEnoughToGetDiscount(c))
+                if (IsProductDiscounted(skus)
+                    && IsProductAmountEnoughToGetDiscount(skus))
                 {
                     priceToPay -= DiscountedProducts[c].Discount;
                 }
             }
-
             return priceToPay;
         }
         public static int Checkout(string skus)
