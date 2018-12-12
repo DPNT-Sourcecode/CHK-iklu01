@@ -43,20 +43,19 @@ namespace BeFaster.App.Solutions.CHK
             return CountProducts[skus] == DiscountedProducts[skus].ProductQuantity;
         }
 
+        public static int PriceToPay { get; set; }
+
         public static int GetProduct(string skus)
         {
-            var priceToPay = 0;
-            if (skus == "AxA")
+            CountProducts[skus]++;
+            PriceToPay += Prices[skus];
+            if (IsProductDiscounted(skus)
+                && IsProductAmountEnoughToGetDiscount(skus))
             {
-                CountProducts[skus]++;
-                priceToPay += Prices[skus];
-                if (IsProductDiscounted(skus)
-                    && IsProductAmountEnoughToGetDiscount(skus))
-                {
-                    priceToPay -= DiscountedProducts[skus].Discount;
-                }
+                PriceToPay -= DiscountedProducts[skus].Discount;
             }
-            return priceToPay;
+
+            return PriceToPay;
         }
         public static int Checkout(string skus)
         {
