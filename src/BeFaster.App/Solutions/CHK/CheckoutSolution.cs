@@ -58,11 +58,11 @@ namespace BeFaster.App.Solutions.CHK
         }
         public static int Checkout(string skus)
         {
-            if (!Regex.IsMatch(skus, @"^[a-zA-Z]+$"))
+            if (!Regex.IsMatch(skus, @"^[A-Z]+$"))
             {
                 return -1;
             }
-            return GetProduct(skus.ToUpper());
+            return GetProduct(skus.ToUpperInvariant());
         }
     }
 }
