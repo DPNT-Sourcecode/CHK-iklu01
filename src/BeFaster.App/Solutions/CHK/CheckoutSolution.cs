@@ -46,7 +46,7 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetProduct(string skus)
         {
             var priceToPay = 0;
-            if (skus == "ABCD")
+            if (skus == "AxA")
             {
                 CountProducts[skus]++;
                 priceToPay += Prices[skus];
