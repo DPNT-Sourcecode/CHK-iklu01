@@ -44,32 +44,36 @@ namespace BeFaster.App.Solutions.CHK
             return CountProducts[skus] == DiscountedProducts[skus].ProductQuantity;
         }
 
-        public static int GetProduct(char skus)
+        public static int GetProduct(string skus)
         {
             var priceToPay = 0;
-            CountProducts[skus]++;
-            priceToPay += Prices[skus];
-            if (IsProductDiscounted(skus)
-                && IsProductAmountEnoughToGetDiscount(skus))
+            var arr = skus.ToCharArray(0, skus.Length);
+            foreach (var c in arr)
             {
-                priceToPay -= DiscountedProducts[skus].Discount;
+                CountProducts[c]++;
+                priceToPay += Prices[c];
+                if (IsProductDiscounted(c)
+                    && IsProductAmountEnoughToGetDiscount(c))
+                {
+                    priceToPay -= DiscountedProducts[c].Discount;
+                }
             }
 
             return priceToPay;
         }
         public static int Checkout(string skus)
         {
+            if (string.IsNullOrEmpty(skus))
+            {
+                return 0;
+            }
+
             if (!Regex.IsMatch(skus, @"^[A-Z]+$"))
             {
                 return -1;
             }
-            char[] arr = skus.ToCharArray();
-            foreach (char ch in arr)
-            {
-                return GetProduct(ch);
-            }
 
-            return -999;
+            return GetProduct(skus);
         }
     }
 }
