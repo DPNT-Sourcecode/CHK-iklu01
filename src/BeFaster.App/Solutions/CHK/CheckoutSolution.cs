@@ -17,13 +17,13 @@ namespace BeFaster.App.Solutions.CHK
                 }
             };
 
-        public static Dictionary<char, int> CountProducts => new Dictionary<char, int>
-        {
-            {'A', 0 },
-            {'B', 0 },
-            {'C', 0 },
-            {'D', 0 }
-        };
+        //public static Dictionary<char, int> CountProducts => new Dictionary<char, int>
+        //{
+        //    {'A', 0 },
+        //    {'B', 0 },
+        //    {'C', 0 },
+        //    {'D', 0 }
+        //};
 
         public static Dictionary<char, int> Prices => new Dictionary<char, int>
         {
@@ -38,13 +38,20 @@ namespace BeFaster.App.Solutions.CHK
             return DiscountedProducts.ContainsKey(skus);
         }
 
-        public static bool IsProductAmountEnoughToGetDiscount(char skus)
-        {
-            return CountProducts[skus] == DiscountedProducts[skus].ProductQuantity;
-        }
+        //public static bool IsProductAmountEnoughToGetDiscount(char skus)
+        //{
+        //    return CountProducts[skus] == DiscountedProducts[skus].ProductQuantity;
+        //}
 
         public static int GetProduct(string skus)
         {
+            var CountProducts = new Dictionary<char, int>
+            {
+                {'A', 0 },
+                {'B', 0 },
+                {'C', 0 },
+                {'D', 0 }
+            };
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, skus.Length);
             foreach (var c in arr)
