@@ -40,8 +40,10 @@ namespace BeFaster.App.Solutions.CHK
                 {'D', 0 },
                 {'E', 0 }
             };
+
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, skus.Length);
+
             foreach (var c in arr)
             {
                 countProducts[c]++;
@@ -53,7 +55,8 @@ namespace BeFaster.App.Solutions.CHK
                     {
                         priceToPay -= DiscountedProducts[c].Discount;
                     }
-                    else if (countProducts[c] >= 5)
+
+                    if (countProducts[c] >= 5)
                     {
                         DiscountedProducts[c].ProductQuantity = 5;
                         DiscountedProducts[c].Discount = 50;
