@@ -47,18 +47,13 @@ namespace BeFaster.App.Solutions.CHK
                 countProducts[c]++;
                 priceToPay += Prices[c];
 
-
-                if (DiscountedProducts.ContainsKey(c) && countProducts[c] % DiscountedProducts[c].ProductQuantity == 0)
+                if (countProducts[c] == 'A'
+                    || countProducts[c] == 'B'
+                    || countProducts[c] == 'E'
+                    && DiscountedProducts.ContainsKey(c)
+                    && countProducts[c] % DiscountedProducts[c].ProductQuantity == 0)
                 {
-                    if (countProducts['A'] < 5)
-                    {
-                        priceToPay -= DiscountedProducts[c].Discount;
-                    }
-                    else if (countProducts['A'] >= 5)
-                    {
-                        DiscountedProducts[c].Discount = 50;
-                        priceToPay -= DiscountedProducts[c].Discount;
-                    }
+                    priceToPay -= DiscountedProducts[c].Discount;
                 }
 
                 //DiscountedProducts[c].Discount = 50;
