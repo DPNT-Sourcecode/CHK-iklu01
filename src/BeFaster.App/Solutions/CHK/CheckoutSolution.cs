@@ -5,21 +5,21 @@ namespace BeFaster.App.Solutions.CHK
 {
     public static class CheckoutSolution
     {
-        public static Dictionary<char, DiscountedProduct> DiscountedProducts => new Dictionary<char, DiscountedProduct>
-        {
-            {
-                'A', new DiscountedProduct
-                    {ProductQuantity = 3, Discount = 20}
-            },
-            {
-                'B', new DiscountedProduct
-                    {ProductQuantity = 2, Discount = 15}
-            },
-            {
-                'E', new DiscountedProduct
-                    {ProductQuantity = 2, Discount = 30}
-            }
-        };
+        //public static Dictionary<char, DiscountedProduct> DiscountedProducts => new Dictionary<char, DiscountedProduct>
+        //{
+        //    {
+        //        'A', new DiscountedProduct
+        //            {ProductQuantity = 3, Discount = 20}
+        //    },
+        //    {
+        //        'B', new DiscountedProduct
+        //            {ProductQuantity = 2, Discount = 15}
+        //    },
+        //    {
+        //        'E', new DiscountedProduct
+        //            {ProductQuantity = 2, Discount = 30}
+        //    }
+        //};
 
         public static Dictionary<char, int> Prices => new Dictionary<char, int>
         {
@@ -42,20 +42,29 @@ namespace BeFaster.App.Solutions.CHK
             };
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, skus.Length);
+            var discountedProducts = new Dictionary<char, DiscountedProduct>{};
             foreach (var c in arr)
             {
                 countProducts[c]++;
                 priceToPay += Prices[c];
 
-                if (DiscountedProducts.ContainsKey(c))
+                if (discountedProducts.ContainsKey(c))
                 {
-                    if (countProducts[c] < 5 && countProducts[c] % DiscountedProducts[c].ProductQuantity == 0)
+                    discountedProducts = new Dictionary<char, DiscountedProduct>
                     {
-                        priceToPay -= DiscountedProducts[c].Discount;
+                        {
+                            'A', new DiscountedProduct
+                                {ProductQuantity = 3, Discount = 20}
+                        }
+                    };
+
+                    if (countProducts[c] < 5 && countProducts[c] % discountedProducts[c].ProductQuantity == 0)
+                    {
+                        priceToPay -= discountedProducts[c].Discount;
                     }
                     else if (countProducts[c] >= 5)
                     {
-                        new Dictionary<char, DiscountedProduct>
+                        var dictionary = new Dictionary<char, DiscountedProduct>
                         {
                             {
                                 'A', new DiscountedProduct
@@ -63,9 +72,9 @@ namespace BeFaster.App.Solutions.CHK
                             }
                         };
 
-                        if (countProducts[c] % DiscountedProducts[c].ProductQuantity == 0)
+                        if (countProducts[c] % dictionary[c].ProductQuantity == 0)
                         {
-                            priceToPay -= DiscountedProducts[c].Discount;
+                            priceToPay -= dictionary[c].Discount;
                         }
                     }
                 }
