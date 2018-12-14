@@ -55,7 +55,6 @@ namespace BeFaster.App.Solutions.CHK
                     }
                     else if (countProducts[c] >= 5)
                     {
-                        DiscountedProducts[c].ProductQuantity = countProducts[c];
                         DiscountedProducts[c].Discount = 50;
 
                         if (countProducts[c] % DiscountedProducts[c].ProductQuantity == 0)
