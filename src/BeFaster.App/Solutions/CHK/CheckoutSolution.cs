@@ -27,7 +27,7 @@ namespace BeFaster.App.Solutions.CHK
             {'B', 30 },
             {'C', 20 },
             {'D', 15 },
-            {'E', 40 },
+            {'E', 40 }
         };
 
         public static int GetProduct(string skus)
@@ -52,7 +52,7 @@ namespace BeFaster.App.Solutions.CHK
                     priceToPay -= DiscountedProducts[c].Discount;
                 }
 
-                if (DiscountedProducts.ContainsKey('E') && countProducts[c] % DiscountedProducts[c].ProductQuantity == 0)
+                if (DiscountedProducts.ContainsKey('E') && countProducts['E'] % DiscountedProducts['E'].ProductQuantity == 0)
                 {
                     priceToPay -= DiscountedProducts[c].Discount;
                 }
