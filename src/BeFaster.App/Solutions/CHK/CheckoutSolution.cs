@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
@@ -49,7 +48,7 @@ namespace BeFaster.App.Solutions.CHK
             {
                 {
                     'A', new DiscountedProduct
-                        {ProductQuantity = 3, Discount = 20}
+                        {ProductQuantity = 5, Discount = 50}
                 },
                 {
                     'B', new DiscountedProduct
@@ -61,58 +60,18 @@ namespace BeFaster.App.Solutions.CHK
                 }
             };
 
-            var countA = skus.Count(x => x == 'A');
-            var countB = skus.Count(x => x == 'B');
-            var countE = skus.Count(x => x == 'E');
-
             foreach (var c in arr)
             {
                 countProducts[c]++;
                 priceToPay += Prices[c];
 
-                if (countA < 5)
+                if (discountedProducts.ContainsKey(c))
                 {
-                    if (discountedProducts.ContainsKey(c))
+                    if (countProducts[c] % discountedProducts[c].ProductQuantity == 0)
                     {
-                        if (countProducts[c] % discountedProducts[c].ProductQuantity == 0)
-                        {
-                            priceToPay -= discountedProducts[c].Discount;
-                        }
+                        priceToPay -= discountedProducts[c].Discount;
                     }
                 }
-
-                if (countA >= 5)
-                {
-                    if (countProducts[c] >= 5)
-                    {
-                        discountedProducts[c].ProductQuantity = 5;
-                        discountedProducts[c].Discount = 50;
-
-                        if (countProducts[c] % discountedProducts[c].ProductQuantity == 0)
-                        {
-                            priceToPay -= discountedProducts[c].Discount;
-                        }
-                    }
-                }
-
-                //if (discountedProducts.ContainsKey(c))
-                //{
-                //    if (countProducts[c] % discountedProducts[c].ProductQuantity == 0)
-                //    {
-                //        priceToPay -= discountedProducts[c].Discount;
-                //    }
-
-                //    if (countProducts[c] >= 5)
-                //    {
-                //        discountedProducts[c].ProductQuantity = 5;
-                //        discountedProducts[c].Discount = 50;
-
-                //        if (countProducts[c] % discountedProducts[c].ProductQuantity == 0)
-                //        {
-                //            priceToPay -= discountedProducts[c].Discount;
-                //        }
-                //    }
-                //}
             }
 
             return priceToPay;
