@@ -79,7 +79,7 @@ namespace BeFaster.App.Solutions.CHK
                         || countProducts[c] % 5 == 0
                         && countProducts[c] % discountedProducts[c].ProductQuantity == 1)
                     {
-                        priceToPay -= 50;
+                        priceToPay -= 30;
                     }
 
                     //if (countProducts[c] == 5 && countProducts[c] % discountedProducts[c].ProductQuantity == 2)
