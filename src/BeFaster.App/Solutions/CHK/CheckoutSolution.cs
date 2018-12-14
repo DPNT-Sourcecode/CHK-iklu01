@@ -67,8 +67,7 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (discountedProducts.ContainsKey(c))
                 {
-                    if (countProducts[c] % discountedProducts[c].ProductQuantity == 5
-                        || countProducts[c] % discountedProducts[c].ProductQuantity == 0)
+                    if (countProducts[c] % discountedProducts[c].ProductQuantity == countProducts[c])
                     {
                         priceToPay -= discountedProducts[c].Discount;
                     }
