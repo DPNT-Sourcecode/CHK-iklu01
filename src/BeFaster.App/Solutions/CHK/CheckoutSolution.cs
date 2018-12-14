@@ -48,7 +48,7 @@ namespace BeFaster.App.Solutions.CHK
             {
                 {
                     'A', new DiscountedProduct
-                        {ProductQuantity = 5, Discount = 50}
+                        {ProductQuantity = 3, Discount = 20}
                 },
                 {
                     'B', new DiscountedProduct
