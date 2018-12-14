@@ -55,10 +55,11 @@ namespace BeFaster.App.Solutions.CHK
                     }
                     else if (countProducts[c] >= 5)
                     {
+                        DiscountedProducts[c].Discount = 50;
+
                         if (countProducts[c] % DiscountedProducts[c].ProductQuantity == 0)
                         {
                             priceToPay += Prices[c];
-                            DiscountedProducts[c].Discount = 50;
                             priceToPay -= DiscountedProducts[c].Discount;
                         }
                     }
