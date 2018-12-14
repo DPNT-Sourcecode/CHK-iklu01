@@ -14,6 +14,10 @@ namespace BeFaster.App.Solutions.CHK
             {
                 'B', new DiscountedProduct
                     {ProductQuantity = 2, Discount = 15}
+            },
+            {
+                'E', new DiscountedProduct
+                    {ProductQuantity = 2, Discount = 30}
             }
         };
 
@@ -22,7 +26,8 @@ namespace BeFaster.App.Solutions.CHK
             {'A', 50 },
             {'B', 30 },
             {'C', 20 },
-            {'D', 15 }
+            {'D', 15 },
+            {'E', 40 },
         };
 
         public static int GetProduct(string skus)
@@ -32,7 +37,8 @@ namespace BeFaster.App.Solutions.CHK
                 {'A', 0 },
                 {'B', 0 },
                 {'C', 0 },
-                {'D', 0 }
+                {'D', 0 },
+                {'E', 0 }
             };
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, skus.Length);
@@ -42,6 +48,11 @@ namespace BeFaster.App.Solutions.CHK
                 priceToPay += Prices[c];
 
                 if (DiscountedProducts.ContainsKey(c) && countProducts[c] % DiscountedProducts[c].ProductQuantity == 0)
+                {
+                    priceToPay -= DiscountedProducts[c].Discount;
+                }
+
+                if (DiscountedProducts.ContainsKey('E') && countProducts[c] % DiscountedProducts[c].ProductQuantity == 0)
                 {
                     priceToPay -= DiscountedProducts[c].Discount;
                 }
