@@ -44,6 +44,16 @@ namespace BeFaster.App.Solutions.CHK
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, skus.Length);
 
+            foreach (KeyValuePair<char, int> pair in counts)
+            {
+                priceToPay += Prices.Count;
+
+                if (pair.Key == 'A' && pair.Value == 3)
+                {
+                    priceToPay -= 20;
+                }
+            }
+
             //var discountedProducts = new Dictionary<char, DiscountedProduct>
             //{
             //    {
@@ -60,15 +70,15 @@ namespace BeFaster.App.Solutions.CHK
             //    }
             //};
 
-            foreach (var c in arr)
-            {
-                counts[c]++;
-                priceToPay += Prices[c];
+            //foreach (var c in arr)
+            //{
+            //    counts[c]++;
+            //    priceToPay += Prices[c];
 
-                if (counts.ContainsKey('A') && counts[c] == 3)
-                {
-                    priceToPay -= 20;
-                }
+            //    if (counts.ContainsKey('A') && counts[c] == 3)
+            //    {
+            //        priceToPay -= 20;
+            //    }
 
                 //if (discountedProducts.ContainsKey(c))
                 //{
@@ -87,7 +97,7 @@ namespace BeFaster.App.Solutions.CHK
                 //        priceToPay -= discountedProducts[c].Discount;
                 //    }
                 //}
-            }
+            //}
 
             return priceToPay;
         }
