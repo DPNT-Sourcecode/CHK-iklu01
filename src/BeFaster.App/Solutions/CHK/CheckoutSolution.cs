@@ -77,7 +77,8 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (counts[c] > 4 
                         && countProducts[c] % 5 == 0
-                        || counts[c] == 9 
+                        || counts[c] == 9
+                        && countProducts[c] % 5 == 4
                         || counts[c] > 8 
                         && countProducts[c] % 5 == 0)
                     {
