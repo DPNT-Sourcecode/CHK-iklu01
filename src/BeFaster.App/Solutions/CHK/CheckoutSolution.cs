@@ -44,11 +44,6 @@ namespace BeFaster.App.Solutions.CHK
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, skus.Length);
 
-            if (counts.ContainsKey('A') && counts.ContainsValue(3))
-            {
-                priceToPay -= 20;
-            }
-
             //var discountedProducts = new Dictionary<char, DiscountedProduct>
             //{
             //    {
