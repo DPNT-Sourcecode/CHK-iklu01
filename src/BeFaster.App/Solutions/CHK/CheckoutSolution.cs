@@ -112,11 +112,6 @@ namespace BeFaster.App.Solutions.CHK
                     {
                         priceToPay -= 70;
                     }
-
-
-                    {
-                        priceToPay -= discountedProducts[c].Discount;
-                    }
                 }
             }
 
