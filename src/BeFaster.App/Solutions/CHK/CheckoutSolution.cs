@@ -53,26 +53,47 @@ namespace BeFaster.App.Solutions.CHK
                 {'E', 0 }
             };
 
-            //foreach (var count in counts)
-            //{
-            //    countProducts[count.Key]++;
-            //    priceToPay += Prices[count.Key];
+            foreach (var c in arr)
+            {
+                countProducts[c]++;
+                priceToPay += Prices[c];
+            }
 
-            //    if (count.Key == 'A')
-            //    {
-            //        if (count.Value % 3 == 0)
-            //        {
-            //            priceToPay -= 20;
-            //        }
+            foreach (var count in counts)
+            {
+                if (count.Key == 'A')
+                {
+                    if (count.Value % 3 == 0
+                        || count.Value % 3 == 1)
+                    {
+                        priceToPay -= 20;
+                    }
 
-            //        if (count.Value % 5 == 0)
-            //        {
-            //            priceToPay -= 50;
-            //        }
-            //    }
-            //}
+                    if (count.Value % 5 == 0
+                        || count.Value % 5 == 1)
+                    {
+                        priceToPay -= 50;
+                    }
+                }
 
-            return priceToPay;
+                if (count.Key == 'B')
+                {
+                    if (count.Value % 2 == 0)
+                    {
+                        priceToPay -= 15;
+                    }
+                }
+
+                if (count.Key == 'E')
+                {
+                    if (count.Value % 2 == 0)
+                    {
+                        priceToPay -= 30;
+                    }
+                }
+            }
+
+            //return priceToPay;
 
             //foreach (var c in arr)
             //{
@@ -81,76 +102,71 @@ namespace BeFaster.App.Solutions.CHK
 
 
 
-            //if (countProducts[c] % 3 == 0)
-            //{
-            //    priceToPay -= 20;
-            //}
+            //    if (countProducts[c] % 3 == 0)
+            //    {
+            //        priceToPay -= 20;
+            //    }
 
-            //if (counts.TryGetValue('A', out var found) && found % 3 == 0)
-            //{
-            //    priceToPay -= 20;
-            //}
-
-            //if (countProducts[c] % 5 == 0)
-            //{
-            //    priceToPay -= 50;
-            //}
-
-            //if (discountedProducts.ContainsKey(c))
-            //{
-            //    if (counts[c] > 4
-            //        && countProducts[c] % 5 == 0
-            //        || counts[c] > 8
-            //        && countProducts[c] % 5 == 0
-            //        || counts[c] > 8
-            //        && countProducts[c] % 5 == 1)
+            //    if (countProducts[c] % 5 == 0)
             //    {
             //        priceToPay -= 50;
             //    }
 
-            //    if (counts[c] <= 4
-            //        && countProducts[c] % 3 == 0
-            //        || counts[c] == 8
-            //        && countProducts[c] % 8 == 0)
+            //    if (discountedProducts.ContainsKey(c))
             //    {
-            //        priceToPay -= discountedProducts[c].Discount;
-            //    }
+            //        if (counts[c] > 4
+            //            && countProducts[c] % 5 == 0
+            //            || counts[c] > 8
+            //            && countProducts[c] % 5 == 0
+            //            || counts[c] > 8
+            //            && countProducts[c] % 5 == 1)
+            //        {
+            //            priceToPay -= 50;
+            //        }
 
-            //    if (counts[c] >= 5 && counts[c] <= 7
-            //        && countProducts[c] % 5 == 0
+            //        if (counts[c] <= 4
+            //            && countProducts[c] % 3 == 0
+            //            || counts[c] == 8
+            //            && countProducts[c] % 8 == 0)
+            //        {
+            //            priceToPay -= discountedProducts[c].Discount;
+            //        }
+
+            //        if (counts[c] >= 5 && counts[c] <= 7
+            //            && countProducts[c] % 5 == 0
+            //            )
+            //        {
+            //            priceToPay -= 50;
+            //        }
+
+            //        if (counts[c] <= 4
+            //            && countProducts[c] % 3 == 0
+            //            )
+            //        {
+            //            priceToPay -= discountedProducts[c].Discount;
+            //        }
+
+            //        if (counts[c] >= 8 && counts[c] < 10
+            //            && countProducts[c] % 5 == 0
+            //            || counts[c] >= 8 && counts[c] < 10
+            //            && countProducts[c] % 3 == 0
             //        )
-            //    {
-            //        priceToPay -= 50;
-            //    }
+            //        {
+            //            priceToPay -= 70;
+            //        }
 
-            //    if (counts[c] <= 4
-            //        && countProducts[c] % 3 == 0
+            //        if (counts[c] >= 8 && counts[c] <= 10
+            //            && countProducts[c] % 5 == 0
+            //            || counts[c] >= 8 && counts[c] <= 10
+            //            && countProducts[c] % 3 == 0
             //        )
-            //    {
-            //        priceToPay -= discountedProducts[c].Discount;
-            //    }
-
-            //    if (counts[c] >= 8 && counts[c] < 10
-            //        && countProducts[c] % 5 == 0
-            //        || counts[c] >= 8 && counts[c] < 10
-            //        && countProducts[c] % 3 == 0
-            //    )
-            //    {
-            //        priceToPay -= 70;
-            //    }
-
-            //    if (counts[c] >= 8 && counts[c] <= 10
-            //        && countProducts[c] % 5 == 0
-            //        || counts[c] >= 8 && counts[c] <= 10
-            //        && countProducts[c] % 3 == 0
-            //    )
-            //    {
-            //        priceToPay -= 70;
+            //        {
+            //            priceToPay -= 70;
+            //        }
             //    }
             //}
-            //}
 
-            //return priceToPay;
+            return priceToPay;
         }
 
         public static int Checkout(string skus)
@@ -169,4 +185,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
