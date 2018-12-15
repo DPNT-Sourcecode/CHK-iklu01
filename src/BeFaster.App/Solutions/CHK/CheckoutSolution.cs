@@ -42,7 +42,7 @@ namespace BeFaster.App.Solutions.CHK
 
             var counts = skus.CountProducts();
             var priceToPay = 0;
-            //var arr = skus.ToCharArray(0, skus.Length);
+            var arr = skus.ToCharArray(0, skus.Length);
 
             if (counts.ContainsKey('A') && counts.ContainsValue(3))
             {
@@ -65,29 +65,34 @@ namespace BeFaster.App.Solutions.CHK
             //    }
             //};
 
-            //foreach (var c in arr)
-            //{
-            //    countProducts[c]++;
-            //    priceToPay += Prices[c];
+            foreach (var c in arr)
+            {
+                counts[c]++;
+                priceToPay += Prices[c];
 
-            //    if (discountedProducts.ContainsKey(c))
-            //    {
-            //        if (countProducts[c] > 3 && countProducts[c] % 5 == 0)
-            //        {
-            //            priceToPay -= 50;
-            //        }
+                if (counts.ContainsKey('A') && counts.ContainsValue(3))
+                {
+                    priceToPay -= 20;
+                }
 
-            //        if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
-            //        {
-            //            priceToPay -= 50;
-            //        }
+                //if (discountedProducts.ContainsKey(c))
+                //{
+                //    if (countProducts[c] > 3 && countProducts[c] % 5 == 0)
+                //    {
+                //        priceToPay -= 50;
+                //    }
 
-            //        if (countProducts[c] % 3 == 0)
-            //        {
-            //            priceToPay -= discountedProducts[c].Discount;
-            //        }
-            //    }
-            //}
+                //    if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
+                //    {
+                //        priceToPay -= 50;
+                //    }
+
+                //    if (countProducts[c] % 3 == 0)
+                //    {
+                //        priceToPay -= discountedProducts[c].Discount;
+                //    }
+                //}
+            }
 
             return priceToPay;
         }
