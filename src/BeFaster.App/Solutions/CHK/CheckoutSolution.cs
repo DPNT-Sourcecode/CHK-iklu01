@@ -85,7 +85,7 @@ namespace BeFaster.App.Solutions.CHK
 
                     if (counts[c] <= 4 
                         && countProducts[c] % 3 == 0
-                        || counts[c] >= 8 
+                        || counts[c] == 8 
                         && countProducts[c] % 8 == 0)
                     {
                         priceToPay -= discountedProducts[c].Discount;
