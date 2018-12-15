@@ -67,6 +67,11 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (discountedProducts.ContainsKey(c))
                 {
+                    if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
+                    {
+                        priceToPay -= 50;
+                    }
+
                     if (countProducts[c] % 3 == 0)
                     {
                         priceToPay -= discountedProducts[c].Discount;
@@ -75,11 +80,6 @@ namespace BeFaster.App.Solutions.CHK
                     //if (countProducts[c] % 8 == 0)
                     //{
                     //    priceToPay -= 70;
-                    //}
-
-                    //if (countProducts[c] % 5 == 0 && countProducts[c] % 3 != 0)
-                    //{
-                    //    priceToPay -= 30;
                     //}
                 }
             }
