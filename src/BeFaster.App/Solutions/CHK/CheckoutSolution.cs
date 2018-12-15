@@ -31,84 +31,59 @@ namespace BeFaster.App.Solutions.CHK
             {'E', 40 }
         };
 
-        public static Dictionary<char, int> CountProducts(this string skus)
-        {
-            return skus.GroupBy(c => c)
-                .OrderBy(c => c.Key)
-                .ToDictionary(group => group.Key, group => group.Count());
-        }
         public static int GetProduct(string skus)
         {
-
-            var counts = skus.CountProducts();
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, skus.Length);
 
-            foreach (KeyValuePair<char, int> pair in counts)
+            var discountedProducts = new Dictionary<char, DiscountedProduct>
             {
-                counts[pair.Key]++;
-                priceToPay += Prices[pair.Key];
-
-                if (pair.Key == 'A' && pair.Value == 3)
                 {
-                    priceToPay -= 20;
+                    'A', new DiscountedProduct
+                        {ProductQuantity = 3, Discount = 20}
+                },
+                {
+                    'B', new DiscountedProduct
+                        {ProductQuantity = 2, Discount = 15}
+                },
+                {
+                    'E', new DiscountedProduct
+                        {ProductQuantity = 2, Discount = 30}
                 }
+            };
 
-                if (pair.Key == 'A' && pair.Value == 5)
-                {
-                    priceToPay -= 50;
-                }
+            var countProducts = new Dictionary<char, int>
+            {
+                {'A', 0 },
+                {'B', 0 },
+                {'C', 0 },
+                {'D', 0 },
+                {'E', 0 }
+            };
 
-                if (pair.Key == 'A' && pair.Value == 8)
+            foreach (var c in arr)
+            {
+                countProducts[c]++;
+                priceToPay += Prices[c];
+
+                if (discountedProducts.ContainsKey(c))
                 {
-                    priceToPay -= 70;
+                    if (countProducts[c] > 3 && countProducts[c] % 5 == 0)
+                    {
+                        priceToPay -= 50;
+                    }
+
+                    if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
+                    {
+                        priceToPay -= 50;
+                    }
+
+                    if (countProducts[c] % 3 == 0)
+                    {
+                        priceToPay -= discountedProducts[c].Discount;
+                    }
                 }
             }
-
-            //var discountedProducts = new Dictionary<char, DiscountedProduct>
-            //{
-            //    {
-            //        'A', new DiscountedProduct
-            //            {ProductQuantity = 3, Discount = 20}
-            //    },
-            //    {
-            //        'B', new DiscountedProduct
-            //            {ProductQuantity = 2, Discount = 15}
-            //    },
-            //    {
-            //        'E', new DiscountedProduct
-            //            {ProductQuantity = 2, Discount = 30}
-            //    }
-            //};
-
-            //foreach (char c in arr)
-            //{
-            //    counts[c]++;
-            //    priceToPay += Prices[c];
-
-            //    if (counts.ContainsKey('A') && counts[c] == 3)
-            //    {
-            //        priceToPay -= 20;
-            //    }
-
-            //    if (discountedProducts.ContainsKey(c))
-            //    {
-            //        if (countProducts[c] > 3 && countProducts[c] % 5 == 0)
-            //        {
-            //            priceToPay -= 50;
-            //        }
-
-            //        if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
-            //        {
-            //            priceToPay -= 50;
-            //        }
-
-            //        if (countProducts[c] % 3 == 0)
-            //        {
-            //            priceToPay -= discountedProducts[c].Discount;
-            //        }
-            //    }
-            //}
 
             return priceToPay;
         }
