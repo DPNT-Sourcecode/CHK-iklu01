@@ -70,7 +70,7 @@ namespace BeFaster.App.Solutions.CHK
                 counts[c]++;
                 priceToPay += Prices[c];
 
-                if (counts.ContainsKey('A') & counts[c] == 3)
+                if (counts.ContainsKey('A') && counts[c] == 3)
                 {
                     priceToPay -= 20;
                 }
