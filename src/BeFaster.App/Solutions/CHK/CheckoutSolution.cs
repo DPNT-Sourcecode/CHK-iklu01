@@ -35,7 +35,6 @@ namespace BeFaster.App.Solutions.CHK
         public static Dictionary<char, int> CountProducts(this string skus)
         {
             return skus.GroupBy(c => c)
-                .OrderBy(c => c.Key)
                 .ToDictionary(group => group.Key, group => group.Count());
         }
 
