@@ -30,9 +30,16 @@ namespace BeFaster.App.Solutions.CHK
             {'D', 15 },
             {'E', 40 }
         };
+        public static Dictionary<char, int> CountProducts(this string skus)
+        {
+            return skus.GroupBy(c => c)
+                .OrderBy(c => c.Key)
+                .ToDictionary(group => group.Key, group => group.Count());
+        }
 
         public static int GetProduct(string skus)
         {
+            var counts = skus.CountProducts();
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, skus.Length);
 
@@ -68,17 +75,12 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (discountedProducts.ContainsKey(c))
                 {
-                    if (countProducts[c] > 3 && countProducts[c] % 5 == 0)
+                    if (counts[c] > 3 && countProducts[c] % 5 == 0)
                     {
                         priceToPay -= 50;
                     }
 
-                    if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
-                    {
-                        priceToPay -= 50;
-                    }
-
-                    if (countProducts[c] % 3 == 0)
+                    if (counts[c] <= 3 && countProducts[c] % 3 == 0)
                     {
                         priceToPay -= discountedProducts[c].Discount;
                     }
