@@ -52,6 +52,16 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     priceToPay -= 20;
                 }
+
+                if (pair.Key == 'A' && pair.Value == 5)
+                {
+                    priceToPay -= 50;
+                }
+
+                if (pair.Key == 'A' && pair.Value == 8)
+                {
+                    priceToPay -= 70;
+                }
             }
 
             //var discountedProducts = new Dictionary<char, DiscountedProduct>
