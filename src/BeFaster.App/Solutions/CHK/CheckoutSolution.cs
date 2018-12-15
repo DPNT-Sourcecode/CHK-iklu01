@@ -91,7 +91,7 @@ namespace BeFaster.App.Solutions.CHK
                     //    priceToPay -= discountedProducts[c].Discount;
                     //}
 
-                    if (counts[c] <= 7
+                    if (counts[c] >= 5 && counts[c] <= 7
                         && countProducts[c] % 5 == 0
                         )
                     {
@@ -105,7 +105,7 @@ namespace BeFaster.App.Solutions.CHK
                         priceToPay -= discountedProducts[c].Discount;
                     }
 
-                    if (counts[c] <= 10
+                    if (counts[c] >= 8 && counts[c] <= 10
                         && countProducts[c] % 5 == 0
                         && countProducts[c] % 3 == 0
                     )
