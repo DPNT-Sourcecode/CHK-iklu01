@@ -53,24 +53,24 @@ namespace BeFaster.App.Solutions.CHK
                 {'E', 0 }
             };
 
-            foreach (var count in counts)
-            {
-                countProducts[count.Key]++;
-                priceToPay += Prices[count.Key];
+            //foreach (var count in counts)
+            //{
+            //    countProducts[count.Key]++;
+            //    priceToPay += Prices[count.Key];
 
-                if (count.Key == 'A')
-                {
-                    if (count.Value % 3 == 0)
-                    {
-                        priceToPay -= 20;
-                    }
+            //    if (count.Key == 'A')
+            //    {
+            //        if (count.Value % 3 == 0)
+            //        {
+            //            priceToPay -= 20;
+            //        }
 
-                    if (count.Value % 5 == 0)
-                    {
-                        priceToPay -= 50;
-                    }
-                }
-            }
+            //        if (count.Value % 5 == 0)
+            //        {
+            //            priceToPay -= 50;
+            //        }
+            //    }
+            //}
 
             return priceToPay;
 
@@ -169,3 +169,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
