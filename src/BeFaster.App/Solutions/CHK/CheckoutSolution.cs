@@ -42,35 +42,29 @@ namespace BeFaster.App.Solutions.CHK
         {
             var counts = skus.CountProducts();
             var priceToPay = 0;
-            var arr = skus.ToCharArray(0, counts.Keys.Count);
+            //var arr = skus.ToCharArray(0, counts.Keys.Count);
+
+            var countProducts = new Dictionary<char, int>
+            {
+                {'A', 0 },
+                {'B', 0 },
+                {'C', 0 },
+                {'D', 0 },
+                {'E', 0 }
+            };
 
             foreach (var c in counts)
             {
-                counts[c.Key]++;
+                countProducts[c.Key]++;
                 priceToPay += Prices[c.Key];
 
-                if (counts.TryGetValue('A', out var found) && found == 3)
+                if (countProducts.TryGetValue('A', out var found) && found % 3 == 0)
                 {
                     priceToPay -= 20;
                 }
             }
 
 
-            var discountedProducts = new Dictionary<char, DiscountedProduct>
-            {
-                {
-                    'A', new DiscountedProduct
-                        {ProductQuantity = 3, Discount = 20}
-                },
-                {
-                    'B', new DiscountedProduct
-                        {ProductQuantity = 2, Discount = 15}
-                },
-                {
-                    'E', new DiscountedProduct
-                        {ProductQuantity = 2, Discount = 30}
-                }
-            };
 
             //var countProducts = new Dictionary<char, int>
             //{
@@ -81,8 +75,8 @@ namespace BeFaster.App.Solutions.CHK
             //    {'E', 0 }
             //};
 
-            foreach (var c in arr)
-            {
+            //foreach (var c in arr)
+            //{
                 //countProducts[c]++;
                 //priceToPay += Prices[c];
 
@@ -153,7 +147,7 @@ namespace BeFaster.App.Solutions.CHK
                 //    priceToPay -= 70;
                 //}
                 //}
-            }
+            //}
 
             return priceToPay;
         }
