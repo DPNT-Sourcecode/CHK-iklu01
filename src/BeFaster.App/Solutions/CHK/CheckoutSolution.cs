@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
@@ -30,64 +31,63 @@ namespace BeFaster.App.Solutions.CHK
             {'E', 40 }
         };
 
+        public static Dictionary<char, int> CountProducts(this string skus)
+        {
+            return skus.GroupBy(c => c)
+                .OrderBy(c => c.Key)
+                .ToDictionary(group => group.Key, group => group.Count());
+        }
         public static int GetProduct(string skus)
         {
+
+            var counts = skus.CountProducts();
             var priceToPay = 0;
-            var arr = skus.ToCharArray(0, skus.Length);
+            //var arr = skus.ToCharArray(0, skus.Length);
 
-            var countProducts = new Dictionary<char, int>
+            if (counts.ContainsKey('A') && counts.ContainsValue(3))
             {
-                {'A', 0 },
-                {'B', 0 },
-                {'C', 0 },
-                {'D', 0 },
-                {'E', 0 }
-            };
-
-            var discountedProducts = new Dictionary<char, DiscountedProduct>
-            {
-                {
-                    'A', new DiscountedProduct
-                        {ProductQuantity = 3, Discount = 20}
-                },
-                {
-                    'B', new DiscountedProduct
-                        {ProductQuantity = 2, Discount = 15}
-                },
-                {
-                    'E', new DiscountedProduct
-                        {ProductQuantity = 2, Discount = 30}
-                }
-            };
-
-            foreach (var c in arr)
-            {
-                countProducts[c]++;
-                priceToPay += Prices[c];
-
-                if (discountedProducts.ContainsKey(c))
-                {
-                    if (countProducts[c] > 3 && countProducts[c] % 5 == 0)
-                    {
-                        priceToPay -= 50;
-                    }
-
-                    if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
-                    {
-                        priceToPay -= 50;
-                    }
-
-                    if (countProducts[c] % 3 == 0)
-                    {
-                        priceToPay -= discountedProducts[c].Discount;
-                    }
-
-                    //if (countProducts[c] % 8 == 0)
-                    //{
-                    //    priceToPay -= 70;
-                    //}
-                }
+                priceToPay -= 20;
             }
+
+            //var discountedProducts = new Dictionary<char, DiscountedProduct>
+            //{
+            //    {
+            //        'A', new DiscountedProduct
+            //            {ProductQuantity = 3, Discount = 20}
+            //    },
+            //    {
+            //        'B', new DiscountedProduct
+            //            {ProductQuantity = 2, Discount = 15}
+            //    },
+            //    {
+            //        'E', new DiscountedProduct
+            //            {ProductQuantity = 2, Discount = 30}
+            //    }
+            //};
+
+            //foreach (var c in arr)
+            //{
+            //    countProducts[c]++;
+            //    priceToPay += Prices[c];
+
+            //    if (discountedProducts.ContainsKey(c))
+            //    {
+            //        if (countProducts[c] > 3 && countProducts[c] % 5 == 0)
+            //        {
+            //            priceToPay -= 50;
+            //        }
+
+            //        if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
+            //        {
+            //            priceToPay -= 50;
+            //        }
+
+            //        if (countProducts[c] % 3 == 0)
+            //        {
+            //            priceToPay -= discountedProducts[c].Discount;
+            //        }
+            //    }
+            //}
 
             return priceToPay;
         }
