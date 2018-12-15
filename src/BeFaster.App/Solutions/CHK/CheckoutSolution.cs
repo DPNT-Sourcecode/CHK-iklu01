@@ -40,8 +40,9 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetProduct(string skus)
         {
             var counts = skus.CountProducts();
+            var stringCounts = counts.Keys.ToString();
             var priceToPay = 0;
-            var arr = skus.ToCharArray(0, skus.Length);
+            var arr = skus.ToCharArray(0, counts.Keys.Count);
 
             var discountedProducts = new Dictionary<char, DiscountedProduct>
             {
@@ -73,12 +74,24 @@ namespace BeFaster.App.Solutions.CHK
                 countProducts[c]++;
                 priceToPay += Prices[c];
 
-                if (discountedProducts.ContainsKey(c))
+                if (countProducts[c] % 3 == 0)
                 {
+                    priceToPay -= 20;
+                }
+
+                if (countProducts[c] % 5 == 0)
+                {
+                    priceToPay -= 50;
+                }
+
+                //if (discountedProducts.ContainsKey(c))
+                //{
                     //if (counts[c] > 4
                     //    && countProducts[c] % 5 == 0
                     //    || counts[c] > 8
-                    //    && countProducts[c] % 5 == 0)
+                    //    && countProducts[c] % 5 == 0
+                    //    || counts[c] > 8
+                    //    && countProducts[c] % 5 == 1)
                     //{
                     //    priceToPay -= 50;
                     //}
@@ -91,28 +104,38 @@ namespace BeFaster.App.Solutions.CHK
                     //    priceToPay -= discountedProducts[c].Discount;
                     //}
 
-                    if (counts[c] >= 5 && counts[c] <= 7
-                        && countProducts[c] % 5 == 0
-                        )
-                    {
-                        priceToPay -= 50;
-                    }
+                    //if (counts[c] >= 5 && counts[c] <= 7
+                    //    && countProducts[c] % 5 == 0
+                    //    )
+                    //{
+                    //    priceToPay -= 50;
+                    //}
 
-                    if (counts[c] <= 4
-                        && countProducts[c] % 3 == 0
-                        )
-                    {
-                        priceToPay -= discountedProducts[c].Discount;
-                    }
+                    //if (counts[c] <= 4
+                    //    && countProducts[c] % 3 == 0
+                    //    )
+                    //{
+                    //    priceToPay -= discountedProducts[c].Discount;
+                    //}
 
-                    if (counts[c] >= 8 && counts[c] <= 10
-                        && countProducts[c] % 5 == 0
-                        || countProducts[c] % 3 == 0
-                    )
-                    {
-                        priceToPay -= 70;
-                    }
-                }
+                    //if (counts[c] >= 8 && counts[c] < 10
+                    //    && countProducts[c] % 5 == 0
+                    //    || counts[c] >= 8 && counts[c] < 10
+                    //    && countProducts[c] % 3 == 0
+                    //)
+                    //{
+                    //    priceToPay -= 70;
+                    //}
+
+                    //if (counts[c] >= 8 && counts[c] <= 10
+                    //    && countProducts[c] % 5 == 0
+                    //    || counts[c] >= 8 && counts[c] <= 10
+                    //    && countProducts[c] % 3 == 0
+                    //)
+                    //{
+                    //    priceToPay -= 70;
+                    //}
+                //}
             }
 
             return priceToPay;
