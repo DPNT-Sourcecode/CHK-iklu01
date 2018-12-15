@@ -57,7 +57,7 @@ namespace BeFaster.App.Solutions.CHK
             foreach (var c in counts)
             {
                 countProducts[c.Key]++;
-                priceToPay = 50 * c.Key;
+                priceToPay += Prices[c.Key];
 
                 if (c.Key == 'A')
                 {
@@ -71,14 +71,6 @@ namespace BeFaster.App.Solutions.CHK
                         priceToPay -= 50;
                     }
                 }
-
-                //countProducts[c.Key]++;
-                //priceToPay += Prices[c.Key];
-
-                //if (countProducts.TryGetValue('A', out var found) && found % 3 == 0)
-                //{
-                //    priceToPay -= 20;
-                //}
             }
 
 
