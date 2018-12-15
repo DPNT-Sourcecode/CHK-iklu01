@@ -46,6 +46,7 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (KeyValuePair<char, int> pair in counts)
             {
+                counts[(char) pair.Value]++;
                 priceToPay += Prices.Count;
 
                 if (pair.Key == 'A' && pair.Value == 3)
