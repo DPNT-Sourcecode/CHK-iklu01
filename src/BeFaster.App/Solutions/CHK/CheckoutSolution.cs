@@ -40,7 +40,6 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetProduct(string skus)
         {
             var counts = skus.CountProducts();
-            var stringCounts = counts.Keys.ToString();
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, counts.Keys.Count);
 
