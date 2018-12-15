@@ -69,17 +69,12 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (countProducts[c] % 8 == 0)
                     {
-                        priceToPay -= 30;
+                        priceToPay -= 70;
                     }
 
                     if (countProducts[c] % 5 == 0)
                     {
-                        priceToPay -= 30;
-                    }
-
-                    if (countProducts[c] % 5 == 0)
-                    {
-                        priceToPay -= 0;
+                        priceToPay -= 50;
                     }
 
                     if (countProducts[c] % 3 == 0)
