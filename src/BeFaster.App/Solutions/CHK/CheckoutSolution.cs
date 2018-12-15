@@ -46,8 +46,7 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (KeyValuePair<char, int> pair in counts)
             {
-                counts[(char) pair.Value]++;
-                priceToPay += Prices.Count;
+                priceToPay += Prices[pair.Key];
 
                 if (pair.Key == 'A' && pair.Value == 3)
                 {
@@ -71,7 +70,7 @@ namespace BeFaster.App.Solutions.CHK
             //    }
             //};
 
-            //foreach (var c in arr)
+            //foreach (char c in arr)
             //{
             //    counts[c]++;
             //    priceToPay += Prices[c];
@@ -81,23 +80,23 @@ namespace BeFaster.App.Solutions.CHK
             //        priceToPay -= 20;
             //    }
 
-                //if (discountedProducts.ContainsKey(c))
-                //{
-                //    if (countProducts[c] > 3 && countProducts[c] % 5 == 0)
-                //    {
-                //        priceToPay -= 50;
-                //    }
+            //    if (discountedProducts.ContainsKey(c))
+            //    {
+            //        if (countProducts[c] > 3 && countProducts[c] % 5 == 0)
+            //        {
+            //            priceToPay -= 50;
+            //        }
 
-                //    if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
-                //    {
-                //        priceToPay -= 50;
-                //    }
+            //        if (countProducts[c] % 3 == 0 && countProducts[c] % 5 == 0)
+            //        {
+            //            priceToPay -= 50;
+            //        }
 
-                //    if (countProducts[c] % 3 == 0)
-                //    {
-                //        priceToPay -= discountedProducts[c].Discount;
-                //    }
-                //}
+            //        if (countProducts[c] % 3 == 0)
+            //        {
+            //            priceToPay -= discountedProducts[c].Discount;
+            //        }
+            //    }
             //}
 
             return priceToPay;
