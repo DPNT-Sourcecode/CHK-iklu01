@@ -67,45 +67,25 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (discountedProducts.ContainsKey(c))
                 {
-                    if (countProducts[c] % 8 == 0
-                        && countProducts[c] % discountedProducts[c].ProductQuantity == 2)
+                    if (countProducts[c] % 8 == 0)
                     {
                         priceToPay -= 30;
                     }
 
-                    if (countProducts[c] == 3
-                        && countProducts[c] % 3 == 0 
-                        && countProducts[c] % discountedProducts[c].ProductQuantity == 0)
-                    {
-                        priceToPay -= discountedProducts[c].Discount;
-                    }
-
-                    if (countProducts[c] % 5 == 0
-                        && countProducts[c] % discountedProducts[c].ProductQuantity == 2)
+                    if (countProducts[c] % 5 == 0)
                     {
                         priceToPay -= 30;
                     }
 
-                    if (countProducts[c] % 5 == 0
-                        && countProducts[c] % discountedProducts[c].ProductQuantity == 1)
+                    if (countProducts[c] % 5 == 0)
                     {
                         priceToPay -= 0;
                     }
 
-                    //if (countProducts[c] == 5 && countProducts[c] % discountedProducts[c].ProductQuantity == 2)
-                    //{
-                    //    priceToPay -= 30;
-                    //}
-
-                    //if (countProducts[c] > 5 && countProducts[c] % 5 == 0 && countProducts[c] % discountedProducts[c].ProductQuantity == 1)
-                    //{
-                    //    priceToPay -= 100;
-                    //}
-
-                    //if (countProducts[c] == 8 && countProducts[c] % discountedProducts[c].ProductQuantity == 2)
-                    //{
-                    //    priceToPay -= 20;
-                    //}
+                    if (countProducts[c] % 3 == 0)
+                    {
+                        priceToPay -= discountedProducts[c].Discount;
+                    }
                 }
             }
 
