@@ -1,25 +1,33 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
 {
     public static class CheckoutSolution
     {
+        public static Dictionary<char, int> CountProducts(this string skus) => skus.GroupBy(c => c)
+            .ToDictionary(group => group.Key, group => group.Count());
+
         public static int GetProduct(string skus)
         {
             Product.AddProductNumer();
             Product.AddProductPrice();
 
             var priceToPay = 0;
+            var counts = skus.CountProducts();
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
 
             foreach (var charachter in skusToCharacter)
             {
-
                 Product.ProductNumber[charachter]++;
                 priceToPay += Product.ProductPrice[charachter];
             }
 
-            //if (letterCounter > 2)
+            foreach (var count in counts)
+            {
+                var productCounter = skus.Count(x => x == count.Key);
+            }
             //{
             //    if (letterCounter % 8 == 0
             //        || letterCounter % 8 == 1)
