@@ -30,7 +30,7 @@ namespace BeFaster.App.Solutions.CHK
 
             for (var allLetters = 'A'; allLetters <= 'Z'; allLetters++)
             {
-                increaseProductNumber[allLetters] = allLetters;
+                increaseProductNumber[allLetters] = 0;
             }
 
             foreach (var c in arr)
