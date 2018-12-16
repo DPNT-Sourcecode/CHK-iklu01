@@ -6,11 +6,15 @@ namespace BeFaster.App.Solutions.CHK
     {
         public static int GetProduct(string skus)
         {
+            Product.AddProductNumer();
+            Product.AddProductPrice();
+
             var priceToPay = 0;
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
 
             foreach (var charachter in skusToCharacter)
             {
+
                 Product.ProductNumber[charachter]++;
                 priceToPay += Product.ProductPrice[charachter];
             }
@@ -71,9 +75,6 @@ namespace BeFaster.App.Solutions.CHK
 
         public static int Checkout(string skus)
         {
-            Product.AddProductNumer();
-            Product.AddProductPrice();
-
             if (string.IsNullOrEmpty(skus))
             {
                 return 0;
