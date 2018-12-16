@@ -39,7 +39,7 @@ namespace BeFaster.App.Solutions.CHK
                 priceToPay += Prices[c];
             }
 
-            if (countA > 2 && skus.Contains('A'))
+            if (countA >= 2)
             {
                 if (countA % 8 == 0
                     || countA % 8 == 1)
