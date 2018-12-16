@@ -17,6 +17,7 @@ namespace BeFaster.App.Solutions.CHK
             var priceToPay = 0;
             var counts = skus.CountProducts();
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
+            var productCounter = 0;
 
             foreach (var charachter in skusToCharacter)
             {
@@ -26,59 +27,64 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                var productCounter = skus.Count(x => x == count.Key);
+                productCounter = skus.Count(x => x == count.Key);
             }
-            //{
-            //    if (letterCounter % 8 == 0
-            //        || letterCounter % 8 == 1)
-            //    {
-            //        priceToPay -= 70;
-            //    }
 
-            //    else if (letterCounter % 5 == 0
-            //        || letterCounter % 5 == 1
-            //        || letterCounter % 5 == 2)
-            //    {
-            //        priceToPay -= 50 * (letterCounter / 5);
-            //    }
+            if (skus.Contains('A') && productCounter > 2)
+            {
+                priceToPay -= 20;
+            }
+                //{
+                //    if (letterCounter % 8 == 0
+                //        || letterCounter % 8 == 1)
+                //    {
+                //        priceToPay -= 70;
+                //    }
 
-            //    else if (letterCounter % 3 == 0
-            //        || letterCounter % 3 == 1)
-            //    {
-            //        priceToPay -= 20;
-            //    }
-            //}
+                //    else if (letterCounter % 5 == 0
+                //        || letterCounter % 5 == 1
+                //        || letterCounter % 5 == 2)
+                //    {
+                //        priceToPay -= 50 * (letterCounter / 5);
+                //    }
 
-            //if (letterCounter > 1 && skus.Contains('B'))
-            //{
-            //    priceToPay -= 30 * (letterCounter / 2);
+                //    else if (letterCounter % 3 == 0
+                //        || letterCounter % 3 == 1)
+                //    {
+                //        priceToPay -= 20;
+                //    }
+                //}
 
-            //    if (letterCounter % 2 == 1)
-            //    {
-            //        priceToPay -= 15 * (letterCounter / 2);
-            //    }
-            //}
+                //if (letterCounter > 1 && skus.Contains('B'))
+                //{
+                //    priceToPay -= 30 * (letterCounter / 2);
 
-            //else if (letterCounter > 1)
-            //{
-            //    if (letterCounter % 2 == 0 
-            //        || letterCounter % 2 == 1)
-            //    {
-            //        priceToPay -= 15 * (letterCounter / 2);
-            //    }
-            //}
+                //    if (letterCounter % 2 == 1)
+                //    {
+                //        priceToPay -= 15 * (letterCounter / 2);
+                //    }
+                //}
 
-            //if (letterCounter > 2 && skus.Contains('F'))
-            //{
-            //    if (letterCounter % 3 == 0 
-            //        || letterCounter % 3 == 1 
-            //        || letterCounter % 3 == 2)
-            //    {
-            //        priceToPay -= 10 * (letterCounter / 3);
-            //    }
-            //}
+                //else if (letterCounter > 1)
+                //{
+                //    if (letterCounter % 2 == 0 
+                //        || letterCounter % 2 == 1)
+                //    {
+                //        priceToPay -= 15 * (letterCounter / 2);
+                //    }
+                //}
 
-            return priceToPay;
+                //if (letterCounter > 2 && skus.Contains('F'))
+                //{
+                //    if (letterCounter % 3 == 0 
+                //        || letterCounter % 3 == 1 
+                //        || letterCounter % 3 == 2)
+                //    {
+                //        priceToPay -= 10 * (letterCounter / 3);
+                //    }
+                //}
+
+                return priceToPay;
         }
 
         public static int Checkout(string skus)
