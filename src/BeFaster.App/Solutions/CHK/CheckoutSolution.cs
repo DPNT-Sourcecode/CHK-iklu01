@@ -67,7 +67,7 @@ namespace BeFaster.App.Solutions.CHK
             {
                 priceToPay -= 30 * (countE / 2);
 
-                if (countB % 2 == 0 || countB % 2 == 1)
+                if (countB % 2 == 1)
                 {
                     priceToPay -= 15 * (countB / 2);
                 }
