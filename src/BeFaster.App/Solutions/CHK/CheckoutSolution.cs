@@ -63,7 +63,7 @@ namespace BeFaster.App.Solutions.CHK
 
             if (countE > 1 && skus.Contains('B'))
             {
-                if (countB % countE == countE)
+                if (countB % countE == 0)
                 {
                     priceToPay -= 30 * (countB / 2);
                 }
