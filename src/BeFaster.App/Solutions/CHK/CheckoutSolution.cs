@@ -32,21 +32,17 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Contains('A') && productCounter > 2)
             {
-                if (productCounter % 8 == 0
-                    || productCounter % 8 == 1)
+                if (productCounter % 8  <= 1)
                 {
                     priceToPay -= 70;
                 }
 
-                else if (productCounter % 5 == 0
-                    || productCounter % 5 == 1
-                    || productCounter % 5 == 2)
+                else if (productCounter % 5 <= 2)
                 {
                     priceToPay -= 50 * (productCounter / 5);
                 }
 
-                else if (productCounter % 3 == 0
-                    || productCounter % 3 == 1)
+                else if (productCounter % 3 <= 1)
                 {
                     priceToPay -= 20;
                 }
@@ -66,9 +62,7 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Contains('F') && productCounter > 2)
             {
-                if (productCounter % 3 == 0
-                    || productCounter % 3 == 1
-                    || productCounter % 3 == 2)
+                if (productCounter % 3 <= 2)
                 {
                     priceToPay -= 10 * (productCounter / 3);
                 }
@@ -84,11 +78,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                else if (productCounter % 5 == 0
-                    || productCounter % 5 == 1
-                    || productCounter % 5 == 2
-                    || productCounter % 5 == 3
-                    || productCounter % 5 == 4)
+                else if (productCounter % 5 <= 4)
                 {
                     priceToPay -= 5;
                 }
@@ -96,8 +86,7 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Contains('K') && productCounter > 1)
             {
-                if (productCounter % 2 == 0
-                    || productCounter % 2 == 1)
+                if (productCounter % 2 <= 1)
                 {
                     priceToPay -= 10 * (productCounter / 2);
                 }
@@ -113,8 +102,7 @@ namespace BeFaster.App.Solutions.CHK
 
             else if (skus.Contains('B') && productCounter > 1)
             {
-                if (productCounter % 2 == 0
-                    || productCounter % 2 == 1)
+                if (productCounter % 2 <= 1)
                 {
                     priceToPay -= 15 * (productCounter / 2);
                 }
