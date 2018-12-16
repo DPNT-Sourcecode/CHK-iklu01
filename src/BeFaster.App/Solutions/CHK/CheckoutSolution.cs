@@ -33,58 +33,78 @@ namespace BeFaster.App.Solutions.CHK
                 {'E', 0 }
             };
 
+            var resultB = 0;
+            var resultE = 0;
+            var alreadyAdded = false;
+
             foreach (var c in arr)
             {
                 increaseProductNumber[c]++;
                 priceToPay += Prices[c];
+
+                if (c == 'B')
+                {
+                    resultB++;
+                }
+
+                if (c == 'E')
+                {
+                    resultE++;
+                }
+
+                if (resultE > 1 && resultB > 0
+                    && resultE % resultB == 0)
+                {
+                    priceToPay -= 30;
+                    resultE -= 2;
+                    alreadyAdded = true;
+                }
             }
 
             foreach (var count in counts)
             {
-                if (count.Key == 'A' && count.Value > 2)
+                switch (count.Key)
                 {
-                    if (count.Value < 6 && count.Value % 3 == 0
-                        || count.Value < 6 && count.Value % 3 == 1)
-                    {
-                        priceToPay -= 20;
-                    }
+                    case 'A' when count.Value > 2:
+                        if (count.Value < 6 && count.Value % 3 == 0
+                            || count.Value < 6 && count.Value % 3 == 1)
+                        {
+                            priceToPay -= 20;
+                        }
 
-                    if (count.Value % 5 == 0
-                        || count.Value % 5 == 1
-                        || count.Value % 5 == 2)
-                    {
-                        priceToPay -= 50 * (count.Value / 5);
-                    }
+                        if (count.Value % 5 == 0
+                            || count.Value % 5 == 1
+                            || count.Value % 5 == 2)
+                        {
+                            priceToPay -= 50 * (count.Value / 5);
+                        }
 
-                    if (count.Value % 8 == 0
-                        || count.Value % 8 == 1)
-                    {
-                        priceToPay -= 70;
-                    }
+                        if (count.Value % 8 == 0
+                            || count.Value % 8 == 1)
+                        {
+                            priceToPay -= 70;
+                        }
+
+                        break;
                 }
 
-                if (count.Key == 'B' && count.Value > 1)
+                if (!alreadyAdded)
                 {
-                    if (count.Value % 2 == 0
-                        || count.Value % 2 == 1)
+                    if (count.Key == 'B' && count.Value > 1)
                     {
-                        priceToPay -= 15;
+                        if (count.Value % 2 == 0
+                            || count.Value % 2 == 1)
+                        {
+                            priceToPay -= 15 * (count.Value / 2);
+                        }
                     }
-                }
 
-                if (count.Key == 'E' && count.Value > 1)
-                {
-                    if (priceToPay % 110 <= 110)
+                    if (count.Key == 'E' && count.Value > 2)
                     {
-                        priceToPay -= 30;
-                    }
-                }
-
-                if (count.Key == 'E' && count.Value > 2)
-                {
-                    if (count.Value % 2 == 0)
-                    {
-                        priceToPay -= 30;
+                        if (count.Value % 2 == 0)
+                        {
+                            priceToPay -= 30;
+                        }
                     }
                 }
             }
