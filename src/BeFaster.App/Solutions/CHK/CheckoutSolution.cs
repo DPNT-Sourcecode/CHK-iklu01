@@ -120,11 +120,11 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('U') && productCounter > 2)
+            if (skus.Contains('U') && productCounter > 3)
             {
-                if (productCounter % 3 <= 2)
+                if (productCounter % 4 <= 3)
                 {
-                    priceToPay -= 40 * (productCounter / 3);
+                    priceToPay -= 40 * (productCounter / 4);
                 }
             }
 
