@@ -74,7 +74,6 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            // 5H for 45, 10H for 80
             if (skus.Contains('H') && productCounter > 4)
             {
                 if (productCounter >= 10)
@@ -92,6 +91,15 @@ namespace BeFaster.App.Solutions.CHK
                     || productCounter % 5 == 4)
                 {
                     priceToPay -= 5;
+                }
+            }
+
+            if (skus.Contains('K') && productCounter > 1)
+            {
+                if (productCounter % 2 == 0
+                    || productCounter % 2 == 1)
+                {
+                    priceToPay -= 10 * (productCounter / 2);
                 }
             }
 
