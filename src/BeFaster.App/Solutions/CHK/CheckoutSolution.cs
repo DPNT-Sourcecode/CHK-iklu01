@@ -6,6 +6,9 @@ namespace BeFaster.App.Solutions.CHK
     {
         public static int GetProduct(string skus)
         {
+            Product.AddProductNumer();
+            Product.AddProductPrice();
+
             var priceToPay = 0;
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
 
