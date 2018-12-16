@@ -26,15 +26,12 @@ namespace BeFaster.App.Solutions.CHK
             var countE = skus.Count(x => x == 'E');
             var countF = skus.Count(x => x == 'F');
 
-            var increaseProductNumber = new Dictionary<char, int>
+            var increaseProductNumber = new Dictionary<char, int>();
+
+            for (var allLetters = 'A'; allLetters <= 'Z'; allLetters++)
             {
-                {'A', 0 },
-                {'B', 0 },
-                {'C', 0 },
-                {'D', 0 },
-                {'E', 0 },
-                {'F', 0 }
-            };
+                increaseProductNumber[allLetters] = allLetters;
+            }
 
             foreach (var c in arr)
             {
