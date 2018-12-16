@@ -20,6 +20,18 @@ namespace BeFaster.App.Solutions.CHK
 
         public static int GetProduct(string skus)
         {
+
+            var countA = skus.Count(x => x == 'A');
+            var countB = skus.Count(x => x == 'B');
+            var countC = skus.Count(x => x == 'C');
+            var countD = skus.Count(x => x == 'D');
+            var countE = skus.Count(x => x == 'E');
+
+
+
+
+
+
             var counts = skus.CountProducts();
             var priceToPay = 0;
             var arr = skus.ToCharArray(0, skus.Length);
@@ -57,35 +69,37 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     priceToPay -= 30;
                     resultE -= 2;
-                    alreadyAdded = true;
+                    resultB--;
                 }
             }
 
             foreach (var count in counts)
             {
-                switch (count.Key)
+                if (resultB < 2)
                 {
-                    case 'A' when count.Value > 2:
-                        if (count.Value < 6 && count.Value % 3 == 0
-                            || count.Value < 6 && count.Value % 3 == 1)
-                        {
-                            priceToPay -= 20;
-                        }
+                    alreadyAdded = true;
+                }
 
-                        if (count.Value % 5 == 0
-                            || count.Value % 5 == 1
-                            || count.Value % 5 == 2)
-                        {
-                            priceToPay -= 50 * (count.Value / 5);
-                        }
+                if (count.Key == 'A' && count.Value > 2)
+                {
+                    if (count.Value < 6 && count.Value % 3 == 0
+                        || count.Value < 6 && count.Value % 3 == 1)
+                    {
+                        priceToPay -= 20;
+                    }
 
-                        if (count.Value % 8 == 0
-                            || count.Value % 8 == 1)
-                        {
-                            priceToPay -= 70;
-                        }
+                    if (count.Value % 5 == 0
+                        || count.Value % 5 == 1
+                        || count.Value % 5 == 2)
+                    {
+                        priceToPay -= 50 * (count.Value / 5);
+                    }
 
-                        break;
+                    if (count.Value % 8 == 0
+                        || count.Value % 8 == 1)
+                    {
+                        priceToPay -= 70;
+                    }
                 }
 
                 if (!alreadyAdded)
