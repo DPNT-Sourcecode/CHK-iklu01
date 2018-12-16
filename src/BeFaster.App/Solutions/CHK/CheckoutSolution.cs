@@ -110,13 +110,13 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Contains('V') && productCounter > 1)
             {
-                if (productCounter % 2 <= 1)
-                {
-                    priceToPay -= 10;
-                }
-                else if (productCounter % 3 <= 2)
+                if (productCounter % 3 <= 2)
                 {
                     priceToPay -= 20;
+                }
+                else if (productCounter % 2 <= 1)
+                {
+                    priceToPay -= 10;
                 }
             }
 
