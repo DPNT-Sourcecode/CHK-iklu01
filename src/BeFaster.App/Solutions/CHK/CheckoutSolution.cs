@@ -67,12 +67,9 @@ namespace BeFaster.App.Solutions.CHK
             {
                 priceToPay -= 30 * (countE / 2);
 
-                switch (countB % 2)
+                if (countB % 2 == 0 || countB % 2 == 1)
                 {
-                    case 0:
-                    case 1:
-                        priceToPay -= 15 * (countB / 2);
-                        break;
+                    priceToPay -= 15 * (countB / 2);
                 }
             }
 
@@ -106,4 +103,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
