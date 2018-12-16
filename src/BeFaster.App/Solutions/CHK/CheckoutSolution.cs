@@ -87,7 +87,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (countF % 3 == 0)
+            if (skus.Contains('F') && countF % 3 == 0)
             {
                 priceToPay -= 10;
             }
