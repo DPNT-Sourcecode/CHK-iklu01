@@ -24,6 +24,7 @@ namespace BeFaster.App.Solutions.CHK
             var countA = skus.Count(x => x == 'A');
             var countB = skus.Count(x => x == 'B');
             var countE = skus.Count(x => x == 'E');
+            var countF = skus.Count(x => x == 'F');
 
             var increaseProductNumber = new Dictionary<char, int>
             {
@@ -67,9 +68,11 @@ namespace BeFaster.App.Solutions.CHK
             {
                 priceToPay -= 30 * (countE / 2);
 
-                if (countB % 2 == 1)
+                switch (countB % 2)
                 {
-                    priceToPay -= 15 * (countB / 2);
+                    case 1:
+                        priceToPay -= 15 * (countB / 2);
+                        break;
                 }
             }
 
@@ -82,6 +85,11 @@ namespace BeFaster.App.Solutions.CHK
                         priceToPay -= 15 * (countB / 2);
                         break;
                 }
+            }
+
+            if (countF % 3 == 0)
+            {
+                priceToPay -= 10;
             }
 
             return priceToPay;
