@@ -4,9 +4,8 @@ namespace BeFaster.App.Solutions.CHK
 {
     public class Product
     {
-        public static Dictionary<char, int> ProductPrice = new Dictionary<char, int>();
-
         public static Dictionary<char, int> ProductNumber { get; set; }
+        public static Dictionary<char, int> ProductPrice { get; set; }
 
         public static void AddProductNumer()
         {
