@@ -89,9 +89,13 @@ namespace BeFaster.App.Solutions.CHK
 
             if (countF > 2 && skus.Contains('F'))
             {
-                if (countF % 3 == 0 || countF % 3 == 1 || countF % 3 == 2)
+                switch (countF % 3)
                 {
-                    priceToPay -= 10;
+                    case 0:
+                    case 1:
+                    case 2:
+                        priceToPay -= 10 * (countF / 3);
+                        break;
                 }
             }
 
@@ -114,4 +118,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
