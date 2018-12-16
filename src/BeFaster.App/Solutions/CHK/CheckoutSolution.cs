@@ -61,13 +61,14 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (countE > 1 && skus.Contains('B') && countE >= countB)
+            if (countE > 1 && skus.Contains('B'))
             {
-                if (countE == countB)
+                if (countB % countE == countE)
                 {
                     priceToPay -= 30 * (countB / 2);
                 }
-                else if (countE != countB)
+
+                else if (countB % countE < countE)
                 {
                     priceToPay -= 30 * countB;
                 }
