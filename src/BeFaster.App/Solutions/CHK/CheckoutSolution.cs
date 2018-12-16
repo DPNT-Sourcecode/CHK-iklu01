@@ -51,55 +51,37 @@ namespace BeFaster.App.Solutions.CHK
                     priceToPay -= 20;
                 }
             }
-            //{
-            //    if (letterCounter % 8 == 0
-            //        || letterCounter % 8 == 1)
-            //    {
-            //        priceToPay -= 70;
-            //    }
 
-            //    else if (letterCounter % 5 == 0
-            //        || letterCounter % 5 == 1
-            //        || letterCounter % 5 == 2)
-            //    {
-            //        priceToPay -= 50 * (letterCounter / 5);
-            //    }
+            if (skus.Contains('B')
+                && skus.Contains('E')
+                && productCounter > 1)
+            {
+                priceToPay -= 30 * (productCounter / 2);
 
-            //    else if (letterCounter % 3 == 0
-            //        || letterCounter % 3 == 1)
-            //    {
-            //        priceToPay -= 20;
-            //    }
-            //}
+                if (productCounter % 2 == 1)
+                {
+                    priceToPay -= 15 * (productCounter / 2);
+                }
+            }
 
-            //if (letterCounter > 1 && skus.Contains('B'))
-            //{
-            //    priceToPay -= 30 * (letterCounter / 2);
+            if (skus.Contains('F') && productCounter > 2)
+            {
+                if (productCounter % 3 == 0
+                    || productCounter % 3 == 1
+                    || productCounter % 3 == 2)
+                {
+                    priceToPay -= 10 * (productCounter / 3);
+                }
+            }
 
-            //    if (letterCounter % 2 == 1)
-            //    {
-            //        priceToPay -= 15 * (letterCounter / 2);
-            //    }
-            //}
-
-            //else if (letterCounter > 1)
-            //{
-            //    if (letterCounter % 2 == 0 
-            //        || letterCounter % 2 == 1)
-            //    {
-            //        priceToPay -= 15 * (letterCounter / 2);
-            //    }
-            //}
-
-            //if (letterCounter > 2 && skus.Contains('F'))
-            //{
-            //    if (letterCounter % 3 == 0 
-            //        || letterCounter % 3 == 1 
-            //        || letterCounter % 3 == 2)
-            //    {
-            //        priceToPay -= 10 * (letterCounter / 3);
-            //    }
-            //}
+            else if (skus.Contains('B') && productCounter > 1)
+            {
+                if (productCounter % 2 == 0
+                    || productCounter % 2 == 1)
+                {
+                    priceToPay -= 15 * (productCounter / 2);
+                }
+            }
 
             return priceToPay;
         }
