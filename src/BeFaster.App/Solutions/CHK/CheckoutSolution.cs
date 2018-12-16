@@ -39,7 +39,7 @@ namespace BeFaster.App.Solutions.CHK
                 priceToPay += Prices[c];
             }
 
-            if (countA >= 2)
+            if (countA > 2)
             {
                 if (countA % 8 == 0
                     || countA % 8 == 1)
@@ -47,8 +47,7 @@ namespace BeFaster.App.Solutions.CHK
                     priceToPay -= 70;
                 }
 
-                else if (countA >= 5
-                    && countA % 5 == 0
+                else if (countA % 5 == 0
                     || countA % 5 == 1
                     || countA % 5 == 2)
                 {
@@ -68,8 +67,10 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     priceToPay -= 30 * (countB / 2);
                 }
-
-                priceToPay -= 30 * countB;
+                else if (countE != countB)
+                {
+                    priceToPay -= 30 * countB;
+                }
             }
 
             else if (countB > 1)
