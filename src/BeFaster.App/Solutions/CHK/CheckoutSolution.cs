@@ -105,7 +105,7 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Contains('P') && productCounter > 4)
             {
-                if (productCounter % 5 >= 4)
+                if (productCounter % 5 <= 4)
                 {
                     priceToPay -= 50 * (productCounter / 5);
                 }
