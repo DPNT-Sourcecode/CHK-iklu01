@@ -12,7 +12,8 @@ namespace BeFaster.App.Solutions.CHK
             {'B', 30 },
             {'C', 20 },
             {'D', 15 },
-            {'E', 40 }
+            {'E', 40 },
+            {'F', 10 }
         };
 
         public static int GetProduct(string skus)
@@ -23,6 +24,7 @@ namespace BeFaster.App.Solutions.CHK
             var countA = skus.Count(x => x == 'A');
             var countB = skus.Count(x => x == 'B');
             var countE = skus.Count(x => x == 'E');
+            var countF = skus.Count(x => x == 'F');
 
             var increaseProductNumber = new Dictionary<char, int>
             {
@@ -30,7 +32,8 @@ namespace BeFaster.App.Solutions.CHK
                 {'B', 0 },
                 {'C', 0 },
                 {'D', 0 },
-                {'E', 0 }
+                {'E', 0 },
+                {'F', 0 }
             };
 
             foreach (var c in arr)
@@ -64,6 +67,14 @@ namespace BeFaster.App.Solutions.CHK
             if (countE > 1 && skus.Contains('B'))
             {
                 priceToPay -= 30 * (countE / 2);
+
+                switch (countB % 2)
+                {
+                    case 0:
+                    case 1:
+                        priceToPay -= 15 * (countB / 2);
+                        break;
+                }
             }
 
             else if (countB > 1)
