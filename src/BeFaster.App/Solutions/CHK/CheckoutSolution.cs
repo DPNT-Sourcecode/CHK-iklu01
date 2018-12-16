@@ -77,16 +77,20 @@ namespace BeFaster.App.Solutions.CHK
             // 5H for 45, 10H for 80
             if (skus.Contains('H') && productCounter > 4)
             {
-                if (productCounter % 5 == 0
+                if (productCounter >= 10)
+                {
+                    if (productCounter % 5 == 0)
+                    {
+                        priceToPay -= 10 * (productCounter / 5);
+                    }
+                }
+
+                else if (productCounter % 5 == 0
                     || productCounter % 5 == 1
                     || productCounter % 5 == 2
                     || productCounter % 5 == 3
                     || productCounter % 5 == 4)
                 {
-                    if (productCounter < 10)
-                    {
-                        priceToPay -= 10 * (productCounter / 5);
-                    }
                     priceToPay -= 5;
                 }
             }
