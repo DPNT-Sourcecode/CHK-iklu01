@@ -47,7 +47,8 @@ namespace BeFaster.App.Solutions.CHK
                     priceToPay -= 70;
                 }
 
-                else if (countA % 5 == 0
+                else if (countA >= 5
+                    && countA % 5 == 0
                     || countA % 5 == 1
                     || countA % 5 == 2)
                 {
