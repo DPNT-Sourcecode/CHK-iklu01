@@ -12,7 +12,8 @@ namespace BeFaster.App.Solutions.CHK
             {'B', 30 },
             {'C', 20 },
             {'D', 15 },
-            {'E', 40 }
+            {'E', 40 },
+            {'F', 10 }
         };
 
         public static int GetProduct(string skus)
@@ -30,7 +31,8 @@ namespace BeFaster.App.Solutions.CHK
                 {'B', 0 },
                 {'C', 0 },
                 {'D', 0 },
-                {'E', 0 }
+                {'E', 0 },
+                {'F', 0 }
             };
 
             foreach (var c in arr)
@@ -104,3 +106,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
