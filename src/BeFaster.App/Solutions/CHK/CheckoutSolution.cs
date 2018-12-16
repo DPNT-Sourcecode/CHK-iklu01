@@ -19,12 +19,7 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetProduct(string skus)
         {
             var priceToPay = 0;
-            var arr = skus.ToCharArray(0, skus.Length);
-
-            var countA = skus.Count(x => x == 'A');
-            var countB = skus.Count(x => x == 'B');
-            var countE = skus.Count(x => x == 'E');
-            var countF = skus.Count(x => x == 'F');
+            var skusToCharacter = skus.ToCharArray(0, skus.Length);
 
             var increaseProductNumber = new Dictionary<char, int>();
 
@@ -33,68 +28,62 @@ namespace BeFaster.App.Solutions.CHK
                 increaseProductNumber[allLetters] = 0;
             }
 
-            foreach (var c in arr)
+            foreach (var charachter in skusToCharacter)
             {
-                increaseProductNumber[c]++;
-                priceToPay += Prices[c];
+                increaseProductNumber[charachter]++;
+                priceToPay += Prices[charachter];
             }
 
-            if (countA > 2)
-            {
-                if (countA % 8 == 0
-                    || countA % 8 == 1)
-                {
-                    priceToPay -= 70;
-                }
+            //if (letterCounter > 2)
+            //{
+            //    if (letterCounter % 8 == 0
+            //        || letterCounter % 8 == 1)
+            //    {
+            //        priceToPay -= 70;
+            //    }
 
-                else if (countA % 5 == 0
-                    || countA % 5 == 1
-                    || countA % 5 == 2)
-                {
-                    priceToPay -= 50 * (countA / 5);
-                }
+            //    else if (letterCounter % 5 == 0
+            //        || letterCounter % 5 == 1
+            //        || letterCounter % 5 == 2)
+            //    {
+            //        priceToPay -= 50 * (letterCounter / 5);
+            //    }
 
-                else if (countA % 3 == 0
-                    || countA % 3 == 1)
-                {
-                    priceToPay -= 20;
-                }
-            }
+            //    else if (letterCounter % 3 == 0
+            //        || letterCounter % 3 == 1)
+            //    {
+            //        priceToPay -= 20;
+            //    }
+            //}
 
-            if (countE > 1 && skus.Contains('B'))
-            {
-                priceToPay -= 30 * (countE / 2);
+            //if (letterCounter > 1 && skus.Contains('B'))
+            //{
+            //    priceToPay -= 30 * (letterCounter / 2);
 
-                switch (countB % 2)
-                {
-                    case 1:
-                        priceToPay -= 15 * (countB / 2);
-                        break;
-                }
-            }
+            //    if (letterCounter % 2 == 1)
+            //    {
+            //        priceToPay -= 15 * (letterCounter / 2);
+            //    }
+            //}
 
-            else if (countB > 1)
-            {
-                switch (countB % 2)
-                {
-                    case 0:
-                    case 1:
-                        priceToPay -= 15 * (countB / 2);
-                        break;
-                }
-            }
+            //else if (letterCounter > 1)
+            //{
+            //    if (letterCounter % 2 == 0 
+            //        || letterCounter % 2 == 1)
+            //    {
+            //        priceToPay -= 15 * (letterCounter / 2);
+            //    }
+            //}
 
-            if (countF > 2 && skus.Contains('F'))
-            {
-                switch (countF % 3)
-                {
-                    case 0:
-                    case 1:
-                    case 2:
-                        priceToPay -= 10 * (countF / 3);
-                        break;
-                }
-            }
+            //if (letterCounter > 2 && skus.Contains('F'))
+            //{
+            //    if (letterCounter % 3 == 0 
+            //        || letterCounter % 3 == 1 
+            //        || letterCounter % 3 == 2)
+            //    {
+            //        priceToPay -= 10 * (letterCounter / 3);
+            //    }
+            //}
 
             return priceToPay;
         }
