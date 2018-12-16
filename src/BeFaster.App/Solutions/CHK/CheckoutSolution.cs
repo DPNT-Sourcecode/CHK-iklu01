@@ -32,7 +32,7 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Contains('A') && productCounter > 2)
             {
-                if (productCounter % 8  <= 1)
+                if (productCounter % 8 <= 1)
                 {
                     priceToPay -= 70;
                 }
@@ -105,6 +105,18 @@ namespace BeFaster.App.Solutions.CHK
                 if (productCounter % 3 <= 2)
                 {
                     priceToPay -= 10;
+                }
+            }
+
+            if (skus.Contains('V') && productCounter > 1)
+            {
+                if (productCounter % 2 <= 1)
+                {
+                    priceToPay -= 10;
+                }
+                else if (productCounter % 3 <= 2)
+                {
+                    priceToPay -= 20;
                 }
             }
 
