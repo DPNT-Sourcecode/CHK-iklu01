@@ -23,11 +23,11 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Length > 1)
             {
-                if (!skus.Distinct().Any())
+                if (skus.Distinct().Any())
                 {
                     return GetMultipleKindProductsDiscount(priceToPay, skus);
                 }
-                if (skus.Distinct().Any())
+                if (!skus.Distinct().Any())
                 {
                     return GetOneKindProductsDiscount(priceToPay, skus);
                 }
