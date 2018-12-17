@@ -25,10 +25,26 @@ namespace BeFaster.App.Solutions.CHK
                 priceToPay += Product.ProductPrice[charachter];
             }
 
-            //foreach (var count in counts)
-            //{
-            //    productCounter += skus.Count(x => x == count.Key);
-            //}
+            foreach (var count in counts)
+            {
+                if (count.Key == 'A' && count.Value > 2)
+                {
+                    if (count.Value % 8 <= 1)
+                    {
+                        priceToPay -= 70;
+                    }
+
+                    else if (count.Value % 5 <= 2)
+                    {
+                        priceToPay -= 50 * (count.Value / 5);
+                    }
+
+                    else if (count.Value % 3 <= 1)
+                    {
+                        priceToPay -= 20;
+                    }
+                }
+            }
 
             //if (skus.Contains('A') && productCounter > 2)
             //{
