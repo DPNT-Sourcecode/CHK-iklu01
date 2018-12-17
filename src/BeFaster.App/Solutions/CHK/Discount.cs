@@ -15,7 +15,7 @@ namespace BeFaster.App.Solutions.CHK
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
             var priceToPay = 0;
 
-            if (skus.Length > 1)
+            if (skus.Length == 1)
             {
                 foreach (var charachter in skusToCharacter)
                 {
@@ -26,23 +26,24 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Length > 1)
             {
-                if (!skus.Distinct().Any())
-                {
-                    return GetMultipleKindProductsDiscount(priceToPay, skus);
-                }
                 if (skus.Distinct().Any())
                 {
-                    return GetOneKindProductsDiscount(priceToPay, skus);
+                    return GetMultipleKindProductsDiscount(skus);
+                }
+                if (!skus.Distinct().Any())
+                {
+                    return GetOneKindProductsDiscount(skus);
                 }
             }
 
             return priceToPay;
         }
 
-        public static int GetOneKindProductsDiscount(int priceToPay, string skus)
+        public static int GetOneKindProductsDiscount(string skus)
         {
             var counts = skus.CountProducts();
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
+            var priceToPay = 0;
 
             foreach (var charachter in skusToCharacter)
             {
@@ -142,10 +143,11 @@ namespace BeFaster.App.Solutions.CHK
             return priceToPay;
         }
 
-        public static int GetMultipleKindProductsDiscount(int priceToPay, string skus)
+        public static int GetMultipleKindProductsDiscount(string skus)
         {
             var counts = skus.CountProducts();
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
+            var priceToPay = 0;
 
             foreach (var charachter in skusToCharacter)
             {
@@ -160,11 +162,6 @@ namespace BeFaster.App.Solutions.CHK
                     && skus.Contains('B'))
                 {
                     priceToPay -= 30 * (count.Value / 2);
-
-                    //if (countB % 2 == 1)
-                    //{
-                    //    priceToPay -= 15 * (countB / 2);
-                    //}
                 }
             }
             return priceToPay;
