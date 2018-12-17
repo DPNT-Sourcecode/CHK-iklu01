@@ -56,7 +56,7 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     priceToPay -= 30 * (productCounter / 2);
                 }
-                if (productCounter % 2 <= 1)
+                else if (productCounter % 2 <= 1)
                 {
                     priceToPay -= 15 * (productCounter / 2);
                 }
@@ -157,3 +157,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
