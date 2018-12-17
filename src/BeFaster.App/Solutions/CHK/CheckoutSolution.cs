@@ -16,7 +16,7 @@ namespace BeFaster.App.Solutions.CHK
             {
                 if (skus.Distinct().Any())
                 {
-                    Discount.GetOneKindProductsDiscount(skus);
+                    Discount.GetOneKindProductsDiscount(priceToPay, skus);
                 }
                 else if (!skus.Distinct().Any())
                 {
