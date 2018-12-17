@@ -5,12 +5,11 @@ namespace BeFaster.App.Solutions.CHK
 {
     public static class CheckoutSolution
     {
-        public static int priceToPay;
         public static int GetProductPrice(string skus)
         {
             Product.AddProductNumer();
             Product.AddProductPrice();
-            
+            var priceToPay = 0;
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
 
             if (skus.Length == 1)
@@ -23,14 +22,14 @@ namespace BeFaster.App.Solutions.CHK
             }
             else
             {
-                if (skus.Distinct().Any())
-                {
+                //if (skus.Distinct().Any())
+                //{
                     Discount.GetOneKindProductsDiscount(skus);
-                }
-                else if (!skus.Distinct().Any())
-                {
-                    Discount.GetMultipleKindProductsDiscount(skus);
-                }
+                //}
+                //else if (!skus.Distinct().Any())
+                //{
+                //    Discount.GetMultipleKindProductsDiscount(skus);
+                //}
             }
 
             return priceToPay;
