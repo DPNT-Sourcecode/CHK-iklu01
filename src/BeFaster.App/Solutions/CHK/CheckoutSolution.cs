@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -11,24 +12,22 @@ namespace BeFaster.App.Solutions.CHK
             var priceToPay = 0;
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
 
-            if (skus.Length == 1)
+            foreach (var charachter in skusToCharacter)
             {
-                foreach (var charachter in skusToCharacter)
-                {
-                    Product.ProductNumber[charachter]++;
-                    priceToPay += Product.ProductPrice[charachter];
-                }
+                Product.ProductNumber[charachter]++;
+                priceToPay += Product.ProductPrice[charachter];
             }
-            else
+            
+            if (skus.Length > 1)
             {
-                //if (skus.Distinct().Any())
-                //{
-                   return Discount.GetOneKindProductsDiscount(skus);
-                //}
-                //else if (!skus.Distinct().Any())
-                //{
-                //    Discount.GetMultipleKindProductsDiscount(skus);
-                //}
+                if (skus.Distinct().Any())
+                {
+                    return Discount.GetOneKindProductsDiscount(priceToPay, skus);
+                }
+                if (!skus.Distinct().Any())
+                {
+                    return Discount.GetMultipleKindProductsDiscount(priceToPay, skus);
+                }
             }
 
             return priceToPay;

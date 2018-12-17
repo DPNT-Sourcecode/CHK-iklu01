@@ -10,17 +10,9 @@ namespace BeFaster.App.Solutions.CHK
             return skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
         }
 
-        public static int GetOneKindProductsDiscount(string skus)
+        public static int GetOneKindProductsDiscount(int priceToPay, string skus)
         {
             var counts = skus.CountProducts();
-            var skusToCharacter = skus.ToCharArray(0, skus.Length);
-            var priceToPay = 0;
-
-            foreach (var charachter in skusToCharacter)
-            {
-                Product.ProductNumber[charachter]++;
-                priceToPay += Product.ProductPrice[charachter];
-            }
 
             foreach (var count in counts)
             {
@@ -114,9 +106,8 @@ namespace BeFaster.App.Solutions.CHK
             return priceToPay;
         }
 
-        public static int GetMultipleKindProductsDiscount(string skus)
+        public static int GetMultipleKindProductsDiscount(int priceToPay, string skus)
         {
-            var priceToPay = 0;
             return priceToPay;
         }
     }
