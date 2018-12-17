@@ -9,17 +9,11 @@ namespace BeFaster.App.Solutions.CHK
         public static Dictionary<char, int> CountProducts(this string skus) => skus.GroupBy(c => c)
             .ToDictionary(group => group.Key, group => group.Count());
 
-        public static bool ContainsLetter(string skus)
-        {
-            return skus.IndexOfAny("ABEFHKNPQRUV".ToCharArray()) != -1;
-        }
-
         public static int GetProduct(string skus)
         {
             Product.AddProductNumer();
             Product.AddProductPrice();
 
-            ContainsLetter(skus);
             var priceToPay = 0;
             var counts = skus.CountProducts();
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
