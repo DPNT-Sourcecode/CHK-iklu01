@@ -15,7 +15,7 @@ namespace BeFaster.App.Solutions.CHK
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
             var priceToPay = 0;
 
-            if (skus.Length < 1)
+            if (skus.Length > 1)
             {
                 foreach (var charachter in skusToCharacter)
                 {
@@ -156,10 +156,15 @@ namespace BeFaster.App.Solutions.CHK
             foreach (var count in counts)
             {
                 if (count.Key == 'E'
-                    && count.Value > 1
+                    && count.Value > 1 
                     && skus.Contains('B'))
                 {
                     priceToPay -= 30 * (count.Value / 2);
+
+                    //if (countB % 2 == 1)
+                    //{
+                    //    priceToPay -= 15 * (countB / 2);
+                    //}
                 }
             }
             return priceToPay;
