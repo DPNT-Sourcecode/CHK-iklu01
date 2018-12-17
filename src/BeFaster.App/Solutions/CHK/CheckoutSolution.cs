@@ -21,7 +21,7 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Length > 1)
             {
-                if (!skus.Distinct().Any())
+                if (skus.Distinct().Any())
                 {
                     Discount.GetOneKindProductsDiscount(priceToPay, skus);
                 }
@@ -47,3 +47,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
