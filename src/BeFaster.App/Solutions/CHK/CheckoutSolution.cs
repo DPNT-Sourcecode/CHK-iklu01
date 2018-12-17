@@ -52,10 +52,12 @@ namespace BeFaster.App.Solutions.CHK
             {
                 if (skus.Contains('B') && productCounter % 2 == 1)
                 {
-                    priceToPay -= 15 * (productCounter / 2);
+                    priceToPay -= 30 * (productCounter / 2);
                 }
-
-                priceToPay -= 30 * (productCounter / 2);
+                else if (!skus.Contains('B'))
+                {
+                    priceToPay -= 30 * (productCounter / 2);
+                }
             }
 
             if (skus.Contains('F') && productCounter > 2)
