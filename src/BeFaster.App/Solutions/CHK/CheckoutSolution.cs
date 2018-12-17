@@ -5,11 +5,12 @@ namespace BeFaster.App.Solutions.CHK
 {
     public static class CheckoutSolution
     {
+        public static int priceToPay;
         public static int GetProductPrice(string skus)
         {
             Product.AddProductNumer();
             Product.AddProductPrice();
-            var priceToPay = 0;
+            
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
 
             if (skus.Length == 1)
