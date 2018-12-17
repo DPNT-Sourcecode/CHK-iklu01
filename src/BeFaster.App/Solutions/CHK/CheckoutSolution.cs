@@ -15,20 +15,23 @@ namespace BeFaster.App.Solutions.CHK
             {
                 if (skus.Distinct().Any())
                 {
-                    Discount.GetOneKindProductsDiscount(priceToPay, skus);
+                    Discount.GetOneKindProductsDiscount(skus);
                 }
                 else if (!skus.Distinct().Any())
                 {
-                    Discount.GetMultipleKindProductsDiscount(priceToPay, skus);
+                    Discount.GetMultipleKindProductsDiscount(skus);
                 }
             }
+            else
 
-            var skusToCharacter = skus.ToCharArray(0, skus.Length);
-
-            foreach (var charachter in skusToCharacter)
             {
-                Product.ProductNumber[charachter]++;
-                priceToPay += Product.ProductPrice[charachter];
+                var skusToCharacter = skus.ToCharArray(0, skus.Length);
+
+                foreach (var charachter in skusToCharacter)
+                {
+                    Product.ProductNumber[charachter]++;
+                    priceToPay += Product.ProductPrice[charachter];
+                }
             }
 
             return priceToPay;
