@@ -15,7 +15,6 @@ namespace BeFaster.App.Solutions.CHK
         {
             Product.AddProductNumer();
             Product.AddProductPrice();
-            GetOneKindProductsDiscount(skus);
 
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
 
@@ -25,7 +24,7 @@ namespace BeFaster.App.Solutions.CHK
                 _priceToPay += Product.ProductPrice[charachter];
             }
 
-            return _priceToPay;
+            return GetOneKindProductsDiscount(skus);
         }
 
 
