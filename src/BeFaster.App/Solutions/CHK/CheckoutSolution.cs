@@ -9,6 +9,12 @@ namespace BeFaster.App.Solutions.CHK
         public static Dictionary<char, int> CountProducts(this string skus) => skus.GroupBy(c => c)
             .ToDictionary(group => group.Key, group => group.Count());
 
+        public static int CountLetters(string skus, char countableLetter)
+        {
+            var letters = skus.Count(x => x == countableLetter);
+            return letters;
+        }
+
         public static int GetProduct(string skus)
         {
             Product.AddProductNumer();
@@ -153,3 +159,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
