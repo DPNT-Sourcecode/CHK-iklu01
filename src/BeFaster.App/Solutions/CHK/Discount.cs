@@ -15,31 +15,40 @@ namespace BeFaster.App.Solutions.CHK
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
             var priceToPay = 0;
 
-            foreach (var charachter in skusToCharacter)
+            if (skus.Length < 1)
             {
-                Product.ProductNumber[charachter]++;
-                priceToPay += Product.ProductPrice[charachter];
+                foreach (var charachter in skusToCharacter)
+                {
+                    Product.ProductNumber[charachter]++;
+                    priceToPay += Product.ProductPrice[charachter];
+                }
             }
 
             if (skus.Length > 1)
             {
-                if (skus.Distinct().Any())
-                {
-                    return GetMultipleKindProductsDiscount(skus);
-                }
                 if (!skus.Distinct().Any())
                 {
-                    return GetOneKindProductsDiscount(skus);
+                    return GetMultipleKindProductsDiscount(priceToPay, skus);
+                }
+                if (skus.Distinct().Any())
+                {
+                    return GetOneKindProductsDiscount(priceToPay, skus);
                 }
             }
 
             return priceToPay;
         }
 
-        public static int GetOneKindProductsDiscount(string skus)
+        public static int GetOneKindProductsDiscount(int priceToPay, string skus)
         {
             var counts = skus.CountProducts();
-            var priceToPay = 0;
+            var skusToCharacter = skus.ToCharArray(0, skus.Length);
+
+            foreach (var charachter in skusToCharacter)
+            {
+                Product.ProductNumber[charachter]++;
+                priceToPay += Product.ProductPrice[charachter];
+            }
 
             foreach (var count in counts)
             {
@@ -133,23 +142,24 @@ namespace BeFaster.App.Solutions.CHK
             return priceToPay;
         }
 
-        public static int GetMultipleKindProductsDiscount(string skus)
+        public static int GetMultipleKindProductsDiscount(int priceToPay, string skus)
         {
             var counts = skus.CountProducts();
-            var priceToPay = 0;
+            var skusToCharacter = skus.ToCharArray(0, skus.Length);
+
+            foreach (var charachter in skusToCharacter)
+            {
+                Product.ProductNumber[charachter]++;
+                priceToPay += Product.ProductPrice[charachter];
+            }
 
             foreach (var count in counts)
             {
                 if (count.Key == 'E'
-                    && count.Value > 1 
+                    && count.Value > 1
                     && skus.Contains('B'))
                 {
                     priceToPay -= 30 * (count.Value / 2);
-
-                    //if (countB % 2 == 1)
-                    //{
-                    //    priceToPay -= 15 * (countB / 2);
-                    //}
                 }
             }
             return priceToPay;
