@@ -9,21 +9,29 @@ namespace BeFaster.App.Solutions.CHK
         public static Dictionary<char, int> CountProducts(this string skus) => skus.GroupBy(c => c)
             .ToDictionary(group => group.Key, group => group.Count());
 
-        public static int GetProduct(string skus)
+        private static int _priceToPay;
+
+        public static int GetProductPrice(string skus)
         {
             Product.AddProductNumer();
             Product.AddProductPrice();
+            GetOneKindProductsDiscount(skus);
 
-            var priceToPay = 0;
-            var counts = skus.CountProducts();
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
-            //var productCounter = 0;
 
             foreach (var charachter in skusToCharacter)
             {
                 Product.ProductNumber[charachter]++;
-                priceToPay += Product.ProductPrice[charachter];
+                _priceToPay += Product.ProductPrice[charachter];
             }
+
+            return _priceToPay;
+        }
+
+
+        public static int GetOneKindProductsDiscount(string skus)
+        {
+            var counts = skus.CountProducts();
 
             foreach (var count in counts)
             {
@@ -31,36 +39,25 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Value % 8 <= 1)
                     {
-                        priceToPay -= 70;
+                        _priceToPay -= 70;
                     }
 
                     else if (count.Value % 5 <= 2)
                     {
-                        priceToPay -= 50 * (count.Value / 5);
+                        _priceToPay -= 50 * (count.Value / 5);
                     }
 
                     else if (count.Value % 3 <= 1)
                     {
-                        priceToPay -= 20;
+                        _priceToPay -= 20;
                     }
                 }
-
-                //if (count.Key == 'A' 
-                //    && skus.Contains('B'))
-                //{
-                //    priceToPay -= 30 * (Product.ProductNumber['E'] / 2);
-
-                //    if (Product.ProductNumber['B'] % 2 == 1)
-                //    {
-                //        priceToPay -= 15 * (Product.ProductNumber['B'] / 2);
-                //    }
-                //}
 
                 if (count.Key == 'F' && count.Value > 2)
                 {
                     if (count.Value % 3 <= 2)
                     {
-                        priceToPay -= 10 * (count.Value / 3);
+                        _priceToPay -= 10 * (count.Value / 3);
                     }
                 }
 
@@ -70,13 +67,13 @@ namespace BeFaster.App.Solutions.CHK
                     {
                         if (count.Value % 5 == 0)
                         {
-                            priceToPay -= 10 * (count.Value / 5);
+                            _priceToPay -= 10 * (count.Value / 5);
                         }
                     }
 
                     else if (count.Value % 5 <= 4)
                     {
-                        priceToPay -= 5;
+                        _priceToPay -= 5;
                     }
                 }
 
@@ -84,7 +81,7 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Value % 2 <= 1)
                     {
-                        priceToPay -= 10 * (count.Value / 2);
+                        _priceToPay -= 10 * (count.Value / 2);
                     }
                 }
 
@@ -92,7 +89,7 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Value % 5 <= 4)
                     {
-                        priceToPay -= 50 * (count.Value / 5);
+                        _priceToPay -= 50 * (count.Value / 5);
                     }
                 }
 
@@ -100,7 +97,7 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Value % 3 <= 2)
                     {
-                        priceToPay -= 10;
+                        _priceToPay -= 10;
                     }
                 }
 
@@ -108,11 +105,11 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Value % 3 <= 2)
                     {
-                        priceToPay -= 20;
+                        _priceToPay -= 20;
                     }
                     else if (count.Value % 2 <= 1)
                     {
-                        priceToPay -= 10;
+                        _priceToPay -= 10;
                     }
                 }
 
@@ -120,7 +117,7 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Value % 4 <= 3)
                     {
-                        priceToPay -= 40 * (count.Value / 4);
+                        _priceToPay -= 40 * (count.Value / 4);
                     }
                 }
 
@@ -128,15 +125,17 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Value % 2 <= 1)
                     {
-                        priceToPay -= 15 * (count.Value / 2);
+                        _priceToPay -= 15 * (count.Value / 2);
                     }
                 }
             }
 
+            return _priceToPay;
+        }
 
-
-
-            return priceToPay;
+        public static int GetMultipleKindProductsDiscount(string skus)
+        {
+            return _priceToPay;
         }
 
         public static int Checkout(string skus)
@@ -151,7 +150,7 @@ namespace BeFaster.App.Solutions.CHK
                 return -1;
             }
 
-            return GetProduct(skus);
+            return GetProductPrice(skus);
         }
     }
 }
