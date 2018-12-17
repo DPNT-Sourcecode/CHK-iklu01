@@ -10,6 +10,32 @@ namespace BeFaster.App.Solutions.CHK
             return skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
         }
 
+        public static int GetDiscountRate(string skus)
+        {
+            var skusToCharacter = skus.ToCharArray(0, skus.Length);
+            var priceToPay = 0;
+
+            foreach (var charachter in skusToCharacter)
+            {
+                Product.ProductNumber[charachter]++;
+                priceToPay += Product.ProductPrice[charachter];
+            }
+
+            if (skus.Length > 1)
+            {
+                if (skus.Distinct().Any())
+                {
+                    return GetOneKindProductsDiscount(priceToPay, skus);
+                }
+                if (!skus.Distinct().Any())
+                {
+                    return GetMultipleKindProductsDiscount(priceToPay, skus);
+                }
+            }
+
+            return priceToPay;
+        }
+
         public static int GetOneKindProductsDiscount(int priceToPay, string skus)
         {
             var counts = skus.CountProducts();
