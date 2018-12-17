@@ -58,20 +58,6 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            //if (skus.Contains('B') 
-            //    && productCounter % 2 == 1
-            //    && productCounter > 1)
-            //{
-            //    if (skus.Contains('E') && productCounter > 1)
-            //    {
-            //        priceToPay -= 30 * (productCounter / 2);
-            //    }
-            //    else if (productCounter % 2 <= 1)
-            //    {
-            //        priceToPay -= 15 * (productCounter / 2);
-            //    }
-            //}
-
             if (skus.Contains('F') && productCounter > 2)
             {
                 if (productCounter % 3 <= 2)
