@@ -52,81 +52,81 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                else if (count.Key == 'F' && count.Value > 2)
-                {
-                    if (count.Value % 3 <= 2)
-                    {
-                        _priceToPay -= 10 * (count.Value / 3);
-                    }
-                }
+                //if (count.Key == 'F' && count.Value > 2)
+                //{
+                //    if (count.Value % 3 <= 2)
+                //    {
+                //        _priceToPay -= 10 * (count.Value / 3);
+                //    }
+                //}
 
-                else if (count.Key == 'H' && count.Value > 4)
-                {
-                    if (count.Value >= 10)
-                    {
-                        if (count.Value % 5 == 0)
-                        {
-                            _priceToPay -= 10 * (count.Value / 5);
-                        }
-                    }
+                //if (count.Key == 'H' && count.Value > 4)
+                //{
+                //    if (count.Value >= 10)
+                //    {
+                //        if (count.Value % 5 == 0)
+                //        {
+                //            _priceToPay -= 10 * (count.Value / 5);
+                //        }
+                //    }
 
-                    else if (count.Value % 5 <= 4)
-                    {
-                        _priceToPay -= 5;
-                    }
-                }
+                //    else if (count.Value % 5 <= 4)
+                //    {
+                //        _priceToPay -= 5;
+                //    }
+                //}
 
-                else if (count.Key == 'K' && count.Value > 1)
-                {
-                    if (count.Value % 2 <= 1)
-                    {
-                        _priceToPay -= 10 * (count.Value / 2);
-                    }
-                }
+                //if (count.Key == 'K' && count.Value > 1)
+                //{
+                //    if (count.Value % 2 <= 1)
+                //    {
+                //        _priceToPay -= 10 * (count.Value / 2);
+                //    }
+                //}
 
-                else if (count.Key == 'P' && count.Value > 4)
-                {
-                    if (count.Value % 5 <= 4)
-                    {
-                        _priceToPay -= 50 * (count.Value / 5);
-                    }
-                }
+                //if (count.Key == 'P' && count.Value > 4)
+                //{
+                //    if (count.Value % 5 <= 4)
+                //    {
+                //        _priceToPay -= 50 * (count.Value / 5);
+                //    }
+                //}
 
-                else if (count.Key == 'Q' && count.Value > 2)
-                {
-                    if (count.Value % 3 <= 2)
-                    {
-                        _priceToPay -= 10;
-                    }
-                }
+                //if (count.Key == 'Q' && count.Value > 2)
+                //{
+                //    if (count.Value % 3 <= 2)
+                //    {
+                //        _priceToPay -= 10;
+                //    }
+                //}
 
-                else if (count.Key == 'V' && count.Value > 1)
-                {
-                    if (count.Value % 3 <= 2)
-                    {
-                        _priceToPay -= 20;
-                    }
-                    else if (count.Value % 2 <= 1)
-                    {
-                        _priceToPay -= 10;
-                    }
-                }
+                //if (count.Key == 'V' && count.Value > 1)
+                //{
+                //    if (count.Value % 3 <= 2)
+                //    {
+                //        _priceToPay -= 20;
+                //    }
+                //    else if (count.Value % 2 <= 1)
+                //    {
+                //        _priceToPay -= 10;
+                //    }
+                //}
 
-                else if (count.Key == 'U' && count.Value > 3)
-                {
-                    if (count.Value % 4 <= 3)
-                    {
-                        _priceToPay -= 40 * (count.Value / 4);
-                    }
-                }
+                //if (count.Key == 'U' && count.Value > 3)
+                //{
+                //    if (count.Value % 4 <= 3)
+                //    {
+                //        _priceToPay -= 40 * (count.Value / 4);
+                //    }
+                //}
 
-                else if (count.Key == 'B' && count.Value > 1)
-                {
-                    if (count.Value % 2 <= 1)
-                    {
-                        _priceToPay -= 15 * (count.Value / 2);
-                    }
-                }
+                //if (count.Key == 'B' && count.Value > 1)
+                //{
+                //    if (count.Value % 2 <= 1)
+                //    {
+                //        _priceToPay -= 15 * (count.Value / 2);
+                //    }
+                //}
             }
 
             return _priceToPay;
