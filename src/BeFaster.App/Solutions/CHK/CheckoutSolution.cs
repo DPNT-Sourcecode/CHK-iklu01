@@ -30,7 +30,7 @@ namespace BeFaster.App.Solutions.CHK
                 productCounter = skus.Count(x => x == count.Key);
             }
 
-            if (skus.Contains('A') && productCounter > 2)
+            if (Product.ProductNumber.ContainsKey('A') && productCounter > 2)
             {
                 if (productCounter % 8 <= 1)
                 {
@@ -48,17 +48,17 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('E') && productCounter > 1)
+            if (Product.ProductNumber.ContainsKey('E') && productCounter > 1)
             {
                 priceToPay -= 30 * (productCounter / 2);
 
-                if (skus.Contains('B') && productCounter % 2 == 1)
+                if (Product.ProductNumber.ContainsKey('B') && productCounter % 2 == 1)
                 {
                     priceToPay -= 15 * (productCounter / 2);
                 }
             }
 
-            if (skus.Contains('F') && productCounter > 2)
+            if (Product.ProductNumber.ContainsKey('F') && productCounter > 2)
             {
                 if (productCounter % 3 <= 2)
                 {
@@ -66,7 +66,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('H') && productCounter > 4)
+            if (Product.ProductNumber.ContainsKey('H') && productCounter > 4)
             {
                 if (productCounter >= 10)
                 {
@@ -82,7 +82,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('K') && productCounter > 1)
+            if (Product.ProductNumber.ContainsKey('K') && productCounter > 1)
             {
                 if (productCounter % 2 <= 1)
                 {
@@ -90,7 +90,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('P') && productCounter > 4)
+            if (Product.ProductNumber.ContainsKey('P') && productCounter > 4)
             {
                 if (productCounter % 5 <= 4)
                 {
@@ -98,7 +98,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('Q') && productCounter > 2)
+            if (Product.ProductNumber.ContainsKey('Q') && productCounter > 2)
             {
                 if (productCounter % 3 <= 2)
                 {
@@ -106,7 +106,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('V') && productCounter > 1)
+            if (Product.ProductNumber.ContainsKey('V') && productCounter > 1)
             {
                 if (productCounter % 3 <= 2)
                 {
@@ -118,7 +118,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('U') && productCounter > 3)
+            if (Product.ProductNumber.ContainsKey('U') && productCounter > 3)
             {
                 if (productCounter % 4 <= 3)
                 {
@@ -126,7 +126,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            else if (skus.Contains('B') && productCounter > 1)
+            else if (Product.ProductNumber.ContainsKey('B') && productCounter > 1)
             {
                 if (productCounter % 2 <= 1)
                 {
