@@ -18,6 +18,7 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     Product.ProductNumber[charachter]++;
                     priceToPay += Product.ProductPrice[charachter];
+                    return priceToPay;
                 }
             }
             else
