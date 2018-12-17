@@ -51,11 +51,11 @@ namespace BeFaster.App.Solutions.CHK
             if (Product.ProductNumber['E'] > 1 && skus.Contains('B'))
             {
                 priceToPay -= 30 * (Product.ProductNumber['E'] / 2);
+                Product.ProductNumber['B']--;
 
                 if (Product.ProductNumber['B'] % 2 == 1)
                 {
                     priceToPay -= 15 * (Product.ProductNumber['B'] / 2);
-                    Product.ProductNumber['B']--;
                 }
             }
 
