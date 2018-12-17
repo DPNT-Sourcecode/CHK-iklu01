@@ -23,13 +23,12 @@ namespace BeFaster.App.Solutions.CHK
                 priceToPay += Product.ProductPrice[charachter];
             }
 
-            return skus.Length > 1 ? GetOneKindProductsDiscount(skus) : priceToPay;
+            return skus.Length > 1 ? GetOneKindProductsDiscount(priceToPay, skus) : priceToPay;
         }
 
 
-        public static int GetOneKindProductsDiscount(string skus)
+        public static int GetOneKindProductsDiscount(int priceToPay, string skus)
         {
-            var priceToPay = 0;
             var counts = skus.CountProducts();
 
             foreach (var count in counts)
