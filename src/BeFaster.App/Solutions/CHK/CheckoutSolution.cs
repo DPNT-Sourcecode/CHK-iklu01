@@ -19,6 +19,7 @@ namespace BeFaster.App.Solutions.CHK
             Product.AddProductNumer();
             Product.AddProductPrice();
 
+            ContainsLetter(skus);
             var priceToPay = 0;
             var counts = skus.CountProducts();
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
