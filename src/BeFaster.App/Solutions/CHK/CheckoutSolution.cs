@@ -27,7 +27,7 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                productCounter = skus.Count(x => x == count.Key);
+                productCounter += skus.Count(x => x == count.Key);
             }
 
             if (skus.Contains('A') && productCounter > 2)
