@@ -24,7 +24,7 @@ namespace BeFaster.App.Solutions.CHK
                 _priceToPay += Product.ProductPrice[charachter];
             }
 
-            return GetOneKindProductsDiscount(skus);
+            return skus.Length > 1 ? GetOneKindProductsDiscount(skus) : _priceToPay;
         }
 
 
