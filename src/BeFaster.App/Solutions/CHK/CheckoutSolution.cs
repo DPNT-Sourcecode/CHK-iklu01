@@ -52,7 +52,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                if (count.Key == 'F' && count.Value > 2)
+                else if (count.Key == 'F' && count.Value > 2)
                 {
                     if (count.Value % 3 <= 2)
                     {
@@ -60,7 +60,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                if (count.Key == 'H' && count.Value > 4)
+                else if (count.Key == 'H' && count.Value > 4)
                 {
                     if (count.Value >= 10)
                     {
@@ -76,7 +76,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                if (count.Key == 'K' && count.Value > 1)
+                else if (count.Key == 'K' && count.Value > 1)
                 {
                     if (count.Value % 2 <= 1)
                     {
@@ -84,7 +84,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                if (count.Key == 'P' && count.Value > 4)
+                else if (count.Key == 'P' && count.Value > 4)
                 {
                     if (count.Value % 5 <= 4)
                     {
@@ -92,7 +92,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                if (count.Key == 'Q' && count.Value > 2)
+                else if (count.Key == 'Q' && count.Value > 2)
                 {
                     if (count.Value % 3 <= 2)
                     {
@@ -100,7 +100,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                if (count.Key == 'V' && count.Value > 1)
+                else if (count.Key == 'V' && count.Value > 1)
                 {
                     if (count.Value % 3 <= 2)
                     {
@@ -112,7 +112,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                if (count.Key == 'U' && count.Value > 3)
+                else if (count.Key == 'U' && count.Value > 3)
                 {
                     if (count.Value % 4 <= 3)
                     {
@@ -120,7 +120,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
 
-                if (count.Key == 'B' && count.Value > 1)
+                else if (count.Key == 'B' && count.Value > 1)
                 {
                     if (count.Value % 2 <= 1)
                     {
