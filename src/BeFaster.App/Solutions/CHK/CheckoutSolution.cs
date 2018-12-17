@@ -44,111 +44,97 @@ namespace BeFaster.App.Solutions.CHK
                         priceToPay -= 20;
                     }
                 }
+
+                //if (count.Key == 'A' 
+                //    && skus.Contains('B'))
+                //{
+                //    priceToPay -= 30 * (Product.ProductNumber['E'] / 2);
+
+                //    if (Product.ProductNumber['B'] % 2 == 1)
+                //    {
+                //        priceToPay -= 15 * (Product.ProductNumber['B'] / 2);
+                //    }
+                //}
+
+                if (count.Key == 'F' && count.Value > 2)
+                {
+                    if (count.Value % 3 <= 2)
+                    {
+                        priceToPay -= 10 * (count.Value / 3);
+                    }
+                }
+
+                if (count.Key == 'H' && count.Value > 4)
+                {
+                    if (count.Value >= 10)
+                    {
+                        if (count.Value % 5 == 0)
+                        {
+                            priceToPay -= 10 * (count.Value / 5);
+                        }
+                    }
+
+                    else if (count.Value % 5 <= 4)
+                    {
+                        priceToPay -= 5;
+                    }
+                }
+
+                if (count.Key == 'K' && count.Value > 1)
+                {
+                    if (count.Value % 2 <= 1)
+                    {
+                        priceToPay -= 10 * (count.Value / 2);
+                    }
+                }
+
+                if (count.Key == 'P' && count.Value > 4)
+                {
+                    if (count.Value % 5 <= 4)
+                    {
+                        priceToPay -= 50 * (count.Value / 5);
+                    }
+                }
+
+                if (count.Key == 'Q' && count.Value > 2)
+                {
+                    if (count.Value % 3 <= 2)
+                    {
+                        priceToPay -= 10;
+                    }
+                }
+
+                if (count.Key == 'V' && count.Value > 1)
+                {
+                    if (count.Value % 3 <= 2)
+                    {
+                        priceToPay -= 20;
+                    }
+                    else if (count.Value % 2 <= 1)
+                    {
+                        priceToPay -= 10;
+                    }
+                }
+
+                if (count.Key == 'U' && count.Value > 3)
+                {
+                    if (count.Value % 4 <= 3)
+                    {
+                        priceToPay -= 40 * (count.Value / 4);
+                    }
+                }
+
+                if (count.Key == 'B' && count.Value > 1)
+                {
+                    if (count.Value % 2 <= 1)
+                    {
+                        priceToPay -= 15 * (count.Value / 2);
+                    }
+                }
             }
 
-            //if (skus.Contains('A') && productCounter > 2)
-            //{
-            //    if (productCounter % 8 <= 1)
-            //    {
-            //        priceToPay -= 70;
-            //    }
 
-            //    else if (productCounter % 5 <= 2)
-            //    {
-            //        priceToPay -= 50 * (productCounter / 5);
-            //    }
 
-            //    else if (productCounter % 3 <= 1)
-            //    {
-            //        priceToPay -= 20;
-            //    }
-            //}
-
-            //if (Product.ProductNumber['E'] > 1 && skus.Contains('B'))
-            //{
-            //    priceToPay -= 30 * (Product.ProductNumber['E'] / 2);
-
-            //    if (Product.ProductNumber['B'] % 2 == 1)
-            //    {
-            //        priceToPay -= 15 * (Product.ProductNumber['B'] / 2);
-            //    }
-            //}
-
-            //if (skus.Contains('F') && productCounter > 2)
-            //{
-            //    if (productCounter % 3 <= 2)
-            //    {
-            //        priceToPay -= 10 * (productCounter / 3);
-            //    }
-            //}
-
-            //if (skus.Contains('H') && productCounter > 4)
-            //{
-            //    if (productCounter >= 10)
-            //    {
-            //        if (productCounter % 5 == 0)
-            //        {
-            //            priceToPay -= 10 * (productCounter / 5);
-            //        }
-            //    }
-
-            //    else if (productCounter % 5 <= 4)
-            //    {
-            //        priceToPay -= 5;
-            //    }
-            //}
-
-            //if (skus.Contains('K') && productCounter > 1)
-            //{
-            //    if (productCounter % 2 <= 1)
-            //    {
-            //        priceToPay -= 10 * (productCounter / 2);
-            //    }
-            //}
-
-            //if (skus.Contains('P') && productCounter > 4)
-            //{
-            //    if (productCounter % 5 <= 4)
-            //    {
-            //        priceToPay -= 50 * (productCounter / 5);
-            //    }
-            //}
-
-            //if (skus.Contains('Q') && productCounter > 2)
-            //{
-            //    if (productCounter % 3 <= 2)
-            //    {
-            //        priceToPay -= 10;
-            //    }
-            //}
-
-            //if (skus.Contains('V') && productCounter > 1)
-            //{
-            //    if (productCounter % 3 <= 2)
-            //    {
-            //        priceToPay -= 20;
-            //    }
-            //    else if (productCounter % 2 <= 1)
-            //    {
-            //        priceToPay -= 10;
-            //    }
-            //}
-
-            //if (skus.Contains('U') && productCounter > 3)
-            //{
-            //    if (productCounter % 4 <= 3)
-            //    {
-            //        priceToPay -= 40 * (productCounter / 4);
-            //    }
-            //}
-
-            //if (skus.Contains('B') && productCounter > 1)
-            //{
-            //    if (productCounter % 2 <= 1)
-            //    {
-            //        priceToPay -= 15 * (productCounter / 2);
-            //    }
-            //}
 
             return priceToPay;
         }
