@@ -48,15 +48,17 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('E') && productCounter > 1)
+            if (skus.Contains('B') 
+                && productCounter % 2 == 1
+                && productCounter > 1)
             {
-                if (skus.Contains('B') && productCounter % 2 == 1)
+                if (skus.Contains('E') && productCounter > 1)
                 {
                     priceToPay -= 30 * (productCounter / 2);
                 }
-                else if (!skus.Contains('B'))
+                if (productCounter % 2 <= 1)
                 {
-                    priceToPay -= 30 * (productCounter / 2);
+                    priceToPay -= 15 * (productCounter / 2);
                 }
             }
 
@@ -128,13 +130,13 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            else if (skus.Contains('B') && productCounter > 1)
-            {
-                if (productCounter % 2 <= 1)
-                {
-                    priceToPay -= 15 * (productCounter / 2);
-                }
-            }
+            //else if (skus.Contains('B') && productCounter > 1)
+            //{
+            //    if (productCounter % 2 <= 1)
+            //    {
+            //        priceToPay -= 15 * (productCounter / 2);
+            //    }
+            //}
 
             return priceToPay;
         }
