@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -18,7 +19,16 @@ namespace BeFaster.App.Solutions.CHK
                 priceToPay += Product.ProductPrice[charachter];
             }
 
-            return skus.Length > 1 ? Discount.GetOneKindProductsDiscount(priceToPay, skus) : priceToPay;
+            if (skus.Length > 1)
+            {
+                if (skus.Distinct().Count() == 1)
+                {
+                    Discount.GetOneKindProductsDiscount(priceToPay, skus);
+                }
+                Discount.GetMultipleKindProductsDiscount(priceToPay, skus);
+            }
+
+            return priceToPay;
         }
 
         public static int Checkout(string skus)
