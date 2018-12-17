@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -18,14 +17,13 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     Product.ProductNumber[charachter]++;
                     priceToPay += Product.ProductPrice[charachter];
-                    return priceToPay;
                 }
             }
             else
             {
                 //if (skus.Distinct().Any())
                 //{
-                    Discount.GetOneKindProductsDiscount(skus);
+                   return Discount.GetOneKindProductsDiscount(skus);
                 //}
                 //else if (!skus.Distinct().Any())
                 //{
