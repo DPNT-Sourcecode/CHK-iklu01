@@ -147,7 +147,7 @@ namespace BeFaster.App.Solutions.CHK
         {
             var counts = skus.CountProducts();
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
-            var priceToPay = 0;
+            var priceToPay = Product.ProductPrice.Count;
 
             foreach (var charachter in skusToCharacter)
             {
