@@ -55,6 +55,7 @@ namespace BeFaster.App.Solutions.CHK
                 if (Product.ProductNumber['B'] % 2 == 1)
                 {
                     priceToPay -= 15 * (Product.ProductNumber['B'] / 2);
+                    Product.ProductNumber['B']--;
                 }
             }
 
@@ -126,13 +127,13 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            //else if (skus.Contains('B') && productCounter > 1)
-            //{
-            //    if (productCounter % 2 <= 1)
-            //    {
-            //        priceToPay -= 15 * (productCounter / 2);
-            //    }
-            //}
+            if (skus.Contains('B') && productCounter > 1)
+            {
+                if (productCounter % 2 <= 1)
+                {
+                    priceToPay -= 15 * (productCounter / 2);
+                }
+            }
 
             return priceToPay;
         }
