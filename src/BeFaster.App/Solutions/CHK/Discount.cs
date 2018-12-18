@@ -28,11 +28,11 @@ namespace BeFaster.App.Solutions.CHK
             {
                 if (!skus.Distinct().Any())
                 {
-                    return GetMultipleKindProductsDiscount(priceToPay, skus);
+                    GetMultipleKindProductsDiscount(priceToPay, skus);
                 }
                 if (skus.Distinct().Any())
                 {
-                    return GetOneKindProductsDiscount(priceToPay, skus);
+                    GetOneKindProductsDiscount(priceToPay, skus);
                 }
             }
 
@@ -139,7 +139,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            return CheckoutSolution.Checkout(skus);
+            return priceToPay;
         }
 
         public static int GetMultipleKindProductsDiscount(int priceToPay, string skus)
@@ -162,7 +162,7 @@ namespace BeFaster.App.Solutions.CHK
                     priceToPay -= 30 * (count.Value / 2);
                 }
             }
-            return CheckoutSolution.Checkout(skus);
+            return priceToPay;
         }
     }
 }
