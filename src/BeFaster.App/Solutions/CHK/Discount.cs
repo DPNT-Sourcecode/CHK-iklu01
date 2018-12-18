@@ -163,13 +163,18 @@ namespace BeFaster.App.Solutions.CHK
                     priceToPay -= 30 * (count.Value / 2);
                 }
 
-                //3N get one M free
-
                 if (count.Key == 'N'
                     && count.Value > 2
                     && skus.Contains('M'))
                 {
                     priceToPay -= 15 * (count.Value / 2);
+                }
+
+                if (count.Key == 'R'
+                    && count.Value > 2
+                    && skus.Contains('Q'))
+                {
+                    priceToPay -= 30 * (count.Value / 2);
                 }
             }
             return priceToPay;
