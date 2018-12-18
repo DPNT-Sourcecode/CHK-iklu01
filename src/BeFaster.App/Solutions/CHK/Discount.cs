@@ -24,15 +24,17 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            else if (skus.Length > 1 && !skus.Distinct().Any())
+            if (skus.Length > 1)
             {
-                return GetMultipleKindProductsDiscount(priceToPay, skus);
+                if (!skus.Distinct().Any())
+                {
+                    return GetMultipleKindProductsDiscount(priceToPay, skus);
+                }
 
-            }
-
-            else if (skus.Length > 1 && skus.Distinct().Any())
-            {
-                return GetOneKindProductsDiscount(priceToPay, skus);
+                if (skus.Distinct().Any())
+                {
+                    return GetOneKindProductsDiscount(priceToPay, skus);
+                }
             }
 
             return priceToPay;
@@ -155,7 +157,7 @@ namespace BeFaster.App.Solutions.CHK
             foreach (var count in counts)
             {
                 if (count.Key == 'E'
-                    && count.Value > 1
+                    && count.Value > 1 
                     && skus.Contains('B'))
                 {
                     priceToPay -= 30 * (count.Value / 2);
