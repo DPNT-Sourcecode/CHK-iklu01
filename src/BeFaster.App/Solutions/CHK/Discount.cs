@@ -24,13 +24,13 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Length > 1 && !skus.Distinct().Any())
+            else if (skus.Length > 1 && !skus.Distinct().Any())
             {
                 return GetMultipleKindProductsDiscount(priceToPay, skus);
 
             }
 
-            if (skus.Length > 1 && skus.Distinct().Any())
+            else if (skus.Length > 1 && skus.Distinct().Any())
             {
                 return GetOneKindProductsDiscount(priceToPay, skus);
             }
