@@ -28,11 +28,11 @@ namespace BeFaster.App.Solutions.CHK
             {
                 if (!skus.Distinct().Any())
                 {
-                    GetMultipleKindProductsDiscount(priceToPay, skus);
+                    return GetMultipleKindProductsDiscount(priceToPay, skus);
                 }
                 if (skus.Distinct().Any())
                 {
-                    GetOneKindProductsDiscount(priceToPay, skus);
+                    return GetOneKindProductsDiscount(priceToPay, skus);
                 }
             }
 
