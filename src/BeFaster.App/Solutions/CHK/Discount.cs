@@ -167,14 +167,14 @@ namespace BeFaster.App.Solutions.CHK
                     && count.Value > 2
                     && skus.Contains('M'))
                 {
-                    priceToPay -= 15 * (count.Value / 2);
+                    priceToPay -= 15 * (count.Value / 3);
                 }
 
                 if (count.Key == 'R'
                     && count.Value > 2
                     && skus.Contains('Q'))
                 {
-                    priceToPay -= 30 * (count.Value / 2);
+                    priceToPay -= 30 * (count.Value / 3);
                 }
             }
             return priceToPay;
