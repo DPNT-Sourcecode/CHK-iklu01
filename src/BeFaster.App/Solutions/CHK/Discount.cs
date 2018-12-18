@@ -88,7 +88,7 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Value >= 10)
                     {
-                        if (count.Value % 5 == 0)
+                        if (count.Value % 5 >= 0)
                         {
                             priceToPay -= 10 * (count.Value / 5);
                         }
@@ -181,3 +181,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
