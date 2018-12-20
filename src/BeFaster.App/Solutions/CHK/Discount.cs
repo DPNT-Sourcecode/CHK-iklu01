@@ -134,6 +134,7 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (count.Value > 4)
                 {
+
                     if (count.Key == 'H')
                     {
                         if (count.Value >= 10)
