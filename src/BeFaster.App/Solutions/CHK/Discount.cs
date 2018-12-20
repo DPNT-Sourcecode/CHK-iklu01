@@ -55,23 +55,20 @@ namespace BeFaster.App.Solutions.CHK
             {
                 if (count.Value > 1)
                 {
-                    if (count.Key == 'B')
+                    if (count.Value % 2 <= 1)
                     {
-                        if (count.Value % 2 <= 1)
+                        if (count.Key == 'B')
                         {
                             priceToPay -= 15 * (count.Value / 2);
                         }
-                    }
 
-                    else if (count.Key == 'K')
-                    {
-                        if (count.Value % 2 <= 1)
+                        else if (count.Key == 'K')
                         {
                             priceToPay -= 10 * (count.Value / 2);
                         }
                     }
 
-                    else if (count.Key == 'V')
+                    if (count.Key == 'V')
                     {
                         if (count.Value % 3 <= 2)
                         {
@@ -86,7 +83,20 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (count.Value > 2)
                 {
-                    if (count.Key == 'A')
+                    if (count.Value % 3 <= 2)
+                    {
+                        if (count.Key == 'F')
+                        {
+                            priceToPay -= 10 * (count.Value / 3);
+                        }
+
+                        else if (count.Key == 'Q')
+                        {
+                            priceToPay -= 10;
+                        }
+
+                    }
+                        if (count.Key == 'A')
                     {
                         if (count.Value % 8 <= 1)
                         {
@@ -101,22 +111,6 @@ namespace BeFaster.App.Solutions.CHK
                         else if (count.Value % 3 <= 1)
                         {
                             priceToPay -= 20;
-                        }
-                    }
-
-                    else if (count.Key == 'F')
-                    {
-                        if (count.Value % 3 <= 2)
-                        {
-                            priceToPay -= 10;
-                        }
-                    }
-
-                    else if (count.Key == 'Q')
-                    {
-                        if (count.Value % 3 <= 2)
-                        {
-                            priceToPay -= 10;
                         }
                     }
                 }
