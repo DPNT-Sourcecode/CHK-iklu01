@@ -42,7 +42,7 @@ namespace BeFaster.App.Solutions.CHK
 
         public static int GetOneKindProductsDiscount(int priceToPay, string skus)
         {
-            var counts = skus.CountProducts();
+            Dictionary<char, int> counts = skus.CountProducts();
             var skusToCharacter = skus.ToCharArray(0, skus.Length);
 
             foreach (var charachter in skusToCharacter)
@@ -96,7 +96,7 @@ namespace BeFaster.App.Solutions.CHK
                         }
 
                     }
-                        if (count.Key == 'A')
+                    if (count.Key == 'A')
                     {
                         if (count.Value % 8 <= 1)
                         {
