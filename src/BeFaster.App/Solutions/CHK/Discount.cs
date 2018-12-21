@@ -17,12 +17,60 @@ namespace BeFaster.App.Solutions.CHK
 
             //if (skus.Length == 1)
             //{
-            //    foreach (var charachter in skusToCharacter)
-            //    {
-            //        Product.ProductNumber[charachter]++;
-            //        priceToPay += Product.ProductPrice[charachter];
-            //    }
-            //}
+            foreach (var product in skusToCharacter)
+            {
+                Product.ProductNumber[product]++;
+
+                switch (product)
+                {
+                    case 'F':
+                    case 'H':
+                    case 'O':
+                    case 'Y':
+                        priceToPay = 10 * Product.ProductNumber[product];
+                        break;
+                    case 'D':
+                    case 'M':
+                        priceToPay = 15 * Product.ProductNumber[product];
+                        break;
+                    case 'C':
+                    case 'G':
+                    case 'T':
+                    case 'W':
+                        priceToPay = 20 * Product.ProductNumber[product];
+                        break;
+                    case 'B':
+                    case 'Q':
+                    case 'S':
+                        priceToPay = 30 * Product.ProductNumber[product];
+                        break;
+                    case 'I':
+                        priceToPay = 35 * Product.ProductNumber[product];
+                        break;
+                    case 'E':
+                    case 'N':
+                    case 'U':
+                        priceToPay = 40 * Product.ProductNumber[product];
+                        break;
+                    case 'A':
+                    case 'P':
+                    case 'R':
+                    case 'V':
+                    case 'Z':
+                        priceToPay = 50 * Product.ProductNumber[product];
+                        break;
+                    case 'J':
+                        priceToPay = 60 * Product.ProductNumber[product];
+                        break;
+                    case 'K':
+                        priceToPay = 80 * Product.ProductNumber[product];
+                        break;
+                    case 'L':
+                    case 'X':
+                        priceToPay = 90 * Product.ProductNumber[product];
+                        break;
+                }
+            }
 
             //if (skus.Length > 1)
             //{
