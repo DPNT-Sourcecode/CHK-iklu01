@@ -11,7 +11,7 @@ namespace BeFaster.App.Solutions.CHK
         {
             for (var product = 'A'; product <= 'Z'; product++)
             {
-                ProductNumber[product] = 0;
+                ProductNumber[product] = 1;
             }
         }
 
