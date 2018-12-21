@@ -20,6 +20,7 @@ namespace BeFaster.App.Solutions.CHK
             foreach (var product in skusToCharacter)
             {
                 Product.ProductNumber[product]++;
+                priceToPay = 0;
 
                 switch (product)
                 {
