@@ -6,7 +6,7 @@ namespace BeFaster.App.Solutions.CHK
     {
         public static int GetProductPrice(string skus)
         {
-            //Product.AddProductNumer();
+            Product.AddProductNumer();
             //Product.AddProductPrice();
 
             return Discount.GetDiscountRate(skus);

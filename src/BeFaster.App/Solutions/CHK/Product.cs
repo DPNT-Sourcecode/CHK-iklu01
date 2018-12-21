@@ -7,13 +7,13 @@ namespace BeFaster.App.Solutions.CHK
         public static Dictionary<char, int> ProductNumber = new Dictionary<char, int>();
         public static Dictionary<char, int> ProductPrice = new Dictionary<char, int>();
 
-        //public static void AddProductNumer()
-        //{
-        //    for (var product = 'A'; product <= 'Z'; product++)
-        //    {
-        //        ProductNumber[product] = 0;
-        //    }
-        //}
+        public static void AddProductNumer()
+        {
+            for (var product = 'A'; product <= 'Z'; product++)
+            {
+                ProductNumber[product] = 0;
+            }
+        }
 
         //public static void AddProductPrice()
         //{

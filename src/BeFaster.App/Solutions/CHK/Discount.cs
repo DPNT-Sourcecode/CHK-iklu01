@@ -22,47 +22,56 @@ namespace BeFaster.App.Solutions.CHK
             //{
             foreach (var product in skusToCharacter)
             {
-                ProductNumber[product]++;
+                Product.ProductNumber[product]++;
 
-                if (product == 'F' || product == 'H' || product == 'O' || product == 'Y')
+                switch (product)
                 {
-                    priceToPay += 10 * Product.ProductPrice[product];
-                }
-                else if (product == 'D' || product == 'M')
-                {
-                    priceToPay += 15 * Product.ProductPrice[product];
-                }
-                else if (product == 'C' || product == 'G' || product == 'T' || product == 'W')
-                {
-                    priceToPay += 20 * Product.ProductPrice[product];
-                }
-                else if (product == 'B' || product == 'Q' || product == 'S')
-                {
-                    priceToPay += 30 * Product.ProductPrice[product];
-                }
-                else if (product == 'I')
-                {
-                    priceToPay += 35 * Product.ProductPrice[product];
-                }
-                else if (product == 'E' || product == 'N' || product == 'U')
-                {
-                    priceToPay += 40 * Product.ProductPrice[product];
-                }
-                else if (product == 'A' || product == 'P' || product == 'R' || product == 'V' || product == 'Z')
-                {
-                    priceToPay += 50 * Product.ProductPrice[product];
-                }
-                else if (product == 'J')
-                {
-                    priceToPay += 60 * Product.ProductPrice[product];
-                }
-                else if (product == 'K')
-                {
-                    priceToPay += 80 * Product.ProductPrice[product];
-                }
-                else if (product == 'L' || product == 'X')
-                {
-                    priceToPay += 90 * Product.ProductPrice[product];
+                    case 'F':
+                    case 'H':
+                    case 'O':
+                    case 'Y':
+                        priceToPay += 10 * Product.ProductPrice[product];
+                        break;
+                    case 'D':
+                    case 'M':
+                        priceToPay += 15 * Product.ProductPrice[product];
+                        break;
+                    case 'C':
+                    case 'G':
+                    case 'T':
+                    case 'W':
+                        priceToPay += 20 * Product.ProductPrice[product];
+                        break;
+                    case 'B':
+                    case 'Q':
+                    case 'S':
+                        priceToPay += 30 * Product.ProductPrice[product];
+                        break;
+                    case 'I':
+                        priceToPay += 35 * Product.ProductPrice[product];
+                        break;
+                    case 'E':
+                    case 'N':
+                    case 'U':
+                        priceToPay += 40 * Product.ProductPrice[product];
+                        break;
+                    case 'A':
+                    case 'P':
+                    case 'R':
+                    case 'V':
+                    case 'Z':
+                        priceToPay += 50 * Product.ProductPrice[product];
+                        break;
+                    case 'J':
+                        priceToPay += 60 * Product.ProductPrice[product];
+                        break;
+                    case 'K':
+                        priceToPay += 80 * Product.ProductPrice[product];
+                        break;
+                    case 'L':
+                    case 'X':
+                        priceToPay += 90 * Product.ProductPrice[product];
+                        break;
                 }
             }
 
