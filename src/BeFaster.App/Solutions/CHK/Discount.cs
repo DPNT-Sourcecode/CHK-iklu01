@@ -1,23 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 namespace BeFaster.App.Solutions.CHK
 {
     public static class Discount
     {
-        public static Dictionary<char, int> CountProducts(this string skus)
-        {
-            return skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
-        }
-
         public static int GetDiscountRate(string skus)
         {
-            var skusToCharacter = skus.ToCharArray(0, skus.Length);
+            Product.InitializeProductList();
+            var productCounter = skus.ToCharArray(0, skus.Length);
             var priceToPay = 0;
+            var discount = 0;
+            var numberOfEachProduct = skus.Count(char.IsLetter); ;
 
-            //if (skus.Length == 1)
-            //{
-            foreach (var product in skusToCharacter)
+            foreach (var product in productCounter)
             {
                 Product.ProductNumber[product]++;
 
@@ -27,47 +22,47 @@ namespace BeFaster.App.Solutions.CHK
                     case 'H':
                     case 'O':
                     case 'Y':
-                        priceToPay += 10 * Product.ProductPrice[product];
+                        priceToPay += 10 * Product.ProductPrice[product] - discount;
                         break;
                     case 'D':
                     case 'M':
-                        priceToPay += 15 * Product.ProductPrice[product];
+                        priceToPay += 15 * Product.ProductPrice[product] - discount;
                         break;
                     case 'C':
                     case 'G':
                     case 'T':
                     case 'W':
-                        priceToPay += 20 * Product.ProductPrice[product];
+                        priceToPay += 20 * Product.ProductPrice[product] - discount;
                         break;
                     case 'B':
                     case 'Q':
                     case 'S':
-                        priceToPay += 30 * Product.ProductPrice[product];
+                        priceToPay += 30 * Product.ProductPrice[product] - discount;
                         break;
                     case 'I':
-                        priceToPay += 35 * Product.ProductPrice[product];
+                        priceToPay += 35 * Product.ProductPrice[product] - discount;
                         break;
                     case 'E':
                     case 'N':
                     case 'U':
-                        priceToPay += 40 * Product.ProductPrice[product];
+                        priceToPay += 40 * Product.ProductPrice[product] - discount;
                         break;
                     case 'A':
                     case 'P':
                     case 'R':
                     case 'V':
                     case 'Z':
-                        priceToPay += 50 * Product.ProductPrice[product];
+                        priceToPay += 50 * Product.ProductPrice[product] - discount;
                         break;
                     case 'J':
-                        priceToPay += 60 * Product.ProductPrice[product];
+                        priceToPay += 60 * Product.ProductPrice[product] - discount;
                         break;
                     case 'K':
-                        priceToPay += 80 * Product.ProductPrice[product];
+                        priceToPay += 80 * Product.ProductPrice[product] - discount;
                         break;
                     case 'L':
                     case 'X':
-                        priceToPay += 90 * Product.ProductPrice[product];
+                        priceToPay += 90 * Product.ProductPrice[product] - discount;
                         break;
                 }
             }
