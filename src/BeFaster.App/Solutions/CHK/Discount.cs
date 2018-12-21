@@ -181,9 +181,7 @@ namespace BeFaster.App.Solutions.CHK
             foreach (var count in counts)
             {
                 if (count.Key == 'E' 
-                    && count.Value > 1 
-                    && skus.Contains('B')
-                    && count.Value == 1)
+                    && count.Value > 1)
                 {
                     priceToPay -= 30 * (count.Value / 2);
                 }
