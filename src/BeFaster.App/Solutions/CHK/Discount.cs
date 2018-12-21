@@ -5,8 +5,8 @@ namespace BeFaster.App.Solutions.CHK
 {
     public static class Discount
     {
-        //public static Dictionary<char, int> ProductNumber = new Dictionary<char, int>();
-        //public static Dictionary<char, int> ProductPrice = new Dictionary<char, int>();
+        public static Dictionary<char, int> ProductNumber = new Dictionary<char, int>();
+        public static Dictionary<char, int> ProductPrice = new Dictionary<char, int>();
 
         public static Dictionary<char, int> CountProducts(this string skus)
         {
@@ -22,7 +22,7 @@ namespace BeFaster.App.Solutions.CHK
             //{
             foreach (var product in skusToCharacter)
             {
-                Product.ProductNumber[product]++;
+                ProductNumber[product]++;
 
                 if (product == 'F' || product == 'H' || product == 'O' || product == 'Y')
                 {
