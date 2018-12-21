@@ -27,47 +27,47 @@ namespace BeFaster.App.Solutions.CHK
                     case 'H':
                     case 'O':
                     case 'Y':
-                        priceToPay = 10 * Product.ProductNumber[product];
+                        priceToPay += 10 * product;
                         break;
                     case 'D':
                     case 'M':
-                        priceToPay = 15 * Product.ProductNumber[product];
+                        priceToPay += 15 * product;
                         break;
                     case 'C':
                     case 'G':
                     case 'T':
                     case 'W':
-                        priceToPay = 20 * Product.ProductNumber[product];
+                        priceToPay += 20 * product;
                         break;
                     case 'B':
                     case 'Q':
                     case 'S':
-                        priceToPay = 30 * Product.ProductNumber[product];
+                        priceToPay += 30 * product;
                         break;
                     case 'I':
-                        priceToPay = 35 * Product.ProductNumber[product];
+                        priceToPay += 35 * product;
                         break;
                     case 'E':
                     case 'N':
                     case 'U':
-                        priceToPay = 40 * Product.ProductNumber[product];
+                        priceToPay += 40 * product;
                         break;
                     case 'A':
                     case 'P':
                     case 'R':
                     case 'V':
                     case 'Z':
-                        priceToPay = 50 * Product.ProductNumber[product];
+                        priceToPay += 50 * product;
                         break;
                     case 'J':
-                        priceToPay = 60 * Product.ProductNumber[product];
+                        priceToPay += 60 * product;
                         break;
                     case 'K':
-                        priceToPay = 80 * Product.ProductNumber[product];
+                        priceToPay += 80 * product;
                         break;
                     case 'L':
                     case 'X':
-                        priceToPay = 90 * Product.ProductNumber[product];
+                        priceToPay += 90 * product;
                         break;
                 }
             }
