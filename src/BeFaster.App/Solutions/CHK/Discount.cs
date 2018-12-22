@@ -1,156 +1,217 @@
-﻿namespace BeFaster.App.Solutions.CHK
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace BeFaster.App.Solutions.CHK
 {
     public static class Discount
     {
-        public static int GetBasePrice(string skus)
+        public static Dictionary<char, int> CountProducts(this string skus)
         {
-            Product.InitializeProductList();
-            var productCounter = skus.ToCharArray(0, skus.Length);
-            var priceToPay = 0;
-
-            foreach (var product in productCounter)
-            {
-                Product.ProductNumber[product]++;
-
-                switch (product)
-                {
-                    case 'F':
-                    case 'H':
-                    case 'O':
-                    case 'Y':
-                        priceToPay += 10 * Product.ProductPrice[product];
-                        break;
-                    case 'D':
-                    case 'M':
-                        priceToPay += 15 * Product.ProductPrice[product];
-                        break;
-                    case 'C':
-                    case 'G':
-                    case 'T':
-                    case 'W':
-                        priceToPay += 20 * Product.ProductPrice[product];
-                        break;
-                    case 'B':
-                    case 'Q':
-                    case 'S':
-                        priceToPay += 30 * Product.ProductPrice[product];
-                        break;
-                    case 'I':
-                        priceToPay += 35 * Product.ProductPrice[product];
-                        break;
-                    case 'E':
-                    case 'N':
-                    case 'U':
-                        priceToPay += 40 * Product.ProductPrice[product];
-                        break;
-                    case 'A':
-                    case 'P':
-                    case 'R':
-                    case 'V':
-                    case 'Z':
-                        priceToPay += 50 * Product.ProductPrice[product];
-                        break;
-                    case 'J':
-                        priceToPay += 60 * Product.ProductPrice[product];
-                        break;
-                    case 'K':
-                        priceToPay += 80 * Product.ProductPrice[product];
-                        break;
-                    case 'L':
-                    case 'X':
-                        priceToPay += 90 * Product.ProductPrice[product];
-                        break;
-                }
-            }
-
-            return GetDiscount(productCounter, skus, priceToPay);
+            return skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
         }
 
-        public static int GetDiscount(char[] productCounter, string skus, int priceToPay)
+        public static int GetDiscountRate(string skus)
         {
-            int counterA = 0, counterB = 0, counterE = 0, counterF = 0, counterH = 0, counterK = 0, counterM = 0,
-                counterN = 0, counterP = 0, counterQ = 0, counterR = 0, counterU = 0, counterV = 0;
+            var counts = skus.CountProducts();
+            var products = skus.ToCharArray(0, skus.Length);
+            var priceToPay = 0;
 
-            foreach (var product in productCounter)
+            if (skus.Length == 1)
             {
-                switch (product)
+                foreach (var product in products)
                 {
-                    case 'A':
-                        counterA++;
-                        break;
-                    case 'B':
-                        counterB++;
-                        break;
-                    case 'E':
-                        counterE++;
-                        break;
-                    case 'F':
-                        counterF++;
-                        break;
-                    case 'H':
-                        counterH++;
-                        break;
-                    case 'K':
-                        counterK++;
-                        break;
-                    case 'M':
-                        counterM++;
-                        break;
-                    case 'N':
-                        counterN++;
-                        break;
-                    case 'P':
-                        counterP++;
-                        break;
-                    case 'Q':
-                        counterQ++;
-                        break;
-                    case 'R':
-                        counterU++;
-                        break;
-                    case 'U':
-                        counterU++;
-                        break;
-                    case 'V':
-                        counterV++;
-                        break;
+                    Product.ProductNumber[product]++;
+                    priceToPay += Product.ProductPrice[product];
                 }
             }
-            //foreach (var product in skus.GroupBy(c => c))
-            //{
-            //    if (product.Key == 'A' && product.Count() % 3 <= 1)
-            //    {
-            //        priceToPay -= 20;
-            //    }
 
-            //    if (product.Key == 'B' && product.Count() % 2 == 0)
-            //    {
-            //        priceToPay -= 15;
-            //    }
+            if (skus.Length > 1)
+            {
+                if (skus.Distinct().Count() != 1)
+                {
+                    //return GetMultipleKindProductsDiscount(products, counts, priceToPay, skus);
+                    return GetOneKindProductsDiscount(products, counts, priceToPay, skus);
+                }
 
-            //    if (product.Key == 'F' && product.Count() % 2 == 0
-            //        || product.Key == 'K' && product.Count() % 2 == 0
-            //        || product.Key == 'V' && product.Count() % 2 == 0)
-            //    {
-            //        priceToPay -= 10;
-            //    }
+                if (skus.Distinct().Count() == 1)
+                {
+                    return GetOneKindProductsDiscount(products, counts, priceToPay, skus);
+                }
+            }
 
-            //    if (product.Key == 'P' && product.Count() % 5 == 0)
-            //    {
-            //        priceToPay -= 15;
-            //    }
+            return priceToPay;
+        }
 
-            //    if (product.Key == 'Q' && product.Count() % 3 == 0)
-            //    {
-            //        priceToPay -= 10;
-            //    }
+        public static int GetOneKindProductsDiscount(char[] products,
+            Dictionary<char, int> counts,
+            int priceToPay,
+            string skus)
+        {
+            foreach (var product in products)
+            {
+                Product.ProductNumber[product]++;
+                priceToPay += Product.ProductPrice[product];
+            }
 
-            //    if (product.Key == 'U' && product.Count() % 4 == 0)
-            //    {
-            //        priceToPay -= 40;
-            //    }
-            //}
+            foreach (var count in counts)
+            {
+                if (count.Key == 'E' && (count.Value > 1 && skus.Contains('B')))
+                {
+                    priceToPay -= 30 * (count.Value / 2);
+                }
 
+                if (count.Key == 'N' && (count.Value > 2 && skus.Contains('M')))
+                {
+                    priceToPay -= 15 * (count.Value / 3);
+                }
+
+                if (count.Key == 'R' && (count.Value > 2 && skus.Contains('Q')))
+                {
+                    priceToPay -= 30 * (count.Value / 3);
+                }
+
+                if (count.Value % 2 <= 1)
+                {
+                    if (count.Key == 'B')
+                    {
+                        priceToPay -= 15 * (count.Value / 2);
+                    }
+                    else if (count.Key == 'K')
+                    {
+                        priceToPay -= 10 * (count.Value / 2);
+                    }
+                }
+
+                if (count.Key == 'V')
+                {
+                    if (count.Value > 2)
+                    {
+                        if (count.Value % 5 == 0)
+                        {
+                            priceToPay -= 30 * (count.Value / 5);
+                        }
+
+                        else if (count.Value % 3 <= 2)
+                        {
+                            priceToPay -= 20 * (count.Value / 3);
+                        }
+                    }
+
+                    else if (count.Value % 2 == 0)
+                    {
+                        priceToPay -= 10;
+                    }
+                }
+
+                if (count.Value > 2)
+                {
+                    if (count.Value % 3 <= 2)
+                    {
+                        if (count.Key == 'F')
+                        {
+                            priceToPay -= 10 * (count.Value / 3);
+                        }
+                        else if (count.Key == 'Q')
+                        {
+                            priceToPay -= 10 * (count.Value / 3);
+                        }
+                    }
+
+                    if (count.Key == 'A')
+                    {
+                        if (count.Value % 8 <= 1)
+                        {
+                            priceToPay -= 70;
+                        }
+
+                        else if (count.Value % 5 <= 2)
+                        {
+                            priceToPay -= 50 * (count.Value / 5);
+                        }
+
+                        else if (count.Value % 3 <= 1)
+                        {
+                            priceToPay -= 20;
+                        }
+                    }
+                }
+
+                if (count.Value > 3)
+                {
+                    if (count.Key == 'U')
+                    {
+                        if (count.Value % 4 <= 3)
+                        {
+                            priceToPay -= 40 * (count.Value / 4);
+                        }
+                    }
+                }
+
+                if (count.Value > 4)
+                {
+                    switch (count.Key)
+                    {
+                        case 'H':
+                            if (count.Value >= 10
+                                && count.Value % 10 <= 4)
+                            {
+                                priceToPay -= 10 * (count.Value / 5);
+                            }
+
+                            else if (count.Value >= 15)
+                            {
+                                priceToPay -= 25;
+                            }
+
+                            else if (count.Value >= 5
+                                     && count.Value < 10)
+                            {
+                                priceToPay -= 5;
+                            }
+
+                            break;
+                        case 'P':
+                            if (count.Value % 5 <= 4)
+                            {
+                                priceToPay -= 50 * (count.Value / 5);
+                            }
+
+                            break;
+                    }
+                }
+            }
+
+            return priceToPay;
+        }
+
+        public static int GetMultipleKindProductsDiscount(char[] products,
+            Dictionary<char, int> counts,
+            int priceToPay,
+            string skus)
+        {
+            foreach (var product in products)
+            {
+                Product.ProductNumber[product]++;
+                priceToPay += Product.ProductPrice[product];
+            }
+
+            foreach (var count in counts)
+            {
+                //if (count.Key == 'E' && (count.Value > 1 && skus.Contains('B')))
+                //{
+                //    priceToPay -= 30 * (count.Value / 2);
+                //}
+
+                //if (count.Key == 'N' && (count.Value > 2 && skus.Contains('M')))
+                //{
+                //    priceToPay -= 15 * (count.Value / 3);
+                //}
+
+                //if (count.Key == 'R' && (count.Value > 2 && skus.Contains('Q')))
+                //{
+                //    priceToPay -= 30 * (count.Value / 3);
+                //}
+            }
             return priceToPay;
         }
     }
