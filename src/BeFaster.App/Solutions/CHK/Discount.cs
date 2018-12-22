@@ -67,16 +67,19 @@ namespace BeFaster.App.Solutions.CHK
                 if (skus.Contains('E') && (counterE > 1 && skus.Contains('B')))
                 {
                     priceToPay -= 30 * (counterE / 2);
+                    counterE--;
                 }
 
                 if (skus.Contains('N') && (counterN > 2 && skus.Contains('M')))
                 {
                     priceToPay -= 15 * (counterN / 3);
+                    counterN--;
                 }
 
                 if (skus.Contains('R') && (counterR > 2 && skus.Contains('Q')))
                 {
                     priceToPay -= 30 * (counterR / 3);
+                    counterR--;
                 }
 
                 if (count.Value % 2 <= 1)
