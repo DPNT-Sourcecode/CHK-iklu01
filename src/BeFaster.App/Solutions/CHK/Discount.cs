@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -24,7 +25,8 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetDiscount(char[] products, int priceToPay, string skus)
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
-            int counterB = 0, counterE = 0, counterM = 0, counterN = 0, counterR = 0, counterQ = 0;
+            int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
+            var disctint = string.Join("", skus.Distinct());
 
             foreach (var product in products)
             {
@@ -35,40 +37,62 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     case 'B': counterB++; break;
                     case 'E': counterE++; break;
-                    case 'M': counterM++; break;
                     case 'N': counterN++; break;
-                    case 'R': counterR++; break;
                     case 'Q': counterQ++; break;
+                    case 'R': counterR++; break;
                 }
             }
 
+            if (disctint.Contains('S')
+                || disctint.Contains('T')
+                || disctint.Contains('X')
+                || disctint.Contains('Y')
+                || disctint.Contains('Z')
+                && disctint.Length % 3 <= 2)
+            {
+                priceToPay = 45 * (skus.Length / 3);
+            }
+
             if (skus.Contains('E')
-                && counterE >= (counterB * 2)
-                && skus.Contains('B'))
+                && skus.Contains('B')
+                && counterE >= 2)
             {
                 priceToPay -= 30 * (counterE / 2);
             }
 
             if (skus.Contains('N')
-                && counterN >= (counterM * 3)
-                && skus.Contains('M'))
+                && skus.Contains('M')
+                && counterN >= 3)
             {
                 priceToPay -= 15 * (counterN / 3);
             }
 
             if (skus.Contains('R')
-                && counterR >= (counterQ * 3)
-                && skus.Contains('Q'))
+                && skus.Contains('Q')
+                && counterR >= 3)
             {
                 priceToPay -= 30 * (counterR / 3);
             }
 
-            
-
             foreach (var count in counts)
             {
+                //if (count.Key == 'S' 
+                //    || count.Key == 'T' 
+                //    || count.Key == 'Y')
+                //{
+                //    priceToPay += 20;
+                //}
+                //else if (count.Key == 'X')
+                //{
+                //    priceToPay += 17;
+                //}
+                //else if (count.Key == 'Z')
+                //{
+                //    priceToPay += 21;
+                //}
+
                 if (counterB % 2 <= 1
-                    && !skus.Contains('E'))
+                    && counterB > counterE)
                 {
                     if (count.Key == 'B')
                     {
@@ -101,7 +125,7 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Key == 'K')
                     {
-                        priceToPay -= 10 * (count.Value / 2);
+                        priceToPay -= 20 * (count.Value / 2);
                     }
                 }
 
@@ -113,8 +137,9 @@ namespace BeFaster.App.Solutions.CHK
                         {
                             priceToPay -= 10 * (count.Value / 3);
                         }
-                        else if (count.Key == 'Q'
-                                 && !skus.Contains('R'))
+
+                        if (count.Key == 'Q'
+                            && counterQ > counterR)
                         {
                             priceToPay -= 10 * (count.Value / 3);
                         }
@@ -141,13 +166,28 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (count.Value > 3)
                 {
-                    if (count.Key == 'U')
+                    //if (count.Key == 'U')
+                    //{
+                    //    if (count.Value % 4 <= 3)
+                    //    {
+                    //        priceToPay -= 40 * (count.Value / 4);
+                    //    }
+                    //}
+                    if (count.Key == 'S'
+                        || count.Key == 'T'
+                        || count.Key == 'Y')
                     {
-                        if (count.Value % 4 <= 3)
-                        {
-                            priceToPay -= 40 * (count.Value / 4);
-                        }
+                        priceToPay += 20;
                     }
+                    else if (count.Key == 'X')
+                    {
+                        priceToPay += 17;
+                    }
+                    else if (count.Key == 'Z')
+                    {
+                        priceToPay += 21;
+                    }
+
                 }
 
                 if (count.Value > 4)
@@ -172,7 +212,7 @@ namespace BeFaster.App.Solutions.CHK
                         }
                     }
 
-                    else if (count.Key == 'P')
+                    if (count.Key == 'P')
                     {
                         if (count.Value % 5 <= 4)
                         {
@@ -181,7 +221,6 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
             }
-
             return priceToPay;
         }
     }

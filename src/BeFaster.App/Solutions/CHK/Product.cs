@@ -24,22 +24,28 @@ namespace BeFaster.App.Solutions.CHK
                     case 'F':
                     case 'H':
                     case 'O':
-                    case 'Y':
                         ProductPrice[product] = 10;
                         break;
                     case 'D':
                     case 'M':
                         ProductPrice[product] = 15;
                         break;
+                    case 'X':
+                        ProductPrice[product] = 17;
+                        break;
                     case 'C':
                     case 'G':
+                    case 'S':
                     case 'T':
+                    case 'Y':
                     case 'W':
                         ProductPrice[product] = 20;
                         break;
+                    case 'Z':
+                        ProductPrice[product] = 21;
+                        break;
                     case 'B':
                     case 'Q':
-                    case 'S':
                         ProductPrice[product] = 30;
                         break;
                     case 'I':
@@ -54,17 +60,15 @@ namespace BeFaster.App.Solutions.CHK
                     case 'P':
                     case 'R':
                     case 'V':
-                    case 'Z':
                         ProductPrice[product] = 50;
                         break;
                     case 'J':
                         ProductPrice[product] = 60;
                         break;
                     case 'K':
-                        ProductPrice[product] = 80;
+                        ProductPrice[product] = 70;
                         break;
                     case 'L':
-                    case 'X':
                         ProductPrice[product] = 90;
                         break;
                 }
