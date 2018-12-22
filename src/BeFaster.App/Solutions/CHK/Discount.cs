@@ -47,7 +47,7 @@ namespace BeFaster.App.Solutions.CHK
             int priceToPay,
             string skus)
         {
-            int counterE = 0, counterN = 0, counterR = 0;
+            int counterB = 0, counterE = 0, counterN = 0, counterR = 0, counterQ = 0;
 
             foreach (var product in products)
             {
@@ -56,9 +56,11 @@ namespace BeFaster.App.Solutions.CHK
 
                 switch (product)
                 {
+                    case 'B': counterB++; break;
                     case 'E': counterE++; break;
                     case 'N': counterN++; break;
                     case 'R': counterR++; break;
+                    case 'Q': counterQ++; break;
                 }
             }
 
@@ -84,7 +86,7 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (count.Value % 2 <= 1)
                 {
-                    if (count.Key == 'B')
+                    if (count.Key == 'B' && counterE / counterB > 1)
                     {
                         priceToPay -= 15 * (count.Value / 2);
                     }
@@ -123,7 +125,7 @@ namespace BeFaster.App.Solutions.CHK
                         {
                             priceToPay -= 10 * (count.Value / 3);
                         }
-                        else if (count.Key == 'Q')
+                        else if (count.Key == 'Q' && counterR / counterQ > 3)
                         {
                             priceToPay -= 10 * (count.Value / 3);
                         }
