@@ -23,26 +23,12 @@ namespace BeFaster.App.Solutions.CHK
                     Product.ProductNumber[product]++;
                     priceToPay += Product.ProductPrice[product];
                 }
+                return priceToPay;
             }
-
-            if (skus.Length > 1)
-            {
-                if (skus.Distinct().Count() != 1)
-                {
-                    //return GetMultipleKindProductsDiscount(products, counts, priceToPay, skus);
-                    return GetOneKindProductsDiscount(products, counts, priceToPay, skus);
-                }
-
-                if (skus.Distinct().Count() == 1)
-                {
-                    return GetOneKindProductsDiscount(products, counts, priceToPay, skus);
-                }
-            }
-
-            return priceToPay;
+            return GetDiscount(products, counts, priceToPay, skus);
         }
 
-        public static int GetOneKindProductsDiscount(char[] products,
+        public static int GetDiscount(char[] products,
             Dictionary<char, int> counts,
             int priceToPay,
             string skus)
@@ -66,10 +52,10 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                if (skus.Contains('E') && (counterE > 1 && skus.Contains('B')))
+                if (skus.Contains('E') && (counterE >= (counterB * 2) && skus.Contains('B')))
                 {
                     priceToPay -= 30 * (counterE / 2);
-                    counterE--;
+                    counterE -= 2;
                 }
 
                 if (skus.Contains('N') && (counterN > 2 && skus.Contains('M')))
@@ -81,18 +67,14 @@ namespace BeFaster.App.Solutions.CHK
                 if (skus.Contains('R') && (counterR > 2 && skus.Contains('Q')))
                 {
                     priceToPay -= 30 * (counterR / 3);
-                    counterR--;
+                    counterR -= 3;
                 }
 
-                if (count.Value % 2 <= 1)
+                if (counterB % 2 <= 1 && !skus.Contains('E'))
                 {
-                    if (count.Key == 'B' && counterE / counterB > 1)
+                    if (count.Key == 'B')
                     {
                         priceToPay -= 15 * (count.Value / 2);
-                    }
-                    else if (count.Key == 'K')
-                    {
-                        priceToPay -= 10 * (count.Value / 2);
                     }
                 }
 
@@ -119,13 +101,21 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (count.Value > 2)
                 {
+                    if (count.Value % 2 <= 1)
+                    {
+                        if (count.Key == 'K')
+                        {
+                            priceToPay -= 10 * (count.Value / 2);
+                        }
+                    }
+
                     if (count.Value % 3 <= 2)
                     {
                         if (count.Key == 'F')
                         {
                             priceToPay -= 10 * (count.Value / 3);
                         }
-                        else if (count.Key == 'Q' && counterR / counterQ > 3)
+                        else if (count.Key == 'Q' && !skus.Contains('R'))
                         {
                             priceToPay -= 10 * (count.Value / 3);
                         }
