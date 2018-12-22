@@ -6,7 +6,7 @@ namespace BeFaster.App.Solutions.CHK
     {
         public static int GetProductPrice(string skus)
         {
-            return Discount.GetDiscountRate(skus);
+            return Discount.GetBasePrice(skus);
         }
 
         public static int Checkout(string skus)
