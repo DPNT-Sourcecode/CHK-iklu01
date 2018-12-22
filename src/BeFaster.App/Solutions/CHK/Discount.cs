@@ -47,27 +47,36 @@ namespace BeFaster.App.Solutions.CHK
             int priceToPay,
             string skus)
         {
+            int counterE = 0, counterN = 0, counterR = 0;
+
             foreach (var product in products)
             {
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
+
+                switch (product)
+                {
+                    case 'E': counterE++; break;
+                    case 'N': counterN++; break;
+                    case 'R': counterR++; break;
+                }
             }
 
             foreach (var count in counts)
             {
-                if (skus.Contains('B') && (count.Value > 1 && skus.Contains('B')))
+                if (skus.Contains('E') && (counterE > 1 && skus.Contains('B')))
                 {
-                    priceToPay -= 30 * (count.Value / 2);
+                    priceToPay -= 30 * (counterE / 2);
                 }
 
-                if (skus.Contains('N') && (count.Value > 2 && skus.Contains('M')))
+                if (skus.Contains('N') && (counterN > 2 && skus.Contains('M')))
                 {
-                    priceToPay -= 15 * (count.Value / 3);
+                    priceToPay -= 15 * (counterN / 3);
                 }
 
-                if (skus.Contains('R') && (count.Value > 2 && skus.Contains('Q')))
+                if (skus.Contains('R') && (counterR > 2 && skus.Contains('Q')))
                 {
-                    priceToPay -= 30 * (count.Value / 3);
+                    priceToPay -= 30 * (counterR / 3);
                 }
 
                 if (count.Value % 2 <= 1)
@@ -181,37 +190,6 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            return priceToPay;
-        }
-
-        public static int GetMultipleKindProductsDiscount(char[] products,
-            Dictionary<char, int> counts,
-            int priceToPay,
-            string skus)
-        {
-            foreach (var product in products)
-            {
-                Product.ProductNumber[product]++;
-                priceToPay += Product.ProductPrice[product];
-            }
-
-            foreach (var count in counts)
-            {
-                //if (count.Key == 'E' && (count.Value > 1 && skus.Contains('B')))
-                //{
-                //    priceToPay -= 30 * (count.Value / 2);
-                //}
-
-                //if (count.Key == 'N' && (count.Value > 2 && skus.Contains('M')))
-                //{
-                //    priceToPay -= 15 * (count.Value / 3);
-                //}
-
-                //if (count.Key == 'R' && (count.Value > 2 && skus.Contains('Q')))
-                //{
-                //    priceToPay -= 30 * (count.Value / 3);
-                //}
-            }
             return priceToPay;
         }
     }
