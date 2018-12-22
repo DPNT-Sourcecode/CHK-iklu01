@@ -55,17 +55,17 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                if (count.Key == 'E' && (count.Value > 1 && skus.Contains('B')))
+                if (skus.Contains('B') && (count.Value > 1 && skus.Contains('B')))
                 {
                     priceToPay -= 30 * (count.Value / 2);
                 }
 
-                if (count.Key == 'N' && (count.Value > 2 && skus.Contains('M')))
+                if (skus.Contains('N') && (count.Value > 2 && skus.Contains('M')))
                 {
                     priceToPay -= 15 * (count.Value / 3);
                 }
 
-                if (count.Key == 'R' && (count.Value > 2 && skus.Contains('Q')))
+                if (skus.Contains('R') && (count.Value > 2 && skus.Contains('Q')))
                 {
                     priceToPay -= 30 * (count.Value / 3);
                 }
