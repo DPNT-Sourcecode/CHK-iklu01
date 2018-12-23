@@ -27,10 +27,12 @@ namespace BeFaster.App.Solutions.CHK
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
-            var min = Product.ProductPrice.Values.Select(Convert.ToInt32).Min();
+            var min = 0;
 
             foreach (var product in products)
             {
+                min = Product.ProductPrice.Values.Select(Convert.ToInt32).Min();
+
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
 
@@ -128,7 +130,6 @@ namespace BeFaster.App.Solutions.CHK
                             priceToPay -= 20 * (count.Value / 3);
                         }
                     }
-
                     else if (count.Value % 2 == 0)
                     {
                         priceToPay -= 10;
@@ -151,7 +152,6 @@ namespace BeFaster.App.Solutions.CHK
                         {
                             priceToPay -= 10 * (count.Value / 3);
                         }
-
                         if (count.Key == 'Q'
                             && counterQ > counterR)
                         {
@@ -165,12 +165,10 @@ namespace BeFaster.App.Solutions.CHK
                         {
                             priceToPay -= 70;
                         }
-
                         else if (count.Value % 5 <= 2)
                         {
                             priceToPay -= 50 * (count.Value / 5);
                         }
-
                         else if (count.Value % 3 <= 1)
                         {
                             priceToPay -= 20;
@@ -198,12 +196,10 @@ namespace BeFaster.App.Solutions.CHK
                         {
                             priceToPay -= 10 * (count.Value / 5);
                         }
-
                         else if (count.Value >= 15)
                         {
                             priceToPay -= 25;
                         }
-
                         else if (count.Value >= 5
                                  && count.Value < 10)
                         {
