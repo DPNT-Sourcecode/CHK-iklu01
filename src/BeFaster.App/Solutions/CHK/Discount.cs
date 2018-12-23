@@ -76,30 +76,30 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                if (count.Key == 'S'
-                    || count.Key == 'T'
-                    || count.Key == 'Y')
-                {
-                    if (count.Value < 3)
-                    {
-                        priceToPay -= 20;
-                    }
+                //if (count.Key == 'S'
+                //    || count.Key == 'T'
+                //    || count.Key == 'Y')
+                //{
+                //    if (count.Value < 3)
+                //    {
+                //        priceToPay -= 20;
+                //    }
 
-                    if (count.Value >= 3)
-                    {
-                        priceToPay = 45 * (skus.Length / 3);
-                    }
-                }
+                //    if (count.Value >= 3)
+                //    {
+                //        priceToPay = 45 * (skus.Length / 3);
+                //    }
+                //}
 
-                else if (count.Key == 'X')
-                {
-                    priceToPay += 17;
-                }
+                //else if (count.Key == 'X')
+                //{
+                //    priceToPay += 17;
+                //}
 
-                else if (count.Key == 'Z')
-                {
-                    priceToPay += 21;
-                }
+                //else if (count.Key == 'Z')
+                //{
+                //    priceToPay += 21;
+                //}
 
                 if (counterB % 2 <= 1
                     && counterB > counterE)
