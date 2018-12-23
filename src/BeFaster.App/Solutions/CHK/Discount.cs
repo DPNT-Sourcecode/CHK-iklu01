@@ -82,29 +82,29 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                if (counterS < 3
-                    || counterT < 3
-                    || counterX < 3
-                    || counterY < 3
-                    || counterZ < 3)
-                {
-                    if (count.Key == 'S'
-                    || count.Key == 'T'
-                    || count.Key == 'Y')
-                    {
-                        priceToPay -= 20;
-                    }
+                //if (counterS < 3
+                //    || counterT < 3
+                //    || counterX < 3
+                //    || counterY < 3
+                //    || counterZ < 3)
+                //{
+                //    if (count.Key == 'S'
+                //    || count.Key == 'T'
+                //    || count.Key == 'Y')
+                //    {
+                //        priceToPay -= 20;
+                //    }
 
-                    if (count.Key == 'X')
-                    {
-                        priceToPay -= 17;
-                    }
+                //    if (count.Key == 'X')
+                //    {
+                //        priceToPay -= 17;
+                //    }
 
-                    if (count.Key == 'Z')
-                    {
-                        priceToPay -= 21;
-                    }
-                }
+                //    if (count.Key == 'Z')
+                //    {
+                //        priceToPay -= 21;
+                //    }
+                //}
 
                 if (counterB % 2 <= 1
                 && counterB > counterE)
