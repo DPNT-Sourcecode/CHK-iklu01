@@ -138,13 +138,13 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (count.Value > 3)
                 {
-                    //if (count.Key == 'U')
-                    //{
-                    //    if (count.Value % 4 <= 3)
-                    //    {
-                    //        priceToPay -= 40 * (count.Value / 4);
-                    //    }
-                    //}
+                    if (count.Key == 'U')
+                    {
+                        if (count.Value % 4 <= 3)
+                        {
+                            priceToPay -= 40 * (count.Value / 4);
+                        }
+                    }
                 }
 
                 if (count.Value > 4)
@@ -195,3 +195,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
