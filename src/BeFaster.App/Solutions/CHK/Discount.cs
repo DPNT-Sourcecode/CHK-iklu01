@@ -27,6 +27,7 @@ namespace BeFaster.App.Solutions.CHK
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
+            var min = Product.ProductPrice.Values.Select(Convert.ToInt32).Min();
 
             foreach (var product in products)
             {
@@ -46,8 +47,6 @@ namespace BeFaster.App.Solutions.CHK
             if (skus.Length >= 3
                 && Regex.IsMatch(skus, @"^[STXYZ]+$"))
             {
-                var min = Product.ProductPrice.Values.Select(Convert.ToInt32).Min();
-
                 if (skus.Length % 3 == 0)
                 {
                     priceToPay = 45 * (skus.Length / 3);
