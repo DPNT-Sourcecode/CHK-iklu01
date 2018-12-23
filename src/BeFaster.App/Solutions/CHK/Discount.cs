@@ -49,7 +49,7 @@ namespace BeFaster.App.Solutions.CHK
                 || skus.Contains('Y')
                 || skus.Contains('Z'))
             {
-                if (skus.Length % 3 <= 0)
+                if (skus.Length % 3 == 0)
                 {
                     priceToPay = 45 * (skus.Length / 3);
                 }
