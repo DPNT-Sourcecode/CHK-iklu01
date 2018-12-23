@@ -26,7 +26,7 @@ namespace BeFaster.App.Solutions.CHK
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0,
                 counterS = 0, counterT = 0, counterX = 0, counterY = 0, counterZ = 0;
-            var order = "";
+            //var order = "";
 
             for (var i = 0; i < products.Length; i++)
             {
@@ -61,14 +61,14 @@ namespace BeFaster.App.Solutions.CHK
                 //}
             }
 
-            if (counterS >= 3
-                || counterT >= 3
-                || counterX >= 3
-                || counterY >= 3
-                || counterZ >= 3)
-            {
-                priceToPay = 45 * (skus.Length / 3);
-            }
+            //if (counterS >= 3
+            //    || counterT >= 3
+            //    || counterX >= 3
+            //    || counterY >= 3
+            //    || counterZ >= 3)
+            //{
+            //    priceToPay = 45 * (skus.Length / 3);
+            //}
 
             if (skus.Contains('E')
                 && skus.Contains('B')
@@ -236,3 +236,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
