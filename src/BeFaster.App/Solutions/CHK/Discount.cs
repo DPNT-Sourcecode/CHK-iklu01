@@ -28,8 +28,8 @@ namespace BeFaster.App.Solutions.CHK
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0,
                 counterS = 0, counterT = 0, counterX = 0, counterY = 0, counterZ = 0;
-            var order = string.Join("", skus.Distinct());
-            var common = string.Concat(order.TakeWhile((c, i) => c == skus[i]));
+            //var order = string.Join("", skus.Distinct());
+            //var common = string.Concat(order.TakeWhile((c, i) => c == skus[i]));
 
             for (var i = 0; i < products.Length; i++)
             {
@@ -84,27 +84,41 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                if (counterS < 3
-                    || counterT < 3
-                    || counterX < 3
-                    || counterY < 3
-                    || counterZ < 3)
+                //if (counterS < 3
+                //    || counterT < 3
+                //    || counterX < 3
+                //    || counterY < 3
+                //    || counterZ < 3)
+                //{
+                if (count.Key == 'S'
+                    || count.Key == 'T'
+                    || count.Key == 'Y')
                 {
-                    if (count.Key == 'S'
-                        || count.Key == 'T'
-                        || count.Key == 'Y')
-                    {
-                        priceToPay -= 20;
-                    }
+                    priceToPay -= 20;
 
-                    if (count.Key == 'X')
+                    if (count.Key % 3 == 0)
                     {
-                        priceToPay -= 17;
+                        priceToPay += 15;
                     }
+                }
 
-                    if (count.Key == 'Z')
+                if (count.Key == 'X')
+                {
+                    priceToPay -= 17;
+
+                    if (count.Key % 3 == 0)
                     {
-                        priceToPay -= 21;
+                        priceToPay += 6;
+                    }
+                }
+
+                if (count.Key == 'Z')
+                {
+                    priceToPay -= 21;
+
+                    if (count.Key % 3 == 0)
+                    {
+                        priceToPay += 18;
                     }
                 }
 
