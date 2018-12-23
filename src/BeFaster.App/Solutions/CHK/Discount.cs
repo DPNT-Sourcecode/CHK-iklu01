@@ -176,28 +176,13 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (count.Value > 3)
                 {
-                    //if (count.Key == 'U')
-                    //{
-                    //    if (count.Value % 4 <= 3)
-                    //    {
-                    //        priceToPay -= 40 * (count.Value / 4);
-                    //    }
-                    //}
-                    //if (count.Key == 'S'
-                    //    || count.Key == 'T'
-                    //    || count.Key == 'Y')
-                    //{
-                    //    priceToPay += 20;
-                    //}
-                    //else if (count.Key == 'X')
-                    //{
-                    //    priceToPay += 17;
-                    //}
-                    //else if (count.Key == 'Z')
-                    //{
-                    //    priceToPay += 21;
-                    //}
-
+                    if (count.Key == 'U')
+                    {
+                        if (count.Value % 4 <= 3)
+                        {
+                            priceToPay -= 40 * (count.Value / 4);
+                        }
+                    }
                 }
 
                 if (count.Value > 4)
@@ -235,3 +220,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
