@@ -53,31 +53,24 @@ namespace BeFaster.App.Solutions.CHK
                 return SpecialDiscount(lowestPrice, priceToPay, skus);
             }
 
-            if (skus.Contains('E')
-                && skus.Contains('B')
-                && counterE >= 2)
+            if (skus.Contains('E') && skus.Contains('B') && counterE >= 2)
             {
                 priceToPay -= 30 * (counterE / 2);
             }
 
-            if (skus.Contains('N')
-                && skus.Contains('M')
-                && counterN >= 3)
+            if (skus.Contains('N') && skus.Contains('M') && counterN >= 3)
             {
                 priceToPay -= 15 * (counterN / 3);
             }
 
-            if (skus.Contains('R')
-                && skus.Contains('Q')
-                && counterR >= 3)
+            if (skus.Contains('R') && skus.Contains('Q') && counterR >= 3)
             {
                 priceToPay -= 30 * (counterR / 3);
             }
 
             foreach (var count in counts)
             {
-                if (counterB % 2 <= 1
-                    && counterB > counterE)
+                if (counterB % 2 <= 1 && counterB > counterE)
                 {
                     if (count.Key == 'B')
                     {
@@ -93,7 +86,6 @@ namespace BeFaster.App.Solutions.CHK
                         {
                             priceToPay -= 30 * (count.Value / 5);
                         }
-
                         else if (count.Value % 3 <= 2)
                         {
                             priceToPay -= 20 * (count.Value / 3);
@@ -121,8 +113,7 @@ namespace BeFaster.App.Solutions.CHK
                         {
                             priceToPay -= 10 * (count.Value / 3);
                         }
-                        if (count.Key == 'Q'
-                            && counterQ > counterR)
+                        if (count.Key == 'Q' && counterQ > counterR)
                         {
                             priceToPay -= 10 * (count.Value / 3);
                         }
@@ -160,8 +151,7 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     if (count.Key == 'H')
                     {
-                        if (count.Value >= 10
-                            && count.Value % 10 <= 4)
+                        if (count.Value >= 10 && count.Value % 10 <= 4)
                         {
                             priceToPay -= 10 * (count.Value / 5);
                         }
@@ -169,8 +159,7 @@ namespace BeFaster.App.Solutions.CHK
                         {
                             priceToPay -= 25;
                         }
-                        else if (count.Value >= 5
-                                 && count.Value < 10)
+                        else if (count.Value >= 5 && count.Value < 10)
                         {
                             priceToPay -= 5;
                         }
@@ -202,7 +191,6 @@ namespace BeFaster.App.Solutions.CHK
                     }
                     break;
             }
-
             return priceToPay;
         }
     }
