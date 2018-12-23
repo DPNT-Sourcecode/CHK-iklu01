@@ -96,9 +96,9 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     priceToPay -= 20;
 
-                    if (count.Key % 3 == 0)
+                    if (count.Value % 3 == 0)
                     {
-                        priceToPay += 15;
+                        priceToPay += 5;
                     }
                 }
 
@@ -106,9 +106,9 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     priceToPay -= 17;
 
-                    if (count.Key % 3 == 0)
+                    if (count.Value % 3 == 0)
                     {
-                        priceToPay += 6;
+                        priceToPay -= 4;
                     }
                 }
 
@@ -116,9 +116,9 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     priceToPay -= 21;
 
-                    if (count.Key % 3 == 0)
+                    if (count.Value % 3 == 0)
                     {
-                        priceToPay += 18;
+                        priceToPay += 8;
                     }
                 }
 
