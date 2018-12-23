@@ -43,7 +43,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Length > 3)
+            if (skus.Length >= 3)
             {
                 if (skus.Contains('S')
                     || skus.Contains('T')
@@ -225,3 +225,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
