@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -26,7 +25,7 @@ namespace BeFaster.App.Solutions.CHK
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
-            var disctint = string.Join("", skus.Distinct());
+            var distinct = skus.Distinct().ToArray();
 
             foreach (var product in products)
             {
@@ -43,12 +42,12 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (disctint.Contains('S')
-                || disctint.Contains('T')
-                || disctint.Contains('X')
-                || disctint.Contains('Y')
-                || disctint.Contains('Z')
-                && disctint.Length % 3 <= 2)
+            if (distinct.Contains('S')
+                || distinct.Contains('T')
+                || distinct.Contains('X')
+                || distinct.Contains('Y')
+                || distinct.Contains('Z')
+                && distinct.Count() % 3 <= 2)
             {
                 priceToPay = 45 * (skus.Length / 3);
             }
