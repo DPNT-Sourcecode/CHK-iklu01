@@ -27,7 +27,6 @@ namespace BeFaster.App.Solutions.CHK
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0,
                 counterS = 0, counterT = 0, counterX = 0, counterY = 0, counterZ = 0;
             var order = skus.Distinct();
-            order += skus;
 
             for (var i = 0; i < products.Length; i++)
             {
