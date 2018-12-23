@@ -24,8 +24,9 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetDiscount(char[] products, int priceToPay, string skus)
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
-            int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0,
-                counterS = 0, counterT = 0, counterX = 0, counterY= 0, counterZ = 0;
+            int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
+            //var distinct = skus.Distinct().ToArray();
+            //var difference = skus.Length - distinct.Length;
 
             foreach (var product in products)
             {
@@ -39,12 +40,17 @@ namespace BeFaster.App.Solutions.CHK
                     case 'N': counterN++; break;
                     case 'Q': counterQ++; break;
                     case 'R': counterR++; break;
-                    case 'S': counterS++; break;
-                    case 'T': counterT++; break;
-                    case 'X': counterX++; break;
-                    case 'Y': counterY++; break;
-                    case 'Z': counterZ++; break;
                 }
+            }
+
+            if (skus.Contains('S')
+                || skus.Contains('T')
+                || skus.Contains('X')
+                || skus.Contains('Y')
+                || skus.Contains('Z')
+                && skus.Length % 3 <= 2)
+            {
+                priceToPay = 45 * (skus.Length / 3);
             }
 
             if (skus.Contains('E')
@@ -72,38 +78,31 @@ namespace BeFaster.App.Solutions.CHK
             {
                 if (count.Key == 'S'
                     || count.Key == 'T'
-                    || count.Key == 'X'
-                    || count.Key == 'Y'
-                    || count.Key == 'Z')
+                    || count.Key == 'Y')
                 {
+                    if (count.Value < 3)
+                    {
+                        priceToPay -= 20;
+                    }
+
                     if (count.Value >= 3)
                     {
                         priceToPay = 45 * (skus.Length / 3);
                     }
                 }
 
-                if (count.Value < 3)
+                else if (count.Key == 'X')
                 {
-                    if (count.Key == 'S'
-                        || count.Key == 'T'
-                        || count.Key == 'Y')
-                    {
-                        priceToPay -= 20;
-                    }
+                    priceToPay += 17;
+                }
 
-                    if (count.Key == 'X')
-                    {
-                        priceToPay -= 17;
-                    }
-
-                    if (count.Key == 'Z')
-                    {
-                        priceToPay -= 21;
-                    }
+                else if (count.Key == 'Z')
+                {
+                    priceToPay += 21;
                 }
 
                 if (counterB % 2 <= 1
-                && counterB > counterE)
+                    && counterB > counterE)
                 {
                     if (count.Key == 'B')
                     {
