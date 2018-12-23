@@ -28,7 +28,7 @@ namespace BeFaster.App.Solutions.CHK
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0, counterS = 0,
                 counterT = 0, counterX = 0, counterY = 0, counterZ = 0, counterSpecial = 0;
             var lowestPrice = 21;
-            var secondLowestPrice = 21;
+            var secondLowestPrice = 0;
 
             foreach (var product in products)
             {
