@@ -30,12 +30,12 @@ namespace BeFaster.App.Solutions.CHK
 
             for (var i = 0; i < products.Length; i++)
             {
-                //var product = products[i];
+                var product = products[i];
                 //var previousProduct = products[i - 1];
-                Product.ProductNumber[products[i]]++;
-                priceToPay += Product.ProductPrice[products[i]];
+                Product.ProductNumber[product]++;
+                priceToPay += Product.ProductPrice[product];
 
-                switch (products[i])
+                switch (product)
                 {
                     case 'B': counterB++; break;
                     case 'E': counterE++; break;
