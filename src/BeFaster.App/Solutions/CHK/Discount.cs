@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Linq;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -52,14 +50,14 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            //if (counterS >= 3
-            //    || counterT >= 3
-            //    || counterX >= 3
-            //    || counterY >= 3
-            //    || counterZ >= 3)
-            //{
-            //    priceToPay = 45 * (skus.Length / 3);
-            //}
+            if (counterS >= 3
+                || counterT >= 3
+                || counterX >= 3
+                || counterY >= 3
+                || counterZ >= 3)
+            {
+                priceToPay = 45 * (skus.Length / 3);
+            }
 
             if (skus.Contains('E')
                 && skus.Contains('B')
@@ -84,44 +82,27 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                //if (counterS < 3
-                //    || counterT < 3
-                //    || counterX < 3
-                //    || counterY < 3
-                //    || counterZ < 3)
-                //{
-                if (count.Key == 'S'
+                if (counterS < 3
+                    || counterT < 3
+                    || counterX < 3
+                    || counterY < 3
+                    || counterZ < 3)
+                {
+                    if (count.Key == 'S'
                     || count.Key == 'T'
                     || count.Key == 'Y')
-                {
-                    if (count.Value % 3 == 0)
-                    {
-                        priceToPay += 5;
-                    }
-
-                    else if (count.Value % 3 != 0)
                     {
                         priceToPay -= 20;
                     }
-                }
 
-                if (count.Key == 'X')
-                {
-                    priceToPay -= 17;
-
-                    if (count.Value % 3 == 0)
+                    if (count.Key == 'X')
                     {
-                        priceToPay -= 4;
+                        priceToPay -= 17;
                     }
-                }
 
-                if (count.Key == 'Z')
-                {
-                    priceToPay -= 21;
-
-                    if (count.Value % 3 == 0)
+                    if (count.Key == 'Z')
                     {
-                        priceToPay += 8;
+                        priceToPay -= 21;
                     }
                 }
 
