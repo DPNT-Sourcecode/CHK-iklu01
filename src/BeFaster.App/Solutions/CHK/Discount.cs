@@ -43,15 +43,18 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Contains('S')
-                || skus.Contains('T')
-                || skus.Contains('X')
-                || skus.Contains('Y')
-                || skus.Contains('Z'))
+            if (skus.Length > 3)
             {
-                if (skus.Length % 3 == 0)
+                if (skus.Contains('S')
+                    || skus.Contains('T')
+                    || skus.Contains('X')
+                    || skus.Contains('Y')
+                    || skus.Contains('Z'))
                 {
-                    priceToPay = 45 * (skus.Length / 3);
+                    if (skus.Length % 3 == 0)
+                    {
+                        priceToPay = 45 * (skus.Length / 3);
+                    }
                 }
             }
 
