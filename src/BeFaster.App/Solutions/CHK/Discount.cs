@@ -25,7 +25,7 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetDiscount(char[] products, int priceToPay, string skus)
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
-            int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
+            int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0, counterSpecial = 0;
             var min = 21;
 
             foreach (var product in products)
@@ -45,11 +45,17 @@ namespace BeFaster.App.Solutions.CHK
                     case 'N': counterN++; break;
                     case 'Q': counterQ++; break;
                     case 'R': counterR++; break;
+                    case 'S': counterSpecial++; break;
+                    case 'T': counterSpecial++; break;
+                    case 'X': counterSpecial++; break;
+                    case 'Y': counterSpecial++; break;
+                    case 'Z': counterSpecial++; break;
                 }
             }
 
             if (skus.Length >= 3
-                && Regex.IsMatch(skus, @"[STXYZ]"))
+                && Regex.IsMatch(skus, @"[STXYZ]")
+                && counterSpecial >= 3)
             {
                 if (skus.Length % 3 == 0)
                 {
