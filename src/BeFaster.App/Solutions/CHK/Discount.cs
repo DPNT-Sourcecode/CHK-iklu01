@@ -43,7 +43,8 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (skus.Length >= 3)
+            if (skus.Length >= 3
+                && skus.IndexOfAny("STXYZ".ToCharArray()) != -1)
             {
                 if (skus.Contains('S')
                     || skus.Contains('T')
@@ -57,7 +58,7 @@ namespace BeFaster.App.Solutions.CHK
                     }
                     else if (skus.Length % 3 <= 2)
                     {
-                        priceToPay = 45 * (skus.Length / 3) + 20;
+                        priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[0]];
                     }
                 }
             }
