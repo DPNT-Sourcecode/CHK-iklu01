@@ -42,7 +42,7 @@ namespace BeFaster.App.Solutions.CHK
                         lowestPrice = Product.ProductPrice[product];
                     }
 
-                    if (Product.ProductPrice[product] < lowestPrice
+                    if (Product.ProductPrice[product] > lowestPrice
                         && lowestPrice > secondLowestPrice)
                     {
                         secondLowestPrice = Product.ProductPrice[product];
