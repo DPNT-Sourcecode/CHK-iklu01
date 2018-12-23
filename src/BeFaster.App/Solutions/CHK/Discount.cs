@@ -57,11 +57,11 @@ namespace BeFaster.App.Solutions.CHK
                 && Regex.IsMatch(skus, @"[STXYZ]")
                 && counterSpecial >= 3)
             {
-                if (skus.Length % 3 == 0)
+                if (counterSpecial % 3 == 0)
                 {
                     priceToPay = 45 * (skus.Length / 3);
                 }
-                else if (skus.Length % 3 <= 2)
+                else if (counterSpecial % 3 <= 2)
                 {
                     priceToPay = 45 * (skus.Length / 3) + min;
                 }
