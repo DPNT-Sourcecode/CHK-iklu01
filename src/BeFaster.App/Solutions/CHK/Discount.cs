@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -25,11 +24,14 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetDiscount(char[] products, int priceToPay, string skus)
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
-            int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
-            var disctinct = new string(skus.Distinct().ToArray());
+            int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0,
+                counterS = 0, counterT = 0, counterX = 0, counterY = 0, counterZ = 0;
+            var order = "";
 
-            foreach (var product in products)
+            for (var i = 0; i < products.Length; i++)
             {
+                var product = products[i];
+                var previousProduct = products[i - 1];
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
 
@@ -40,19 +42,26 @@ namespace BeFaster.App.Solutions.CHK
                     case 'N': counterN++; break;
                     case 'Q': counterQ++; break;
                     case 'R': counterR++; break;
+                    case 'S': counterS++; break;
+                    case 'T': counterT++; break;
+                    case 'X': counterX++; break;
+                    case 'Y': counterY++; break;
+                    case 'Z': counterZ++; break;
+                }
+
+                if (order.Length < 3 && product != previousProduct)
+                {
+                    order += product;
                 }
             }
 
-            if (disctinct.Length >= 3)
+            if (counterS >= 3
+                || counterT >= 3
+                || counterX >= 3
+                || counterY >= 3
+                || counterZ >= 3)
             {
-                if (disctinct.Contains('S')
-                    || disctinct.Contains('T')
-                    || disctinct.Contains('X')
-                    || disctinct.Contains('Y')
-                    || disctinct.Contains('Z'))
-                {
-                    priceToPay = 45 * (skus.Length / 3);
-                }
+                priceToPay = 45 * (skus.Length / 3);
             }
 
             if (skus.Contains('E')
@@ -78,19 +87,11 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                //if (count.Value >= 3)
-                //{
-                //    if (count.Key == 'S'
-                //        || count.Key == 'T'
-                //        || count.Key == 'X'
-                //        || count.Key == 'Y'
-                //        || count.Key == 'Z')
-                //    {
-                //        priceToPay = 45 * (skus.Length / 3);
-                //    }
-                //}
-
-                if (count.Value < 3)
+                if (counterS < 3
+                    || counterT < 3
+                    || counterX < 3
+                    || counterY < 3
+                    || counterZ < 3)
                 {
                     if (count.Key == 'S'
                         || count.Key == 'T'
@@ -101,12 +102,12 @@ namespace BeFaster.App.Solutions.CHK
 
                     if (count.Key == 'X')
                     {
-                        priceToPay += 17;
+                        priceToPay -= 17;
                     }
 
                     if (count.Key == 'Z')
                     {
-                        priceToPay += 21;
+                        priceToPay -= 21;
                     }
                 }
 
@@ -192,21 +193,6 @@ namespace BeFaster.App.Solutions.CHK
                     //        priceToPay -= 40 * (count.Value / 4);
                     //    }
                     //}
-                    //if (count.Key == 'S'
-                    //    || count.Key == 'T'
-                    //    || count.Key == 'Y')
-                    //{
-                    //    priceToPay += 20;
-                    //}
-                    //else if (count.Key == 'X')
-                    //{
-                    //    priceToPay += 17;
-                    //}
-                    //else if (count.Key == 'Z')
-                    //{
-                    //    priceToPay += 21;
-                    //}
-
                 }
 
                 if (count.Value > 4)
