@@ -47,7 +47,7 @@ namespace BeFaster.App.Solutions.CHK
             if (skus.Length >= 3
                 && Regex.IsMatch(skus, @"^[STXYZ]+$"))
             {
-                var min = Product.ProductPrice.Values.Select(Convert.ToInt32).Min();
+                var min = counts.Values.Select(Convert.ToInt32).Min();
 
                 if (skus.Length % 3 == 0)
                 {
