@@ -25,8 +25,8 @@ namespace BeFaster.App.Solutions.CHK
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
-            var distinct = skus.Distinct().ToArray();
-            var difference = skus.Length - distinct.Length;
+            //var distinct = skus.Distinct().ToArray();
+            //var difference = skus.Length - distinct.Length;
 
             foreach (var product in products)
             {
@@ -43,15 +43,15 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
 
-            if (distinct.Contains('S')
-                || distinct.Contains('T')
-                || distinct.Contains('X')
-                || distinct.Contains('Y')
-                || distinct.Contains('Z')
-                && distinct.Length % 3 <= 2)
-            {
-                priceToPay = 45 * (skus.Length / 3);
-            }
+            //if (skus.Contains('S')
+            //    || skus.Contains('T')
+            //    || skus.Contains('X')
+            //    || skus.Contains('Y')
+            //    || skus.Contains('Z')
+            //    && skus.Length % 3 <= 2)
+            //{
+            //    priceToPay = 45 * (skus.Length / 3);
+            //}
 
             if (skus.Contains('E')
                 && skus.Contains('B')
@@ -80,17 +80,25 @@ namespace BeFaster.App.Solutions.CHK
                     || count.Key == 'T'
                     || count.Key == 'Y')
                 {
-                    priceToPay += 20 * difference;
+                    if (skus.Length < 3)
+                    {
+                        priceToPay -= 20;
+                    }
+
+                    if (skus.Length >= 3)
+                    {
+                        priceToPay = 45 * (skus.Length / 3) + count.Value;
+                    }
                 }
 
                 else if (count.Key == 'X')
                 {
-                    priceToPay += 17 * difference;
+                    priceToPay += 17;
                 }
 
                 else if (count.Key == 'Z')
                 {
-                    priceToPay += 21 * difference;
+                    priceToPay += 21;
                 }
 
                 if (counterB % 2 <= 1
