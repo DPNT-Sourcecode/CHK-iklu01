@@ -47,10 +47,12 @@ namespace BeFaster.App.Solutions.CHK
                 || skus.Contains('T')
                 || skus.Contains('X')
                 || skus.Contains('Y')
-                || skus.Contains('Z')
-                && skus.Length % 3 <= 2)
+                || skus.Contains('Z'))
             {
-                priceToPay = 45 * (skus.Length / 3);
+                if (skus.Length % 3 <= 0)
+                {
+                    priceToPay = 45 * (skus.Length / 3);
+                }
             }
 
             if (skus.Contains('E')
@@ -220,4 +222,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
