@@ -45,15 +45,13 @@ namespace BeFaster.App.Solutions.CHK
             if (skus.Length >= 3
                 && Regex.IsMatch(skus, @"^[STXYZ]+$"))
             {
-                var min = Product.ProductPrice.Aggregate((l, r) => l.Value < r.Value ? l : r).Key;
-
                 if (skus.Length % 3 == 0)
                 {
                     priceToPay = 45 * (skus.Length / 3);
                 }
                 else if (skus.Length % 3 <= 2)
                 {
-                    priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[min]];
+                    priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[0]];
                 }
             }
 
