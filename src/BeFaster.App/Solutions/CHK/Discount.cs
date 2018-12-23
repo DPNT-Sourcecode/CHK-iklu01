@@ -28,7 +28,7 @@ namespace BeFaster.App.Solutions.CHK
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0,
                 counterS = 0, counterT = 0, counterX = 0, counterY = 0, counterZ = 0;
-            var order = skus.Distinct().ToString();
+            var order = string.Join("", skus.Distinct());
             var common = string.Concat(skus.TakeWhile((c, i) => c == order[i]));
 
             for (var i = 0; i < products.Length; i++)
