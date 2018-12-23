@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
@@ -20,57 +19,52 @@ namespace BeFaster.App.Solutions.CHK
                 }
                 return priceToPay;
             }
-            return GetDiscount(products, priceToPay, skus);
+            return GetDiscountType(products, priceToPay, skus);
         }
 
-        public static int GetDiscount(char[] products, int priceToPay, string skus)
+        public static int GetDiscountType(char[] products, int priceToPay, string skus)
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
-            var min = 21;
+            var lowestPrice = 21;
 
             foreach (var product in products)
             {
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
 
-                if (Product.ProductPrice[product] < min)
+                if (Product.ProductPrice[product] < lowestPrice)
                 {
-                    min = Product.ProductPrice[product];
+                    lowestPrice = Product.ProductPrice[product];
                 }
 
                 switch (product)
                 {
-                    case 'B':
-                        counterB++;
-                        break;
-                    case 'E':
-                        counterE++;
-                        break;
-                    case 'N':
-                        counterN++;
-                        break;
-                    case 'Q':
-                        counterQ++;
-                        break;
-                    case 'R':
-                        counterR++;
-                        break;
+                    case 'B': counterB++; break;
+                    case 'E': counterE++; break;
+                    case 'N': counterN++; break;
+                    case 'Q': counterQ++; break;
+                    case 'R': counterR++; break;
                 }
             }
 
-            if (skus.Length >= 3
-                && Regex.IsMatch(skus, @"^[STXYZ]+$"))
+            if (skus.Length >= 3 && Regex.IsMatch(skus, @"^[STXYZ]+$"))
             {
-                if (skus.Length % 3 == 0)
-                {
-                    priceToPay = 45 * (skus.Length / 3);
-                }
-                else if (skus.Length % 3 <= 2)
-                {
-                    priceToPay = 45 * (skus.Length / 3) + min;
-                }
+                return SpecialDiscount(lowestPrice, products, priceToPay, skus);
             }
+
+            //if (skus.Length >= 3
+            //&& Regex.IsMatch(skus, @"^[STXYZ]+$"))
+            //{
+            //    if (skus.Length % 3 == 0)
+            //    {
+            //        priceToPay = 45 * (skus.Length / 3);
+            //    }
+            //    else if (skus.Length % 3 <= 2)
+            //    {
+            //        priceToPay = 45 * (skus.Length / 3) + min;
+            //    }
+            //}
 
             if (skus.Contains('E')
                 && skus.Contains('B')
@@ -95,31 +89,6 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                //if (count.Key == 'S'
-                //    || count.Key == 'T'
-                //    || count.Key == 'Y')
-                //{
-                //    if (count.Value < 3)
-                //    {
-                //        priceToPay -= 20;
-                //    }
-
-                //    if (count.Value >= 3)
-                //    {
-                //        priceToPay = 45 * (skus.Length / 3);
-                //    }
-                //}
-
-                //else if (count.Key == 'X')
-                //{
-                //    priceToPay += 17;
-                //}
-
-                //else if (count.Key == 'Z')
-                //{
-                //    priceToPay += 21;
-                //}
-
                 if (counterB % 2 <= 1
                     && counterB > counterE)
                 {
@@ -229,6 +198,24 @@ namespace BeFaster.App.Solutions.CHK
                     }
                 }
             }
+            return priceToPay;
+        }
+
+        public static int SpecialDiscount(int min, char[] products, int priceToPay, string skus)
+        {
+            if (skus.Length >= 3
+                && Regex.IsMatch(skus, @"^[STXYZ]+$"))
+            {
+                if (skus.Length % 3 == 0)
+                {
+                    priceToPay = 45 * (skus.Length / 3);
+                }
+                else if (skus.Length % 3 <= 2)
+                {
+                    priceToPay = 45 * (skus.Length / 3) + min;
+                }
+            }
+
             return priceToPay;
         }
     }
