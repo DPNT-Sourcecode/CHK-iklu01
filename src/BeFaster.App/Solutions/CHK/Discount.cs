@@ -50,21 +50,8 @@ namespace BeFaster.App.Solutions.CHK
 
             if (skus.Length >= 3 && Regex.IsMatch(skus, @"^[STXYZ]+$"))
             {
-                return SpecialDiscount(lowestPrice, products, priceToPay, skus);
+                return SpecialDiscount(lowestPrice, priceToPay, skus);
             }
-
-            //if (skus.Length >= 3
-            //&& Regex.IsMatch(skus, @"^[STXYZ]+$"))
-            //{
-            //    if (skus.Length % 3 == 0)
-            //    {
-            //        priceToPay = 45 * (skus.Length / 3);
-            //    }
-            //    else if (skus.Length % 3 <= 2)
-            //    {
-            //        priceToPay = 45 * (skus.Length / 3) + min;
-            //    }
-            //}
 
             if (skus.Contains('E')
                 && skus.Contains('B')
@@ -201,19 +188,19 @@ namespace BeFaster.App.Solutions.CHK
             return priceToPay;
         }
 
-        public static int SpecialDiscount(int min, char[] products, int priceToPay, string skus)
+        public static int SpecialDiscount(int min, int priceToPay, string skus)
         {
-            if (skus.Length >= 3
-                && Regex.IsMatch(skus, @"^[STXYZ]+$"))
+            switch (skus.Length % 3)
             {
-                if (skus.Length % 3 == 0)
-                {
+                case 0:
                     priceToPay = 45 * (skus.Length / 3);
-                }
-                else if (skus.Length % 3 <= 2)
-                {
-                    priceToPay = 45 * (skus.Length / 3) + min;
-                }
+                    break;
+                default:
+                    if (skus.Length % 3 <= 2)
+                    {
+                        priceToPay = 45 * (skus.Length / 3) + min;
+                    }
+                    break;
             }
 
             return priceToPay;
