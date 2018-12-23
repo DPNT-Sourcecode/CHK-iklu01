@@ -33,7 +33,7 @@ namespace BeFaster.App.Solutions.CHK
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
 
-                if (Product.ProductPrice[product] < min)
+                if (Regex.IsMatch(skus, @"^[STXYZ]+$") && Product.ProductPrice[product] < min)
                 {
                     min = Product.ProductPrice[product];
                 }
