@@ -28,17 +28,14 @@ namespace BeFaster.App.Solutions.CHK
                 counterS = 0, counterT = 0, counterX = 0, counterY = 0, counterZ = 0;
             //var order = "";
 
-            foreach (var product in products)
+            for (var i = 0; i < products.Length; i++)
             {
-                //for (var i = 0; i < products.Length; i++)
-                //{
-                //    var product = products[i];
-                //    var previousProduct = products[i - 1];
-                //}
-                Product.ProductNumber[product]++;
-                priceToPay += Product.ProductPrice[product];
+                //var product = products[i];
+                //var previousProduct = products[i - 1];
+                Product.ProductNumber[products[i]]++;
+                priceToPay += Product.ProductPrice[products[i]];
 
-                switch (product)
+                switch (products[i])
                 {
                     case 'B': counterB++; break;
                     case 'E': counterE++; break;
