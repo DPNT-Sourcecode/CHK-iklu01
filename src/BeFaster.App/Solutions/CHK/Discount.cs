@@ -26,6 +26,7 @@ namespace BeFaster.App.Solutions.CHK
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
             var distinct = skus.Distinct().ToArray();
+            var difference = skus.Length - distinct.Length;
 
             foreach (var product in products)
             {
@@ -47,7 +48,7 @@ namespace BeFaster.App.Solutions.CHK
                 || distinct.Contains('X')
                 || distinct.Contains('Y')
                 || distinct.Contains('Z')
-                && distinct.Count() % 3 <= 2)
+                && distinct.Length % 3 <= 2)
             {
                 priceToPay = 45 * (skus.Length / 3);
             }
@@ -75,20 +76,22 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var count in counts)
             {
-                //if (count.Key == 'S' 
-                //    || count.Key == 'T' 
-                //    || count.Key == 'Y')
-                //{
-                //    priceToPay += 20;
-                //}
-                //else if (count.Key == 'X')
-                //{
-                //    priceToPay += 17;
-                //}
-                //else if (count.Key == 'Z')
-                //{
-                //    priceToPay += 21;
-                //}
+                if (count.Key == 'S'
+                    || count.Key == 'T'
+                    || count.Key == 'Y')
+                {
+                    priceToPay += 20 * difference;
+                }
+
+                else if (count.Key == 'X')
+                {
+                    priceToPay += 17 * difference;
+                }
+
+                else if (count.Key == 'Z')
+                {
+                    priceToPay += 21 * difference;
+                }
 
                 if (counterB % 2 <= 1
                     && counterB > counterE)
