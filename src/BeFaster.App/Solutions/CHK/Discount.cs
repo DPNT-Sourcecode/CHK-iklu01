@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -44,7 +45,7 @@ namespace BeFaster.App.Solutions.CHK
             }
 
             if (skus.Length >= 3
-                && skus.IndexOfAny("STXYZ".ToCharArray()) != -1)
+                && Regex.IsMatch(skus, @"[STXYZ]"))
             {
                 if (skus.Contains('S')
                     || skus.Contains('T')
