@@ -94,11 +94,14 @@ namespace BeFaster.App.Solutions.CHK
                     || count.Key == 'T'
                     || count.Key == 'Y')
                 {
-                    priceToPay -= 20;
-
                     if (count.Value % 3 == 0)
                     {
                         priceToPay += 5;
+                    }
+
+                    else if (count.Value % 3 != 0)
+                    {
+                        priceToPay -= 20;
                     }
                 }
 
