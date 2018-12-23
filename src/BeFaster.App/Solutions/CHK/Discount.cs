@@ -31,7 +31,7 @@ namespace BeFaster.App.Solutions.CHK
             for (var i = 0; i < products.Length; i++)
             {
                 var product = products[i];
-                //var previousProduct = products[i - 1];
+                var previousProduct = products[i - 1];
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
 
