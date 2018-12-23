@@ -31,18 +31,26 @@ namespace BeFaster.App.Solutions.CHK
 
             foreach (var product in products)
             {
-                min = Product.ProductPrice.Values.Select(Convert.ToInt32).Min();
-
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
 
                 switch (product)
                 {
-                    case 'B': counterB++; break;
-                    case 'E': counterE++; break;
-                    case 'N': counterN++; break;
-                    case 'Q': counterQ++; break;
-                    case 'R': counterR++; break;
+                    case 'B':
+                        counterB++;
+                        break;
+                    case 'E':
+                        counterE++;
+                        break;
+                    case 'N':
+                        counterN++;
+                        break;
+                    case 'Q':
+                        counterQ++;
+                        break;
+                    case 'R':
+                        counterR++;
+                        break;
                 }
             }
 
