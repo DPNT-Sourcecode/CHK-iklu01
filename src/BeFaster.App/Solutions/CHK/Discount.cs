@@ -49,7 +49,7 @@ namespace BeFaster.App.Solutions.CHK
             }
 
             if (skus.Length >= 3
-                && Regex.IsMatch(skus, @"^[STXYZ]+$"))
+                && Regex.IsMatch(skus, @"[STXYZ]+$"))
             {
                 if (skus.Length % 3 == 0)
                 {
