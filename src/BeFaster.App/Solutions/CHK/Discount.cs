@@ -45,21 +45,14 @@ namespace BeFaster.App.Solutions.CHK
             if (skus.Length >= 3
                 && Regex.IsMatch(skus, @"^[STXYZ]+$"))
             {
-                //if (skus.Contains('S')
-                //    || skus.Contains('T')
-                //    || skus.Contains('X')
-                //    || skus.Contains('Y')
-                //    || skus.Contains('Z'))
-                //{
-                    if (skus.Length % 3 == 0)
-                    {
-                        priceToPay = 45 * (skus.Length / 3);
-                    }
-                    else if (skus.Length % 3 <= 2)
-                    {
-                        priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[0]];
-                    }
-                //}
+                if (skus.Length % 3 == 0)
+                {
+                    priceToPay = 45 * (skus.Length / 3);
+                }
+                else if (skus.Length % 3 <= 2)
+                {
+                    priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[3]];
+                }
             }
 
             if (skus.Contains('E')
@@ -185,13 +178,13 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (count.Value > 3)
                 {
-                    if (count.Key == 'U')
-                    {
-                        if (count.Value % 4 <= 3)
-                        {
-                            priceToPay -= 40 * (count.Value / 4);
-                        }
-                    }
+                    //if (count.Key == 'U')
+                    //{
+                    //    if (count.Value % 4 <= 3)
+                    //    {
+                    //        priceToPay -= 40 * (count.Value / 4);
+                    //    }
+                    //}
                 }
 
                 if (count.Value > 4)
