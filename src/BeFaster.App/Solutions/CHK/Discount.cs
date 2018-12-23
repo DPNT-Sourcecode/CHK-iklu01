@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
-using TDL.Client.Queue.Abstractions.Response;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -26,7 +25,8 @@ namespace BeFaster.App.Solutions.CHK
         public static int GetDiscount(char[] products, int priceToPay, string skus)
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
-            int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0, counterSpecial = 0;
+            int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0, counterS = 0,
+                counterT = 0, counterX = 0, counterY = 0, counterZ = 0, counterSpecial = 0;
             var lowestPrice = 21;
 
             foreach (var product in products)
@@ -46,11 +46,11 @@ namespace BeFaster.App.Solutions.CHK
                     case 'N': counterN++; break;
                     case 'Q': counterQ++; break;
                     case 'R': counterR++; break;
-                    case 'S': counterSpecial++; break;
-                    case 'T': counterSpecial++; break;
-                    case 'X': counterSpecial++; break;
-                    case 'Y': counterSpecial++; break;
-                    case 'Z': counterSpecial++; break;
+                    case 'S': counterS++; counterSpecial++; break;
+                    case 'T': counterT++; counterSpecial++; break;
+                    case 'X': counterX++; counterSpecial++; break;
+                    case 'Y': counterY++; counterSpecial++; break;
+                    case 'Z': counterZ++; counterSpecial++; break;
                 }
             }
 
@@ -58,14 +58,23 @@ namespace BeFaster.App.Solutions.CHK
                 && Regex.IsMatch(skus, @"[STXYZ]")
                 && counterSpecial >= 3)
             {
+                var specialPrice = 0;
+
                 if (counterSpecial % 3 == 0)
                 {
-                    priceToPay -= 15 * (counterSpecial / 3);
+                    specialPrice = 45 * (counterSpecial / 3);
                 }
                 else if (counterSpecial % 3 <= 2)
                 {
-                    priceToPay -= 15 * (counterSpecial / 3) + lowestPrice;
+                    specialPrice = 45 * (counterSpecial / 3) + lowestPrice;
                 }
+
+                priceToPay -= 20 * counterS;
+                priceToPay -= 20 * counterT;
+                priceToPay -= 17 * counterX;
+                priceToPay -= 20 * counterY;
+                priceToPay -= 21 * counterZ;
+                priceToPay += specialPrice;
             }
 
             if (skus.Contains('E')
