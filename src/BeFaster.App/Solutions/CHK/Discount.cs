@@ -28,15 +28,25 @@ namespace BeFaster.App.Solutions.CHK
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0, counterS = 0,
                 counterT = 0, counterX = 0, counterY = 0, counterZ = 0, counterSpecial = 0;
             var lowestPrice = 21;
+            var secondLowestPrice = 21;
 
             foreach (var product in products)
             {
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
 
-                if (Regex.IsMatch(product.ToString(), @"[STXYZ]") && Product.ProductPrice[product] < lowestPrice)
+                if (Regex.IsMatch(product.ToString(), @"[STXYZ]"))
                 {
-                    lowestPrice = Product.ProductPrice[product];
+                    if (Product.ProductPrice[product] < lowestPrice)
+                    {
+                        lowestPrice = Product.ProductPrice[product];
+                    }
+
+                    if (Product.ProductPrice[product] < lowestPrice
+                        && lowestPrice > secondLowestPrice)
+                    {
+                        secondLowestPrice = Product.ProductPrice[product];
+                    }
                 }
 
                 switch (product)
@@ -64,9 +74,13 @@ namespace BeFaster.App.Solutions.CHK
                 {
                     specialPrice = 45 * (counterSpecial / 3);
                 }
-                else if (counterSpecial % 3 <= 2)
+                if (counterSpecial % 3 == 1)
                 {
                     specialPrice = 45 * (counterSpecial / 3) + lowestPrice;
+                }
+                if (counterSpecial % 3 == 2)
+                {
+                    specialPrice = 45 * (counterSpecial / 3) + lowestPrice + secondLowestPrice;
                 }
 
                 priceToPay -= 20 * counterS;
