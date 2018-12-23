@@ -55,6 +55,10 @@ namespace BeFaster.App.Solutions.CHK
                     {
                         priceToPay = 45 * (skus.Length / 3);
                     }
+                    else if (skus.Length % 3 <= 2)
+                    {
+                        priceToPay = 45 * (skus.Length / 3) + 20;
+                    }
                 }
             }
 
@@ -225,4 +229,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
