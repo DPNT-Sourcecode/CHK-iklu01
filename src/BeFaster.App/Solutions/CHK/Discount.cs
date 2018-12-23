@@ -27,12 +27,17 @@ namespace BeFaster.App.Solutions.CHK
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0;
-            var min = 0;
+            var min = 21;
 
             foreach (var product in products)
             {
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
+
+                if (Product.ProductPrice[product] < min)
+                {
+                    min = Product.ProductPrice[product];
+                }
 
                 switch (product)
                 {
