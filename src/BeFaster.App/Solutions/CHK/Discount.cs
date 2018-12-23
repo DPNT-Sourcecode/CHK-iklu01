@@ -59,11 +59,11 @@ namespace BeFaster.App.Solutions.CHK
             {
                 if (counterSpecial % 3 == 0)
                 {
-                    priceToPay = 45 * (skus.Length / 3);
+                    priceToPay = 45 * (counterSpecial / 3);
                 }
                 else if (counterSpecial % 3 <= 2)
                 {
-                    priceToPay = 45 * (skus.Length / 3) + min;
+                    priceToPay = 45 * (counterSpecial / 3) + min;
                 }
             }
 
