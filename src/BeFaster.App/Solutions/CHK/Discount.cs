@@ -54,7 +54,7 @@ namespace BeFaster.App.Solutions.CHK
                 //    || skus.Contains('X')
                 //    || skus.Contains('Y')
                 //    || skus.Contains('Z')
-                //    && order.Length < 3
+                    order.Length < 3 &&
                     products[i] != products[i-1])
                 {
                     order += product;
