@@ -28,10 +28,13 @@ namespace BeFaster.App.Solutions.CHK
                 counterS = 0, counterT = 0, counterX = 0, counterY = 0, counterZ = 0;
             //var order = "";
 
-            for (var i = 0; i < products.Length; i++)
+            foreach (var product in products)
             {
-                var product = products[i];
-                var previousProduct = products[i - 1];
+                //for (var i = 0; i < products.Length; i++)
+                //{
+                //    var product = products[i];
+                //    var previousProduct = products[i - 1];
+                //}
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
 
@@ -236,4 +239,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
