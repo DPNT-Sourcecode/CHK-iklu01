@@ -48,14 +48,13 @@ namespace BeFaster.App.Solutions.CHK
                     case 'Z': counterZ++; break;
                 }
 
-                if (
-                //skus.Contains('S')
-                //    || skus.Contains('T')
-                //    || skus.Contains('X')
-                //    || skus.Contains('Y')
-                //    || skus.Contains('Z')
-                    order.Length < 3 &&
-                    products[i] != products[i-1])
+                if (skus.Contains('S')
+                    || skus.Contains('T')
+                    || skus.Contains('X')
+                    || skus.Contains('Y')
+                    || skus.Contains('Z')
+                    && order.Length < 3
+                    && products[i] != products[i - 1])
                 {
                     order += product;
                 }
