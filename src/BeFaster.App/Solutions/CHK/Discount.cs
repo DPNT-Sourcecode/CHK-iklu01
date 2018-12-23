@@ -53,7 +53,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
                 else if (skus.Length % 3 <= 2)
                 {
-                    priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[min]];
+                    priceToPay = 45 * (skus.Length / 3) + min;
                 }
             }
 
