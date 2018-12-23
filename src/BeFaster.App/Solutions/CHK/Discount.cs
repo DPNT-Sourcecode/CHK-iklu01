@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace BeFaster.App.Solutions.CHK
@@ -45,13 +46,15 @@ namespace BeFaster.App.Solutions.CHK
             if (skus.Length >= 3
                 && Regex.IsMatch(skus, @"^[STXYZ]+$"))
             {
+                var min = Product.ProductPrice.Select(item => Convert.ToDecimal(item.Value)).Min();
+
                 if (skus.Length % 3 == 0)
                 {
                     priceToPay = 45 * (skus.Length / 3);
                 }
                 else if (skus.Length % 3 <= 2)
                 {
-                    priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[0]];
+                    priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[(int) min]];
                 }
             }
 
