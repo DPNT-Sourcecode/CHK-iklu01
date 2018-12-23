@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
+using TDL.Client.Queue.Abstractions.Response;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -26,16 +27,16 @@ namespace BeFaster.App.Solutions.CHK
         {
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0, counterSpecial = 0;
-            var min = 21;
+            var lowestPrice = 21;
 
             foreach (var product in products)
             {
                 Product.ProductNumber[product]++;
                 priceToPay += Product.ProductPrice[product];
 
-                if (Regex.IsMatch(product.ToString(), @"[STXYZ]") && Product.ProductPrice[product] < min)
+                if (Regex.IsMatch(product.ToString(), @"[STXYZ]") && Product.ProductPrice[product] < lowestPrice)
                 {
-                    min = Product.ProductPrice[product];
+                    lowestPrice = Product.ProductPrice[product];
                 }
 
                 switch (product)
@@ -63,7 +64,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
                 else if (counterSpecial % 3 <= 2)
                 {
-                    priceToPay = 45 * (counterSpecial / 3) + min;
+                    priceToPay = 45 * (counterSpecial / 3) + lowestPrice;
                 }
             }
 
