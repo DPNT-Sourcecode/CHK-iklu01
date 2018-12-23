@@ -46,7 +46,7 @@ namespace BeFaster.App.Solutions.CHK
             if (skus.Length >= 3
                 && Regex.IsMatch(skus, @"^[STXYZ]+$"))
             {
-                var min = Product.ProductPrice.Select(item => Convert.ToDecimal(item.Value)).Min();
+                var min = Product.ProductPrice.Values.Select(Convert.ToInt32).Min();
 
                 if (skus.Length % 3 == 0)
                 {
@@ -54,7 +54,7 @@ namespace BeFaster.App.Solutions.CHK
                 }
                 else if (skus.Length % 3 <= 2)
                 {
-                    priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[(int) min]];
+                    priceToPay = 45 * (skus.Length / 3) + Product.ProductPrice[products[min]];
                 }
             }
 
