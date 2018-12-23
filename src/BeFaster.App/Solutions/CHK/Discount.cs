@@ -26,7 +26,8 @@ namespace BeFaster.App.Solutions.CHK
             var counts = skus.GroupBy(c => c).ToDictionary(group => group.Key, group => group.Count());
             int counterB = 0, counterE = 0, counterN = 0, counterQ = 0, counterR = 0,
                 counterS = 0, counterT = 0, counterX = 0, counterY = 0, counterZ = 0;
-            var order = "";
+            var order = skus.Distinct();
+            order += skus;
 
             for (var i = 0; i < products.Length; i++)
             {
@@ -46,17 +47,6 @@ namespace BeFaster.App.Solutions.CHK
                     case 'X': counterX++; break;
                     case 'Y': counterY++; break;
                     case 'Z': counterZ++; break;
-                }
-
-                if (skus.Contains('S')
-                    || skus.Contains('T')
-                    || skus.Contains('X')
-                    || skus.Contains('Y')
-                    || skus.Contains('Z')
-                    && order.Length < 3
-                    && !products[i].Equals(products[i + 1]))
-                {
-                    order += product;
                 }
             }
 
