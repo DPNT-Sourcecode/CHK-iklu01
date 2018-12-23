@@ -49,7 +49,13 @@ namespace BeFaster.App.Solutions.CHK
                     case 'Z': counterZ++; break;
                 }
 
-                if (order.Length < 3 && product != previousProduct)
+                if (skus.Contains('S')
+                    || skus.Contains('T')
+                    || skus.Contains('X')
+                    || skus.Contains('Y')
+                    || skus.Contains('Z')
+                    && order.Length < 3
+                    && product != previousProduct)
                 {
                     order += product;
                 }
